@@ -1,0 +1,1630 @@
+{
+	"info": {
+		"_postman_id": "691422a4-627e-4555-b9ca-3de562d5b4a5",
+		"name": "command krr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hente gyldig accesstoken med riktig scope",
+			"item": [
+				{
+					"name": "postreq",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "713e1a24-6a6c-4137-b6ec-ec8c924b3c95",
+								"exec": [
+									"var jsonData=pm.response.json();",
+									"pm.globals.set(\"session\",jsonData.sessionId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "postreq",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:9515/session",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9515",
+									"path": [
+										"session"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "navigatetooidcclienturl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "227958f2-7dc9-4d24-a52e-9381fe8f9734",
+								"exec": [
+									"tests[\"sessionId\"]=responseBody.has(\"sessionId\");",
+									"tests[\"client_id is status\"]=responseBody.has(\"status\");",
+									"tests[\"value\"]=responseBody.has(\"value\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/url",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findclientelementid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+								"exec": [
+									"pm.test(\"find element id for client_id \", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"client_id\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"name\",\"value\":\"client_id\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectdropdown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{client_id}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{client_id}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clickenter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\":[\"\\uE007\"]}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{client_id}}/value",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{client_id}}",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findscopeid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+								"exec": [
+									"pm.test(\"Scope element id\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"scope\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"name\",\"value\":\"scope\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setscope",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\":[\"   user/kontaktinformasjon.read global/spraak.read user/spraak.write\"]}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{scope}}/value",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{scope}}",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findloginelementid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"loginid\", jsonData.value.ELEMENT);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"login\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clicklogin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5f95f475-e14e-4a9f-9448-803200c232cd",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{loginid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{loginid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "elementonthispage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clickonminid",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{minid_elementid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{minid_elementid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getelementidssn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "189f83ec-8efd-438c-b133-0fbc201abad0",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									" pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getelementidpassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									" pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setssn",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\":[\"{{ssn}}\"]}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{ssn_elementid}}/value",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{ssn_elementid}}",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setpassword",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\":[\"password01\"]}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{password_elementid}}/value",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{password_elementid}}",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
+								"exec": [
+									"pm.test(\"next_elementid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clicksubmit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
+								"exec": [
+									"setTimeout(checkStatusCode, 500);\r",
+									"\r",
+									"    function checkStatusCode() {\r",
+									"\r",
+									"        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
+									"\r",
+									"            tests['status code should be 200']= res.code ===200;\r",
+									"\r",
+									"        });\r",
+									"    }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{next_elementid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{next_elementid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pinnumberid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49f2b57c-29a8-41bf-9041-7400083bf039",
+								"exec": [
+									"pm.test(\"pin_elementid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setppin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "95b50532-96b7-405c-afd1-52b576a70e9f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\":[\"12345\"]}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{pin_elementid}}/value",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{pin_elementid}}",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsubmitid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02b4c223-cb45-4310-b064-d60510887571",
+								"exec": [
+									"pm.test(\"submit_elementid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "finalsubmit ",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{submit_elementid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{submit_elementid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getconsentid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02b4c223-cb45-4310-b064-d60510887571",
+								"exec": [
+									"pm.test(\"consent_elementid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acceptconsent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{consent_elementid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{consent_elementid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gettokenid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02b4c223-cb45-4310-b064-d60510887571",
+								"exec": [
+									"pm.test(\"token_elementid\", function () {",
+									"    var jsonData = pm.response.json();",
+									" pm.globals.set(\"token_elementid\", jsonData.value.ELEMENT);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"using\":\"id\",\"value\":\"get-tokens\"}"
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "henttoken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/element/{{token_elementid}}/click",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"element",
+								"{{token_elementid}}",
+								"click"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTokensElements",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02b4c223-cb45-4310-b064-d60510887571",
+								"exec": [
+									"pm.test(\"tokens\", function () {",
+									" var jsonData = pm.response.json();",
+									" console.log('tokens test jsonData',jsonData);",
+									" var tokens=jsonData.value;",
+									"  console.log('tokens test tokens',tokens);",
+									" var temptoken=tokens.split('access_token:').pop();",
+									"   console.log('tokens test temptoken',temptoken);",
+									" var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
+									"    console.log('tokens test refreshtokenpos',refreshtokenpos);",
+									" var token = temptoken.substring(1,refreshtokenpos-1);    ",
+									" pm.environment.set(\"krr_token\", token);",
+									"     ",
+									"console.log('krr_token',pm.environment.get(\"krr_token\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://chromedriver:4444/session/{{session}}/source",
+							"protocol": "http",
+							"host": [
+								"chromedriver"
+							],
+							"port": "4444",
+							"path": [
+								"session",
+								"{{session}}",
+								"source"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4e0dc75c-1785-4fac-a98f-121ea8a60141",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc0686a3-bc5a-4282-a7cc-7536756437b3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "/person (oppdatere språkpreferanse)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f6affba-9c48-4eb7-a53f-86d74a481c2e",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{krr_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"spraak\": \"en\"\r\n}"
+						},
+						"url": {
+							"raw": "{{krr_oauth2_server}}/rest/v1/person",
+							"host": [
+								"{{krr_oauth2_server}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"person"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetPersonInfo",
+			"item": [
+				{
+					"name": "/person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eaf0544a-3e81-48db-be6e-47a894a76638",
+								"exec": [
+									"pm.test(\"Test will check ssn\", function () {",
+									"    var jsonData = pm.response.json();",
+									"",
+									"    pm.expect(jsonData.personidentifikator).to.eql(pm.environment.get(\"ssn\"));",
+									"   pm.expect(jsonData.reservasjon).to.eql(\"NEI\");",
+									"      pm.expect(jsonData.status).to.eql(\"AKTIV\");",
+									"        ",
+									"      ",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"response must be valid and have a body\", function () {",
+									"     // assert that the status code is 200",
+									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+									"     // assert that the response has a valid JSON body",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{krr_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{krr_oauth2_server}}/rest/v1/person/",
+							"host": [
+								"{{krr_oauth2_server}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"person",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Personer",
+			"item": [
+				{
+					"name": "/personer (1000 stk)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2805a595-98a3-4867-b27c-1ece60353155",
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"KRR personer 1 \", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        \r",
+									"        pm.expect(jsonData.personer[0].personidentifikator).to.eql(pm.environment.get(\"ssn\"));\r",
+									"        pm.expect(jsonData.personer[0].reservasjon).to.eql(\"NEI\");\r",
+									"        pm.expect(jsonData.personer[0].status).to.eql(\"AKTIV\");\r",
+									"        pm.expect(jsonData.personer[0].spraak).to.eql(\"en\");  \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KRR personer 2 \", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        \r",
+									"        pm.expect(jsonData.personer[1].personidentifikator).to.eql(\"23079403083\");\r",
+									" pm.expect(jsonData.personer[1].status).to.eql(\"AKTIV\");\r",
+									" \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KRR personer 3 \", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        pm.expect(jsonData.personer[2].status).to.eql(\"AKTIV\");\r",
+									"        pm.expect(jsonData.personer[2].personidentifikator).to.eql(\"23079402966\");\r",
+									"\r",
+									" \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KRR personer 4 \", function () {\r",
+									"            var jsonData = pm.response.json();\r",
+									"            pm.expect(jsonData.personer[3].status).to.eql(\"AKTIV\");\r",
+									"            pm.expect(jsonData.personer[3].personidentifikator).to.eql(\"23079402885\");\r",
+									" \r",
+									" \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KRR personer 5 \", function () {\r",
+									"            var jsonData = pm.response.json();\r",
+									"            \r",
+									"            pm.expect(jsonData.personer[4].personidentifikator).to.eql(\"23079402613\");\r",
+									"            pm.expect(jsonData.personer[4].status).to.eql(\"AKTIV\");\r",
+									"            pm.expect(jsonData.personer[4].reservasjon).to.eql(\"NEI\");\r",
+									" \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KRR personer 6 \", function () {\r",
+									"            var jsonData = pm.response.json();\r",
+									"            \r",
+									"            pm.expect(jsonData.personer[5].personidentifikator).to.eql(\"23079402532\");\r",
+									"            pm.expect(jsonData.personer[4].status).to.eql(\"AKTIV\");\r",
+									"            pm.expect(jsonData.personer[4].reservasjon).to.eql(\"NEI\");\r",
+									"            \r",
+									"\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response must be valid and have a body\", function () {\r",
+									"     // assert that the status code is 200\r",
+									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+									"     // assert that the response has a valid JSON body\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+									"});\r",
+									"\r",
+									"tests[\"personidentifikator is present\"]=responseBody.has(\"personidentifikator\");\r",
+									"tests[\"reservasjon is present\"]=responseBody.has(\"reservasjon\");\r",
+									"tests[\"status is present\"]=responseBody.has(\"status\");\r",
+									"tests[\"spraak is present\"]=responseBody.has(\"spraak\");\r",
+									"tests[\"spraak_oppdatert is present\"]=responseBody.has(\"spraak_oppdatert\");\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{krr_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"personidentifikatorer\": [\r\n    \"23079403164\",\"23079403083\",\"23079402966\",\"23079402885\",\"23079402613\",\"23079402532\"\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{krr_oauth2_server}}/rest/v1/personer",
+							"host": [
+								"{{krr_oauth2_server}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"personer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sertifikat",
+			"item": [
+				{
+					"name": "/printSertifikat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb6dbdf4-e778-449f-9d17-7b4845b70fc8",
+								"exec": [
+									"pm.test(\"response must be valid and have a body\", function () {",
+									"     // assert that the status code is 200",
+									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+									"     // assert that the response has a valid JSON body",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+									"});",
+									"",
+									"pm.test(\"Attribute postkasseleverandoerAdresse has correct value <printserver> \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.postkasseleverandoerAdresse).to.eql(\"printserver\");",
+									"});",
+									"",
+									"pm.test(\"Attribute <x509Sertifikat has correct value <sertifikat> \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.x509Sertifikat).to.eql(\"MIIDXTCCAkWgAwIBAgIJAOyYwbdZq9oMMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwHhcNMTQwMjI0MjExMTI2WhcNNDEwNzExMjExMTI2WjBFMQswCQYDVQQGEwJBVTETMBEGA1UECAwKU29tZS1TdGF0ZTEhMB8GA1UECgwYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA497PlWbc7g85TK0ln4tCjPvlh2rhKHOtpJ9Gas3Qa7vJO1tkzWp3ZmBFfMG8\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{krr_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{krr_oauth2_server}}/rest/v1/printSertifikat",
+							"host": [
+								"{{krr_oauth2_server}}"
+							],
+							"path": [
+								"rest",
+								"v1",
+								"printSertifikat"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{krrtoken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "49facd6d-ef4e-43c1-8643-fe53ac2aabd9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "149a59fa-622e-417c-8a87-2be5faee847f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
