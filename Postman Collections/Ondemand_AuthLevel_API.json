@@ -1087,7 +1087,7 @@
               "  //pm.expect(jsonData.error).to.eql(\"invalid_input\");\r",
               "  pm.expect(jsonData.error_description).to.eql(\"Input is not valid\");\r",
               "  \r",
-              "  pm.expect(jsonData.error_details[0].feild).to.eql(\"personidentifikator\");\r",
+              "  pm.expect(jsonData.error_details[0].field).to.eql(\"personidentifikator\");\r",
               "  pm.expect(jsonData.error_details[0].code).to.eql(\"invalid_personidentifikator\");\r",
               "  pm.expect(jsonData.error_details[0].description).to.eql(\"Personidentifikator has a syntatical error\");\r",
               "\r",
