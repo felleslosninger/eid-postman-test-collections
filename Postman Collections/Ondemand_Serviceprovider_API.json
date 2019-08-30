@@ -1443,7 +1443,7 @@
                 "id": "06bc0f89-04c7-40d6-abec-9f10a1e4eed1",
                 "exec": [
                   "pm.test(\"Status code is 201\", function () {",
-                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.have.status(201);",
                   "var jsonData=pm.response.json();",
                   "pm.globals.set(\"new_scope\",jsonData.name);",
                   "console.log(\"new scope \",pm.globals.get(\"new_scope\"));",
