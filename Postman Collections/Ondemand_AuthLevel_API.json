@@ -1078,6 +1078,7 @@
               "});\r",
               "pm.test(\"invalid ssn Should failed \", function () {\r",
               " var jsonData = pm.response.json();\r",
+              "  console.log('tokens test jsonData',jsonData);\r",
               " console.log('tokens test jsonData',jsonData.error);\r",
               " console.log('tokens test jsonData',jsonData.error_description);\r",
               " console.log('tokens test feild',jsonData.error_details[0].field); \r",
