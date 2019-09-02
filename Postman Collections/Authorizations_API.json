@@ -23,1415 +23,6 @@
               }
             }
           ],
-          "_postman_id": "23b1d18b-f756-4acb-86cc-f5097e636722",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
-            },
-            "url": "http://localhost:9515/session",
-            "description": "\n"
-          },
-          "response": []
-        },
-        {
-          "name": "redirecturl",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "f32d6f05-2e34-4788-9d50-03fd801eb09e",
-                "exec": [
-                  "pm.environment.get(\"oidc_url\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "41f4ae37-16e7-40ed-a718-5eb6f2f9b70f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"url\":\"{{oidc_url}}\"}\n"
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        },
-        {
-          "name": "elementonthispage",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
-                "exec": [
-                  "pm.test(\"element if for MinID \", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "09f07897-9566-4f86-b02c-efd49c05b771",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clickonminid",
-          "_postman_id": "f7d3e8ae-76c8-4c53-9671-253a69669809",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{minid_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidssn",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "189f83ec-8efd-438c-b133-0fbc201abad0",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "4e2c7524-bbc6-4e96-97ea-b5013e3d379e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidpassword",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ea6b9bd3-6821-44f8-8f13-e658484ab82b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setssn",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "b36fba7a-faa2-4afb-b273-235503a0580c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"{{ssn}}\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "setpassword",
-          "_postman_id": "1ab4b88c-8dfb-4a86-a6df-f291f82628b8",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"password01\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "submit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
-                "exec": [
-                  "pm.test(\"next_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "49550085-9013-497b-894d-829d1ff3be3f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clicksubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
-                "exec": [
-                  "setTimeout(checkStatusCode, 500);\r",
-                  "\r",
-                  "    function checkStatusCode() {\r",
-                  "\r",
-                  "        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
-                  "\r",
-                  "            tests['status code should be 200']= res.code ===200;\r",
-                  "\r",
-                  "        });\r",
-                  "    }"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "16746427-c721-4ee9-b286-54722bcc0dda",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{next_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "pinnumberid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "49f2b57c-29a8-41bf-9041-7400083bf039",
-                "exec": [
-                  "pm.test(\"pin_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e59cbb11-c891-46cc-86cd-a2d609d8b631",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setppin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "95b50532-96b7-405c-afd1-52b576a70e9f",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "5799d537-4fd2-475c-94bf-3a2ee6741ece",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"12345\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{pin_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "getsubmitid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "b4e3b077-ac97-4e21-b3fc-65a4739f5925",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit ",
-          "_postman_id": "3835d629-62ce-4d67-b6f5-aae6ed3822d1",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getconsentid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"consent_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "cef3a7aa-17f6-4465-a181-e0e22f7baf0f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "acceptconsent",
-          "_postman_id": "02042d7c-87a9-41e7-9372-f801f05ef4f3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "file",
-              "file": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "geturl",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1f7f3145-59f9-4cb0-87a2-595e043a1c7c",
-                "exec": [
-                  "pm.test(\"Access Token test\", function () {\r",
-                  "        var jsonData = pm.response.json();\r",
-                  "        var tokens=jsonData.value;\r",
-                  "        var temptoken=tokens.split('access_token:').pop();\r",
-                  "        console.log(\"access_token from systest\",temptoken);\r",
-                  "        var refreshtokenpos=temptoken.lastIndexOf(\"token_type\");\r",
-                  "        var finaltoken = temptoken.substring(1,refreshtokenpos-1);  \r",
-                  "        console.log(\"access_token from finaltokenwithurl\",finaltoken);\r",
-                  "        var access_token_trim= finaltoken.substring(30);\r",
-                  "        console.log(\"access_token from systest\",access_token_trim);\r",
-                  "        pm.environment.unset(\"access_token\");\r",
-                  "        pm.environment.set(\"access_token\",access_token_trim);\r",
-                  "\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "853d815d-a0f1-4202-9d9b-8949bb47a3f6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "f4ee1b75-6cdb-4da3-bfb6-27d252f58d5b"
-    },
-    {
-      "name": "authorization-controller (happytest)",
-      "item": [
-        {
-          "name": "getAllAuthorizationsForSpecificUser",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "pm.test(\"Test will check client id and client name\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");",
-                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
-                  "    ",
-                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);",
-                  "    ",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"response must be valid and have a body\", function () {",
-                  "     // assert that the status code is 200",
-                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
-                  "     // assert that the response has a valid JSON body",
-                  "     pm.response.to.be.withBody;",
-                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-                  "});",
-                  "",
-                  "pm.test(\"response should be okay to process\", function () { ",
-                  "    pm.response.to.not.be.error; ",
-                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
-                  "});",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "8b891c7d-ec04-4b23-8f9d-a4b27f94b311",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token}}"
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010"
-          },
-          "response": []
-        },
-        {
-          "name": "revokeAuthorizationsForSpecificUser",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a5c4cc81-d88c-4662-afc6-71908c44b66b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token}}"
-              }
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "54ae6c60-f486-4f90-b9d1-6528085d34fe",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "fdd6a0f3-9720-4708-b249-49c97c5ee3d9",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "a56e6e85-57e1-4a08-9f94-a30bc6a08527",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "Hente gyldig accesstoken med feil scope",
-      "item": [
-        {
-          "name": "seleniumsession",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
-                "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "8339c4ed-bbae-4085-83cc-8f4839327460",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
-            },
-            "url": "http://localhost:9515/session",
-            "description": "\n"
-          },
-          "response": []
-        },
-        {
-          "name": "redirecturl",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "f32d6f05-2e34-4788-9d50-03fd801eb09e",
-                "exec": [
-                  "pm.environment.get(\"oidc_utl_without_scope\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "c7f72c5a-4946-4818-b6f7-0dada7ceb7d4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"url\":\"{{oidc_utl_without_scope}}\"}\n"
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        },
-        {
-          "name": "elementonthispage",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
-                "exec": [
-                  "pm.test(\"element if for MinID \", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ad0abb4c-e564-43d0-9fee-d299eb1d521c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clickonminid",
-          "_postman_id": "b9338728-02ac-41f1-804f-0c74c603c3c3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{minid_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidssn",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "189f83ec-8efd-438c-b133-0fbc201abad0",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "920a7b2b-1640-4d62-b0b0-0e01945b4893",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidpassword",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "f5f1b49f-8f4a-4ef4-a43c-c312f0470ff3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setssn",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "9804f384-1373-4d93-b84f-492e4213a88e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"{{ssn}}\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "setpassword",
-          "_postman_id": "e02b4991-b5ed-43a4-9361-739c0f08d4e3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"password01\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "submit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
-                "exec": [
-                  "pm.test(\"next_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "c7058e6f-c385-445e-b3e8-d1abebbbf71e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clicksubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
-                "exec": [
-                  "setTimeout(checkStatusCode, 500);\r",
-                  "\r",
-                  "    function checkStatusCode() {\r",
-                  "\r",
-                  "        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
-                  "\r",
-                  "            tests['status code should be 200']= res.code ===200;\r",
-                  "\r",
-                  "        });\r",
-                  "    }"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "2bccae3b-bc27-425f-aa9f-168cd3a6644f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{next_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "pinnumberid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "49f2b57c-29a8-41bf-9041-7400083bf039",
-                "exec": [
-                  "pm.test(\"pin_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "f9f4bde3-1c74-425f-889d-0712e3fd1d27",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setppin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "95b50532-96b7-405c-afd1-52b576a70e9f",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "7dde5529-54a0-4d3e-bbfa-0c33ea9acf70",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"12345\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{pin_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "getsubmitid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "d0118138-d93e-4c8d-94b7-0000a02de272",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit ",
-          "_postman_id": "3102c3c0-ca43-4fb7-9da3-1655e05075ad",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getconsentid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"consent_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6a1d117f-664f-471e-a60c-d44a5c396823",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "acceptconsent",
-          "_postman_id": "1a046ca6-c046-4f52-b1e3-8749138d7fc1",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "file",
-              "file": {
-                "src": ""
-              }
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "geturl",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1f7f3145-59f9-4cb0-87a2-595e043a1c7c",
-                "exec": [
-                  "pm.test(\"Access Token test\", function () {\r",
-                  "        var jsonData = pm.response.json();\r",
-                  "        var tokens=jsonData.value;\r",
-                  "        var temptoken=tokens.split('access_token:').pop();\r",
-                  "        console.log(\"access_token from systest\",temptoken);\r",
-                  "        var refreshtokenpos=temptoken.lastIndexOf(\"token_type\");\r",
-                  "        var finaltoken = temptoken.substring(1,refreshtokenpos-1);  \r",
-                  "        console.log(\"access_token from finaltokenwithurl\",finaltoken);\r",
-                  "        var access_token_trim= finaltoken.substring(30);\r",
-                  "        console.log(\"access_token from systest\",access_token_trim);\r",
-                  "        pm.environment.unset(\"invalid_token\");\r",
-                  "        pm.environment.set(\"invalid_token\", access_token_trim);\r",
-                  "\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e63a034c-5788-4ca4-8a97-65f94e84caf6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "203cd52b-4356-4d84-81d6-2ddf53d7155f"
-    },
-    {
-      "name": "authorization-controller (feilhandtering)",
-      "item": [
-        {
-          "name": "403 forbidden",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
-                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
-                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
-                  "    });",
-                  "",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1bbd4de7-96d6-4f55-9db4-d419635b8155",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "403 forbidden",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "7c63bf3a-5f3c-4115-bcf9-8423209ff68b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
-          },
-          "response": []
-        },
-        {
-          "name": "401 invalidAccessToken",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 401\", function () {",
-                  "    pm.response.to.have.status(401);",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"response should be okay to process\", function () { ",
-                  "    pm.response.to.be.error; ",
-                  "    pm.response.to.have.jsonBody(\"error\"); ",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "325fc336-800a-490d-a2b9-e2360504db14",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "dVuP-NegR0fAUgDQjB_8GmCURrGr5PesrWxv_yW9SGc="
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "401 WithoutAccessToken",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 401\", function () {",
-                  "    pm.response.to.have.status(401);",
-                  "});",
-                  "",
-                  "pm.test(\"Test to verify error and error description\", function () { ",
-                  "    var jsonData = JSON.parse(responseBody);",
-                  "    pm.expect(jsonData.error).to.eql(\"unauthorized\");",
-                  "    pm.expect(jsonData.error_description).to.eql(\"Full authentication is required to access this resource\");",
-                  "    ",
-                  "",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "7fb8e634-69d8-47d1-a63c-461bebcbf054",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "405 Method not allowed",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 405\", function () {",
-                  "    pm.response.to.have.status(405);",
-                  "});",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "69946f8c-af65-4f57-b58b-072e56af6b4d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "6c3432f6-46c6-4e3b-842d-0c99a46204c9",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "1fa91243-8d05-46d7-964f-29a96df11e56",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "3d6bc0a3-ddf9-42a8-9ecf-eb23506fa655",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "Hente gyldig accesstoken med riktig scope",
-      "item": [
-        {
-          "name": "seleniumsession",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
-                "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "_postman_id": "2f1e580d-d0f4-4001-bfd6-6146c4200be0",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -2429,6 +1020,879 @@
         }
       ],
       "_postman_id": "920cf181-0e35-4e90-8154-576ee3ce1bf3"
+    },
+    {
+      "name": "authorization-controller (happytest)",
+      "item": [
+        {
+          "name": "getAllAuthorizationsForSpecificUser",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Test will check client id and client name\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
+                  "    ",
+                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);",
+                  "    ",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response must be valid and have a body\", function () {",
+                  "     // assert that the status code is 200",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+                  "     // assert that the response has a valid JSON body",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+                  "});",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.not.be.error; ",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8b891c7d-ec04-4b23-8f9d-a4b27f94b311",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010"
+          },
+          "response": []
+        },
+        {
+          "name": "revokeAuthorizationsForSpecificUser",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a5c4cc81-d88c-4662-afc6-71908c44b66b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "54ae6c60-f486-4f90-b9d1-6528085d34fe",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "fdd6a0f3-9720-4708-b249-49c97c5ee3d9",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "a56e6e85-57e1-4a08-9f94-a30bc6a08527",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hente gyldig accesstoken med feil scope",
+      "item": [
+        {
+          "name": "seleniumsession",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
+                "exec": [
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"session\",jsonData.sessionId);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8339c4ed-bbae-4085-83cc-8f4839327460",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
+            },
+            "url": "http://localhost:9515/session",
+            "description": "\n"
+          },
+          "response": []
+        },
+        {
+          "name": "redirecturl",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f32d6f05-2e34-4788-9d50-03fd801eb09e",
+                "exec": [
+                  "pm.environment.get(\"oidc_utl_without_scope\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c7f72c5a-4946-4818-b6f7-0dada7ceb7d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"url\":\"{{oidc_utl_without_scope}}\"}\n"
+            },
+            "url": "http://localhost:9515/session/{{session}}/url"
+          },
+          "response": []
+        },
+        {
+          "name": "elementonthispage",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
+                "exec": [
+                  "pm.test(\"element if for MinID \", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "ad0abb4c-e564-43d0-9fee-d299eb1d521c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clickonminid",
+          "_postman_id": "b9338728-02ac-41f1-804f-0c74c603c3c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{minid_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "getelementidssn",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "189f83ec-8efd-438c-b133-0fbc201abad0",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  " pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "920a7b2b-1640-4d62-b0b0-0e01945b4893",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "getelementidpassword",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  " pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "f5f1b49f-8f4a-4ef4-a43c-c312f0470ff3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "setssn",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9804f384-1373-4d93-b84f-492e4213a88e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"{{ssn}}\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "setpassword",
+          "_postman_id": "e02b4991-b5ed-43a4-9361-739c0f08d4e3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"password01\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "submit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
+                "exec": [
+                  "pm.test(\"next_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c7058e6f-c385-445e-b3e8-d1abebbbf71e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clicksubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
+                "exec": [
+                  "setTimeout(checkStatusCode, 500);\r",
+                  "\r",
+                  "    function checkStatusCode() {\r",
+                  "\r",
+                  "        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
+                  "\r",
+                  "            tests['status code should be 200']= res.code ===200;\r",
+                  "\r",
+                  "        });\r",
+                  "    }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2bccae3b-bc27-425f-aa9f-168cd3a6644f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{next_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "pinnumberid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "49f2b57c-29a8-41bf-9041-7400083bf039",
+                "exec": [
+                  "pm.test(\"pin_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "f9f4bde3-1c74-425f-889d-0712e3fd1d27",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "setppin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "95b50532-96b7-405c-afd1-52b576a70e9f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7dde5529-54a0-4d3e-bbfa-0c33ea9acf70",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"12345\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{pin_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "getsubmitid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d0118138-d93e-4c8d-94b7-0000a02de272",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "finalsubmit ",
+          "_postman_id": "3102c3c0-ca43-4fb7-9da3-1655e05075ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "getconsentid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"consent_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "6a1d117f-664f-471e-a60c-d44a5c396823",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "acceptconsent",
+          "_postman_id": "1a046ca6-c046-4f52-b1e3-8749138d7fc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": ""
+              }
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "geturl",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1f7f3145-59f9-4cb0-87a2-595e043a1c7c",
+                "exec": [
+                  "pm.test(\"Access Token test\", function () {\r",
+                  "        var jsonData = pm.response.json();\r",
+                  "        var tokens=jsonData.value;\r",
+                  "        var temptoken=tokens.split('access_token:').pop();\r",
+                  "        console.log(\"access_token from systest\",temptoken);\r",
+                  "        var refreshtokenpos=temptoken.lastIndexOf(\"token_type\");\r",
+                  "        var finaltoken = temptoken.substring(1,refreshtokenpos-1);  \r",
+                  "        console.log(\"access_token from finaltokenwithurl\",finaltoken);\r",
+                  "        var access_token_trim= finaltoken.substring(30);\r",
+                  "        console.log(\"access_token from systest\",access_token_trim);\r",
+                  "        pm.environment.unset(\"invalid_token\");\r",
+                  "        pm.environment.set(\"invalid_token\", access_token_trim);\r",
+                  "\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e63a034c-5788-4ca4-8a97-65f94e84caf6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/url"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "203cd52b-4356-4d84-81d6-2ddf53d7155f"
+    },
+    {
+      "name": "authorization-controller (feilhandtering)",
+      "item": [
+        {
+          "name": "403 forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
+                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
+                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
+                  "    });",
+                  "",
+                  "",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1bbd4de7-96d6-4f55-9db4-d419635b8155",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "403 forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7c63bf3a-5f3c-4115-bcf9-8423209ff68b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
+          },
+          "response": []
+        },
+        {
+          "name": "401 invalidAccessToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.be.error; ",
+                  "    pm.response.to.have.jsonBody(\"error\"); ",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "325fc336-800a-490d-a2b9-e2360504db14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "dVuP-NegR0fAUgDQjB_8GmCURrGr5PesrWxv_yW9SGc="
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "401 WithoutAccessToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Test to verify error and error description\", function () { ",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    pm.expect(jsonData.error).to.eql(\"unauthorized\");",
+                  "    pm.expect(jsonData.error_description).to.eql(\"Full authentication is required to access this resource\");",
+                  "    ",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7fb8e634-69d8-47d1-a63c-461bebcbf054",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "405 Method not allowed",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {",
+                  "    pm.response.to.have.status(405);",
+                  "});",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "69946f8c-af65-4f57-b58b-072e56af6b4d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "6c3432f6-46c6-4e3b-842d-0c99a46204c9",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1fa91243-8d05-46d7-964f-29a96df11e56",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "3d6bc0a3-ddf9-42a8-9ecf-eb23506fa655",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     }
   ],
   "auth": {
