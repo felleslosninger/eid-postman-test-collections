@@ -1413,6 +1413,1022 @@
           }
         }
       ]
+    },
+    {
+      "name": "Hente gyldig accesstoken med riktig scope",
+      "item": [
+        {
+          "name": "seleniumsession",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
+                "exec": [
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"session\",jsonData.sessionId);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2f1e580d-d0f4-4001-bfd6-6146c4200be0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
+            },
+            "url": "http://localhost:9515/session",
+            "description": "\n"
+          },
+          "response": []
+        },
+        {
+          "name": "redirecturl",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f32d6f05-2e34-4788-9d50-03fd801eb09e",
+                "exec": [
+                  "",
+                  "pm.environment.get(\"oidc_url_serviceprovider\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "01e972f9-2cd4-4bbd-8924-e8d2f0e26126",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n"
+            },
+            "url": "http://localhost:9515/session/{{session}}/url"
+          },
+          "response": []
+        },
+        {
+          "name": "findclientelementid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+                "exec": [
+                  "pm.test(\"find element id for client_id \", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"clientid\", jsonData.value.ELEMENT);",
+                  " ",
+                  "console.log(pm.globals.get(\"clientid\"));",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "ac6032fe-0ecb-4329-aa5f-38c8ea768aa2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"name\",\"value\":\"client_id\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "selectdropdown",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b995a882-223c-4a0f-8739-254507788b1c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "selectclientid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "96c6c903-857e-49b1-ab10-8e3db8e66a5b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"\\uE015\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "selectclientid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "20750570-5462-467f-8fbf-f79c3a05aa7e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"\\uE015\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "selectclientid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "aaa661d1-84ed-4247-87a3-c8b9da493c13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"\\uE015\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "clickenter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d018c7f9-45c1-4e14-8db9-b946371b2c92",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"\\uE007\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "findscopeid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+                "exec": [
+                  "pm.test(\"Scope element id\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"scope\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7f8a62a2-e686-4416-863d-703ed6f5604e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"name\",\"value\":\"scope\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "setscope",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b97646b1-9f7e-4840-85ee-7dc2f4b222af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"    global/sikkerdigitalpost.read krr:user.log.all.read idporten:user.log.read user/varslingsstatus.read global/digitalpost.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read user/sikkerdigitalpost.read dsf-adresse global/sertifikat.read global/varslingsstatus.read idporten:dcr.modify idporten:authorizations.revoke dsf-navn tokeninfo user/spraak.read idporten:tokenexchange openid profile idporten:scopes.read user/sertifikat.read user/digitalpost.read idporten:scopes.write user/spraak.write samarbeid:sp-web idporten:authorizationstest.read\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "findloginelementid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
+                "exec": [
+                  "pm.test(\"Your test name\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"loginid\", jsonData.value.ELEMENT);",
+                  "",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c1996d7d-15de-4378-945b-60450b267447",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"login\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clicklogin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "5f95f475-e14e-4a9f-9448-803200c232cd",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7cd483ab-54c6-4e92-b346-c43fab06ebb9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{loginid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "elementonthispage",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
+                "exec": [
+                  "pm.test(\"element if for MinID \", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8cfd4c3b-1483-408d-b701-7fffc8632563",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clickonminid",
+          "_postman_id": "09f590a1-2399-46c8-9040-db9ad4da53a5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{minid_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "getelementidssn",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "189f83ec-8efd-438c-b133-0fbc201abad0",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  " pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a1da08ec-811c-4155-883f-06711717e333",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "getelementidpassword",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  " pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3c35783a-f40b-42d2-b90d-9d543a6cc296",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "setssn",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "21f52807-e3b1-4fe9-be7b-4b2e33eabae0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"{{ssn}}\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "setpassword",
+          "_postman_id": "fc40eb95-4243-41a2-a155-51a0a23401d5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"password01\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "submit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
+                "exec": [
+                  "pm.test(\"next_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "766abc2d-b389-405c-901c-20feb16b5984",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clicksubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
+                "exec": [
+                  "setTimeout(checkStatusCode, 500);\r",
+                  "\r",
+                  "    function checkStatusCode() {\r",
+                  "\r",
+                  "        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
+                  "\r",
+                  "            tests['status code should be 200']= res.code ===200;\r",
+                  "\r",
+                  "        });\r",
+                  "    }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "021ccad3-8994-48fb-b684-091dc17e9ee7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{next_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "pinnumberid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "49f2b57c-29a8-41bf-9041-7400083bf039",
+                "exec": [
+                  "pm.test(\"pin_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "682eee37-ef98-4428-bedb-d04e5917cd0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "setppin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "95b50532-96b7-405c-afd1-52b576a70e9f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "05199898-e1c7-4378-b9ed-3535f6afa777",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"12345\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{pin_elementid}}/value"
+          },
+          "response": []
+        },
+        {
+          "name": "getsubmitid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "5519f605-8c4b-4749-a0f6-763406ba65d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "finalsubmit ",
+          "_postman_id": "f69c5c3a-5ef7-4139-856b-359c20b285e3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "getconsentid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"consent_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b2c5c938-b512-4b95-980b-16ee88603a33",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "acceptconsent",
+          "_postman_id": "eca0e277-a2d7-47c8-8aed-680abcfdc55c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {
+                "src": ""
+              }
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "gettokenid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"token_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"token_elementid\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "70b4a1e4-a375-429f-8532-ab902898a965",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"get-tokens\"}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "henttoken",
+          "_postman_id": "4192ff8a-e7ea-4380-a612-13b57f7e4ba7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "getTokensElements",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "exec": [
+                  "pm.test(\"tokens\", function () {",
+                  " var jsonData = pm.response.json();",
+                  " console.log('tokens test jsonData',jsonData);",
+                  " var tokens=jsonData.value;",
+                  "  console.log('tokens test tokens',tokens);",
+                  " var temptoken=tokens.split('access_token:').pop();",
+                  "   console.log('tokens test temptoken',temptoken);",
+                  " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
+                  "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
+                  " var token = temptoken.substring(1,refreshtokenpos-1);    ",
+                  " pm.environment.set(\"access_token_sp\", token);",
+                  "     console.log('tokens test token',token);",
+                  "console.log('access_token_sp',pm.environment.get(\"access_token_sp\"));",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "077ea8cc-2fbc-4120-a79d-7ee21efe437e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://localhost:9515/session/{{session}}/source"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "920cf181-0e35-4e90-8154-576ee3ce1bf3"
     }
   ],
   "auth": {
