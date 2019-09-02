@@ -1685,216 +1685,6 @@
       "_postman_id": "203cd52b-4356-4d84-81d6-2ddf53d7155f"
     },
     {
-      "name": "authorization-controller (feilhandtering)",
-      "item": [
-        {
-          "name": "403 forbidden",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
-                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
-                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
-                  "    });",
-                  "",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1bbd4de7-96d6-4f55-9db4-d419635b8155",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "403 forbidden",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
-                "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "7c63bf3a-5f3c-4115-bcf9-8423209ff68b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
-          },
-          "response": []
-        },
-        {
-          "name": "401 invalidAccessToken",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 401\", function () {",
-                  "    pm.response.to.have.status(401);",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"response should be okay to process\", function () { ",
-                  "    pm.response.to.be.error; ",
-                  "    pm.response.to.have.jsonBody(\"error\"); ",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "325fc336-800a-490d-a2b9-e2360504db14",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "dVuP-NegR0fAUgDQjB_8GmCURrGr5PesrWxv_yW9SGc="
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "401 WithoutAccessToken",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 401\", function () {",
-                  "    pm.response.to.have.status(401);",
-                  "});",
-                  "",
-                  "pm.test(\"Test to verify error and error description\", function () { ",
-                  "    var jsonData = JSON.parse(responseBody);",
-                  "    pm.expect(jsonData.error).to.eql(\"unauthorized\");",
-                  "    pm.expect(jsonData.error_description).to.eql(\"Full authentication is required to access this resource\");",
-                  "    ",
-                  "",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "7fb8e634-69d8-47d1-a63c-461bebcbf054",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        },
-        {
-          "name": "405 Method not allowed",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
-                "exec": [
-                  "pm.test(\"Status code is 405\", function () {",
-                  "    pm.response.to.have.status(405);",
-                  "});",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "69946f8c-af65-4f57-b58b-072e56af6b4d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "6c3432f6-46c6-4e3b-842d-0c99a46204c9",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "1fa91243-8d05-46d7-964f-29a96df11e56",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "3d6bc0a3-ddf9-42a8-9ecf-eb23506fa655",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Hente gyldig accesstoken med feil scope",
       "item": [
         {
@@ -2880,9 +2670,9 @@
                   " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"invalid_access_token_sp\", token);",
-                  "     console.log('invalid tokens test token',token);",
-                  "console.log('invalid_access_token_sp',pm.environment.get(\"invalid_access_token_sp\"));",
+                  " pm.environment.set(\"invalid_token\", token);",
+                  "     console.log('invalid invalid_token test token',token);",
+                  "console.log('invalid_token',pm.environment.get(\"invalid_token\"));",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -2909,6 +2699,216 @@
         }
       ],
       "_postman_id": "4ca6db38-8517-4f96-a0a7-951c8a41d84e"
+    },
+    {
+      "name": "authorization-controller (feilhandtering)",
+      "item": [
+        {
+          "name": "403 forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
+                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
+                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
+                  "    });",
+                  "",
+                  "",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1bbd4de7-96d6-4f55-9db4-d419635b8155",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "403 forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7c63bf3a-5f3c-4115-bcf9-8423209ff68b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
+          },
+          "response": []
+        },
+        {
+          "name": "401 invalidAccessToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.be.error; ",
+                  "    pm.response.to.have.jsonBody(\"error\"); ",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "325fc336-800a-490d-a2b9-e2360504db14",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "dVuP-NegR0fAUgDQjB_8GmCURrGr5PesrWxv_yW9SGc="
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "401 WithoutAccessToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Test to verify error and error description\", function () { ",
+                  "    var jsonData = JSON.parse(responseBody);",
+                  "    pm.expect(jsonData.error).to.eql(\"unauthorized\");",
+                  "    pm.expect(jsonData.error_description).to.eql(\"Full authentication is required to access this resource\");",
+                  "    ",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7fb8e634-69d8-47d1-a63c-461bebcbf054",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        },
+        {
+          "name": "405 Method not allowed",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "exec": [
+                  "pm.test(\"Status code is 405\", function () {",
+                  "    pm.response.to.have.status(405);",
+                  "});",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "69946f8c-af65-4f57-b58b-072e56af6b4d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "6c3432f6-46c6-4e3b-842d-0c99a46204c9",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1fa91243-8d05-46d7-964f-29a96df11e56",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "3d6bc0a3-ddf9-42a8-9ecf-eb23506fa655",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     }
   ],
   "auth": {
