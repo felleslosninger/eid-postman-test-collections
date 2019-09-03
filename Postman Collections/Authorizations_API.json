@@ -2218,6 +2218,9 @@
                 "exec": [
                   "pm.test(\"Status code is 403\", function () {",
                   "    pm.response.to.have.status(403);",
+                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
+                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
+                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
                   "});",
                   ""
                 ],
