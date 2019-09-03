@@ -1,0 +1,320 @@
+{
+  "info": {
+    "_postman_id": "9a0ce6f4-cf17-4a40-accb-2c4ca1fd879c",
+    "name": "AuthLevel API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Hente gyldig accesstoken med riktig scope",
+      "item": [
+        {
+          "name": "postreq",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "713e1a24-6a6c-4137-b6ec-ec8c924b3c95",
+                "exec": [
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"session\",jsonData.sessionId);",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "fbbd0395-c76c-4778-b9b0-76c87018d6a2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
+            },
+            "url": "http://localhost:9515/session"
+          },
+          "response": [
+            {
+              "id": "dfd8c0ee-4f73-4ac0-8461-0dcfa54beeeb",
+              "name": "postreq",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                },
+                "url": "http://localhost:9515/session"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "navigatetojwturl",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "227958f2-7dc9-4d24-a52e-9381fe8f9734",
+                "exec": [
+                  "tests[\"sessionId\"]=responseBody.has(\"sessionId\");",
+                  "tests[\"client_id is status\"]=responseBody.has(\"status\");",
+                  "tests[\"value\"]=responseBody.has(\"value\");",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1ed6c867-539f-42e6-a7b5-6c30a491c713",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"url\":\"{{jwt_bearer_url_authlevel-api}}\"}\n"
+            },
+            "url": "http://localhost:9515/session/{{session}}/url"
+          },
+          "response": []
+        },
+        {
+          "name": "assertionrequest",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "227958f2-7dc9-4d24-a52e-9381fe8f9734",
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "var jwtgrantString=jsonData.value;\r",
+                  "var jwtgranttrim = jwtgrantString.substring(\r",
+                  "    jwtgrantString.lastIndexOf(\"<body>\") +1, \r",
+                  "    jwtgrantString.lastIndexOf(\"</body>\")\r",
+                  ");\r",
+                  "var assertiontmp=jwtgranttrim.substring(5);\r",
+                  "console.log(assertiontmp);\r",
+                  "pm.environment.set(\"assertion\", assertiontmp);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0acf91f7-d7e4-4a1b-8df7-920c39c062a7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"url\":\"{{jwt_bearer_url_authlevel-api}}\"}\n"
+            },
+            "url": "http://localhost:9515/session/{{session}}/source"
+          },
+          "response": []
+        },
+        {
+          "name": "tokenendepunkt",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+                "exec": [
+                  "var jsonData=pm.response.json();",
+                  "pm.environment.set(\"gen_accesstoken\",jsonData.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "44923c53-87dc-4993-a1a9-95cd20a849fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                  "type": "text"
+                },
+                {
+                  "key": "assertion",
+                  "value": "{{assertion}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "912b5e6f-5790-413c-983e-d68b26a6db3a"
+    },
+    {
+      "name": "auth-level-controller",
+      "item": [
+        {
+          "name": "/rest/v1/sikkerhetsnivaa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8b28c6eb-8186-45d6-bd4b-1bdce5f331ae",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Checking correct ssn is returned\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.personidentifikator).to.eql(pm.environment.get(\"ssn\"));",
+                  "});",
+                  "",
+                  "pm.test(\"response must have a body with json\", function () {",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; ",
+                  "});",
+                  "",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "6641b3ca-519b-4058-bd39-3864d19f6a3c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{gen_accesstoken}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"harbruktnivaa4\": true,\r\n  \"personidentifikator\": {{ssn}}\r\n}"
+            },
+            "url": "http://eid-systest-admin01.dmz.local:8080/rest/v1/sikkerhetsnivaa"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "8c210a41-406d-4b69-8719-a95f7e4968a5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ0ZXN0X3JwX3N5c3Rlc3QiLCJzY29wZSI6Imdsb2JhbFwva29udGFrdGluZm9ybWFzam9uLnJlYWQgZ2xvYmFsXC9pZHBvcnRlbi5hdXRobGV2ZWwucmVhZCBvcGVuaWQgcHJvZmlsZSBlbGRhcjpwdWJsaWMgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIiwiaXNzIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImV4cCI6MTU1NTA1ODMwMSwiaWF0IjoxNTU1MDU0NzAxLCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJibTlWQ1hDTHNWUXpEdFJKNzVkdzg5c3Nhb0tvYXNubmhvNGxaQlhGbFpRIn0.QSbIbVDtOCTr5oMkyyN9bREy8ed-43aoPeYH_2NobzVW3_7UKlAu94HAohxX8mWqENdiHSZnWLYLz5NQ7QgkXwvQCiAK_wmdnNM7gycTKjvKwAYV5pT4vlxWfWmkrqKnooJqjQohVIQeSh8mQKDH5m869JTsaSWzXyrBlp1qtLRgfOqSzcTaXatbXNYtzeRUfwmS9MyEdVEH7Hgiacl3AT3C9zNA52UkfWuwTfXnrdCLBNNP84X_95HVzOhjrX7mxBxCHcX7BwUx3h6dClEHiEvyB8uupBW3IOiXqQrnb23eNJOHL0w7jqYwHrKPEynOAbMHbvh--An_c7Z-VearFg"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "1919b5bb-56d6-4c64-b76b-8b91fd64d331",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "4767f223-5c93-403d-bf04-9a2fcd66007f",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
