@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "Hente gyldig accesstoken med riktig scope",
+      "name": "Hente gyldig accesstoken med riktig scopen",
       "item": [
         {
           "name": "seleniumsession",
