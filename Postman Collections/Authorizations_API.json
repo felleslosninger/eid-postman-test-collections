@@ -9,7 +9,7 @@
       "name": "Hente gyldig accesstoken med riktig scope",
       "item": [
         {
-          "name": "seleniumsession",
+          "name": "seleniumsessiontemp",
           "event": [
             {
               "listen": "test",
