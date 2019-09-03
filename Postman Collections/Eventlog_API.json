@@ -16,8 +16,11 @@
               "script": {
                 "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
                 "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);"
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "  var jsonData=pm.response.json();",
+                  "pm.globals.set(\"session\",jsonData.sessionId);",
+                  "});"
                 ],
                 "type": "text/javascript"
               }
