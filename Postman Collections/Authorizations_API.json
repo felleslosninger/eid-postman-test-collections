@@ -2289,7 +2289,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "id": "fdb69038-e53f-4bcf-ac61-5e4f33b06182",
                 "exec": [
                   "pm.test(\"Status code is 401\", function () {",
                   "    pm.response.to.have.status(401);",
@@ -2299,8 +2299,6 @@
                   "    var jsonData = JSON.parse(responseBody);",
                   "    pm.expect(jsonData.error).to.eql(\"unauthorized\");",
                   "    pm.expect(jsonData.error_description).to.eql(\"Full authentication is required to access this resource\");",
-                  "    ",
-                  "",
                   "});",
                   ""
                 ],
