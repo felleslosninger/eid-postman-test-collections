@@ -1149,7 +1149,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{serviceprovider_api}}/clients?inactive=true",
+              "raw": "{{serviceprovider_api}}/clients?inactive=false",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -1159,7 +1159,7 @@
               "query": [
                 {
                   "key": "inactive",
-                  "value": "true"
+                  "value": "false"
                 }
               ]
             },
