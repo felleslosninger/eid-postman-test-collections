@@ -2667,7 +2667,7 @@
                   "mode": "raw",
                   "raw": ""
                 },
-                "url": "{{serviceprovider_api}}/clients/tetsts"
+                "url": "{{serviceprovider_api}}/clients/tests"
               },
               "response": []
             }
