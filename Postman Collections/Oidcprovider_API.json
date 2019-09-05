@@ -212,45 +212,6 @@
               }
             }
           ],
-          "_postman_id": "f02e781a-28b0-4677-bc0c-d824e1efdd04",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "_postman_id": "cf839a9c-ba32-424c-a01d-4502382a1708",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -390,7 +351,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"value\":[\"    idporten:dcr.read dporten:dcr.write idporten:dcr.modify idporten:dcr/onbehalfof.write idporten:dcr:supplier\"]}"
+              "raw": "{\"value\":[\"    krr:user.log.all.read idporten:user.log.read user/varslingsstatus.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read dsf-adresse global/sertifikat.read global/varslingsstatus.read idporten:dcr.modify idporten:authorizations.revoke dsf-navn tokeninfo user/spraak.read idporten:tokenexchange openid profile idporten:scopes.read user/sertifikat.read user/digitalpost.read idporten:scopes.write user/spraak.write samarbeid:sp-web idporten:authorizationstest.read\"]}"
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
           },
@@ -1513,45 +1474,6 @@
                 "name": "Content-Type",
                 "value": "application/json",
                 "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "78bdb5f2-6980-40c6-98cc-82587bef6c5c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
               }
             ],
             "body": {
