@@ -2493,45 +2493,6 @@
               }
             }
           ],
-          "_postman_id": "1a6a97d9-0ff6-4aca-afc9-6f0aa1432a21",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "_postman_id": "a4f2c7c0-dbbf-4c08-a4dd-b777ba00fef8",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
