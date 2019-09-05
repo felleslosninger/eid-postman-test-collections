@@ -2526,15 +2526,7 @@
                       "    pm.response.to.have.status(403);",
                       "});",
                       "",
-                      "pm.test(\"Error description comes here\", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "    console.log(\"error log will display here \",jsonData);",
-                      "    console.log(\"error\",jsonData.error);",
-                      "    console.log(\"error_description\",jsonData.error_description);",
-                      "",
-                      "}",
-                      "",
-                      ");"
+                      ""
                     ],
                     "type": "text/javascript"
                   }
