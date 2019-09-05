@@ -212,45 +212,6 @@
               }
             }
           ],
-          "_postman_id": "20750570-5462-467f-8fbf-f79c3a05aa7e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
           "_postman_id": "aaa661d1-84ed-4247-87a3-c8b9da493c13",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -2249,7 +2210,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
+                "id": "52a0be1b-8535-4bd5-b509-882d7ea94a2d",
                 "exec": [
                   "pm.test(\"Status code is 401\", function () {",
                   "    pm.response.to.have.status(401);",
@@ -2259,6 +2220,9 @@
                   "pm.test(\"response should be okay to process\", function () { ",
                   "    pm.response.to.be.error; ",
                   "    pm.response.to.have.jsonBody(\"error\"); ",
+                  "    tests[\"error is present\"]=responseBody.has(\"error\");",
+                  "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
+                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
                   "});",
                   ""
                 ],
