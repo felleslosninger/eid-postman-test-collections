@@ -961,7 +961,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "id": "8093070f-c9db-4bde-bd51-3f7944e00da9",
                 "exec": [
                   "pm.test(\"tokens\", function () {",
                   " var jsonData = pm.response.json();",
@@ -974,7 +974,6 @@
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
                   " pm.environment.set(\"krr_token\", token);",
-                  "     ",
                   "console.log('krr_token',pm.environment.get(\"krr_token\"));",
                   "});"
                 ],
