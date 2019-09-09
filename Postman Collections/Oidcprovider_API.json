@@ -225,45 +225,6 @@
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
-    },
-    {
-      "name": "/admin/authorizations/{auth_id}",
-      "_postman_id": "f09523fc-9d37-46fa-a630-d2c6077cbeb8",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{oidctoken}}"
-          }
-        },
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "System-id",
-            "type": "text",
-            "value": ""
-          },
-          {
-            "key": "admin-user-id",
-            "type": "text",
-            "value": ""
-          },
-          {
-            "key": "Client-Token",
-            "type": "text",
-            "value": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "{{oidc_provider}}/admin/authorizations/{{auth_id}}"
-      },
-      "response": []
     }
   ]
 }
