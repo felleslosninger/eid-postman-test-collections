@@ -297,6 +297,49 @@
         "url": "{{oidc_provider}}/token"
       },
       "response": []
+    },
+    {
+      "name": "/revoke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "91cd340f-8ac1-47c9-8b56-f7edd48f1414",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "03d1bf7a-53c2-4e9f-ae3e-6684d8ba69b6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{oidc_provider}}/revoke"
+      },
+      "response": []
     }
   ]
 }
