@@ -222,81 +222,81 @@
             "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
           },
           "response": []
-        },
-        {
-          "name": "/token",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "15e6c826-835e-4173-8fb9-b67746e3dce2",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "97c5d6ac-739a-4abc-8824-42bf2305bb63",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              },
-              {
-                "key": "Authorization",
-                "value": "Basic dGVzdF9ycF9zeXN0ZXN0OnBhc3N3b3Jk",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "client_id",
-                  "value": "test_rp_systest",
-                  "type": "text"
-                },
-                {
-                  "key": "grant_type",
-                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                  "type": "text"
-                },
-                {
-                  "key": "code",
-                  "value": "hd8AbRw2rc2fcDXyjBxYz6sB4mP5Uexrfg9_plzGnM8",
-                  "type": "text"
-                },
-                {
-                  "key": "redirect_uri",
-                  "value": "https://eid-systest-web01.dmz.local/idporten-oidc-client/authorize/response",
-                  "type": "text"
-                },
-                {
-                  "key": "client_assertion",
-                  "value": "eyJraWQiOiJtcVQ1QTNMT1NJSGJwS3JzY2IzRUhHcnItV0lGUmZMZGFxWl81SjlHUjlzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiItdi1sY2FlNXJHRy1qbHZ6dXY5WTlIN1I4Tm1BZU0yLWtoMHFXYi12UElFPSIsImF1ZCI6InRlc3RfcnBfeXQyIiwiYWNyIjoiTGV2ZWw0IiwiYXV0aF90aW1lIjoxNDk3NjA1MjE4LCJhbXIiOiJCYW5rSUQiLCJpc3MiOiJodHRwczpcL1wvb2lkYy15dDIuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDEwOTE4IiwiZXhwIjoxNDk3NjA1MzgyLCJsb2NhbGUiOiJuYiIsImlhdCI6MTQ5NzYwNTI2Miwibm9uY2UiOiJtaW5fZmluZV9ub25jZV92ZXJkaSIsImp0aSI6IkhnYjN6d085ZzBiam1TYkNDdFFDeE1vd3NaRXUwMGxDSjJFeGc0Wmh2M2c9In0.Pl9APC3_GGJBLYR3AqZRC8-fjOWdIW3eQAn2zbqstGEyv8AJ6yPLiH0EA4e1RgHxK-dPwtydJF0fV-1aiPjDGYM8d-saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{oidc_provider}}/token"
-          },
-          "response": []
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
+    },
+    {
+      "name": "/token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "15e6c826-835e-4173-8fb9-b67746e3dce2",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "97c5d6ac-739a-4abc-8824-42bf2305bb63",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic dGVzdF9ycF9zeXN0ZXN0OnBhc3N3b3Jk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "test_rp_systest",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "code",
+              "value": "hd8AbRw2rc2fcDXyjBxYz6sB4mP5Uexrfg9_plzGnM8",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://eid-systest-web01.dmz.local/idporten-oidc-client/authorize/response",
+              "type": "text"
+            },
+            {
+              "key": "client_assertion",
+              "value": "eyJraWQiOiJtcVQ1QTNMT1NJSGJwS3JzY2IzRUhHcnItV0lGUmZMZGFxWl81SjlHUjlzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiItdi1sY2FlNXJHRy1qbHZ6dXY5WTlIN1I4Tm1BZU0yLWtoMHFXYi12UElFPSIsImF1ZCI6InRlc3RfcnBfeXQyIiwiYWNyIjoiTGV2ZWw0IiwiYXV0aF90aW1lIjoxNDk3NjA1MjE4LCJhbXIiOiJCYW5rSUQiLCJpc3MiOiJodHRwczpcL1wvb2lkYy15dDIuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDEwOTE4IiwiZXhwIjoxNDk3NjA1MzgyLCJsb2NhbGUiOiJuYiIsImlhdCI6MTQ5NzYwNTI2Miwibm9uY2UiOiJtaW5fZmluZV9ub25jZV92ZXJkaSIsImp0aSI6IkhnYjN6d085ZzBiam1TYkNDdFFDeE1vd3NaRXUwMGxDSjJFeGc0Wmh2M2c9In0.Pl9APC3_GGJBLYR3AqZRC8-fjOWdIW3eQAn2zbqstGEyv8AJ6yPLiH0EA4e1RgHxK-dPwtydJF0fV-1aiPjDGYM8d-saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{oidc_provider}}/token"
+      },
+      "response": []
     }
   ]
 }
