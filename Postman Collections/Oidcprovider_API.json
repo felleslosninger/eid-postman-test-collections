@@ -443,6 +443,93 @@
         "url": "{{oidc_provider}}/userinfo"
       },
       "response": []
+    },
+    {
+      "name": "/tokenexchange",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "910ee330-410a-42b5-8f88-0606ba6d85b0",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "fb8b2bb4-49d8-4b60-948e-cdd3bc99d55a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "password": "password",
+            "username": "test_rp_systest"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic dGVzdF9ycF9hdGVzdDpwYXNzd29yZA==",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:token-exchange",
+              "type": "text"
+            },
+            {
+              "key": "subject_token_type",
+              "value": "urn:ietf:params:oauth:token-type:access_token",
+              "type": "text"
+            },
+            {
+              "key": "subject_token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDYm5xTHpBTW52eWJTQlZheEh6Q0tBUFYzTXpYbXk3d1ZlTTFrVkQtd0hRIn0.eyJqdGkiOiIwMWQ5NWI0Zi04ZDQ1LTRiOTctYWUwZi0wNGUyNjA2NWYxNWMiLCJleHAiOjE1NjYyOTMwNTksIm5iZiI6MCwiaWF0IjoxNTY2Mjg1ODU5LCJpc3MiOiJodHRwczovL3VzZXIuZGlmaS5uby9hdXRoL3JlYWxtcy9kaWZpIiwic3ViIjoiYjQ5NGZmZWQtY2IxMi00OWI4LTk0ZjAtZTFjZmE2MDFlOTlmIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic2FtYXJiZWlkLXNwLXdlYi10ZXN0IiwiYXV0aF90aW1lIjoxNTY2Mjg0NzMxLCJzZXNzaW9uX3N0YXRlIjoiNDNlMDVmODctMzUyYi00NTUzLThkYzAtNDRiYTU5NmZiZWVmIiwiYWNyIjoiMCIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJicnVrYXIgY29udHJpYnV0b3IiXX0sInNjb3BlIjoib3BlbmlkIHNhbWFyYmVpZDpzcC13ZWIgcHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdXRoX3VzZXJfc3RhdHVzIjp7Im1lc3NhZ2UiOiJBY2Nlc3MgZ3JhbnRlZCIsInN0YXR1cyI6MjAwfSwib3JnYW5pemF0aW9uIjp7Im51bWJlciI6Ijk5MTgyNTgyNyIsIm5hbWUiOiJEaXJla3RvcmF0ZXQgZm9yIEZvcnZhbHRuaW5nIG9nIElLVCJ9LCJuYW1lIjoiS251dCBLasOmcnZpayIsInByZWZlcnJlZF91c2VybmFtZSI6ImtudXQua2phZXJ2aWtAZGlmaS5ubyIsImdpdmVuX25hbWUiOiJLbnV0IiwiZmFtaWx5X25hbWUiOiJLasOmcnZpayIsImVtYWlsIjoia251dC5ramFlcnZpa0BkaWZpLm5vIn0.XNkaLQM4U9cni6OjOj4E52mUv0SFHzzQXG2E57YmXdWJUUaDnk45mr_UpJObqR0qmYA_1E-XlHVfNCJJYMHwQx37X9IXlqa-Mwrb4zDgx_fxr1uWTFx1uSuEDSl_-ZvtUgYbouZXjpfpyiApNH88fDGk88DeLkIrIaF1LRET2P6VEUvNUpZcw7HdKoWMSUIO7se2rhWkk_Phe5EeiLvW2Acku9GNVghnHoGJBrt_ihWK_KeIcmwFnkmnLOKojzXTsmz1QBK8d1ZEIkB98jlpvUjLZd4eGFVLMrMSebGekuukdqijDVIrEAhG1tnygEGyIhfVKFU7lMmADfvjOZHp_w",
+              "type": "text"
+            },
+            {
+              "key": "audience",
+              "value": "samarbeid-sp-web-test",
+              "type": "text"
+            },
+            {
+              "key": "actor_token",
+              "value": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ1bnNwZWNpZmllZCIsInN1YiI6IkRxSnh5blVwQi1zN09zR1R5dGlpc1Y5N184Ymwya1F1TTJUT3M2WC1ZVms9IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBzYW1hcmJlaWQ6c3Atd2ViIiwiaXNzIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwicGlkIjoiMjQwNzk0OTc3ODUiLCJ0b2tlbl90eXBlIjoiQmVhcmVyIiwiZXhwIjoxNTY2Mjg5ODIxLCJpYXQiOjE1NjYyODYyMjQsImNsaWVudF9pZCI6InRlc3RfcnBfc3lzdGVzdCIsImNsaWVudF9vcmdubyI6Ijk5MTgyNTgyNyIsImp0aSI6IlhLRHFSOHVKVkZYYXh5a3FwZlQtaUQ1Zmg0dHU4MlVaeVRYWXdBQ1ZVOW8ifQ.yHZDlsve6NzxUGDMdw-5jWSqinJS7Talkw-F5WXksMEO0zIPF3vJnkqzjupXmwtKP3zVuElsX3nQb7DMJxHLaRRHY0M_qMQJWh9EJc8bW-48Dji2Dt77em7SAWMhBC1BFHSSxxLSv3PhfycQ_XDpi5UvrCbN2xZq7bIcgzGQRncDY7vMHYUkb2MFpzE8kttHATDmfTzGjxBDuJK0fulfLKIfN6qY60qbJUSfLegXz22Y2GltUUqW_9tB2gMF7cF7gdsaL8y1wild203G-NRDdkpS1NBnrbC2H5XIHHJKLtadJJdYXAbucQXYFi__V05bX9M2mzDSHqhHafdOk_ESRQ",
+              "type": "text"
+            },
+            {
+              "key": "actor_token_type",
+              "value": "urn:ietf:params:oauth:token-type:access_token",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{oidc_provider}}/tokenexchange"
+      },
+      "response": []
     }
   ]
 }
