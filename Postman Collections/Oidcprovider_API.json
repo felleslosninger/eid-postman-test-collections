@@ -225,6 +225,70 @@
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
+    },
+    {
+      "name": "/admin/authorizations",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "520a56ee-7f1d-40fd-b72e-6efe4b265624",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    var jsonData=pm.response.json();",
+              "pm.environment.set(\"auth_id\",jsonData.authorization_id);",
+              "});",
+              "pm.test(\"Response time is less than 200ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "7af977de-078c-43a6-b8bd-fc60b336be56",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "System-Id",
+            "type": "text",
+            "value": ""
+          },
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          },
+          {
+            "key": "Client-Token",
+            "type": "text",
+            "value": "clientToken"
+          },
+          {
+            "key": "Admin-user-id",
+            "type": "text",
+            "value": "adminuser"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"pid\":\"24079497513\",\n\t\"external_exposed\": true\n}"
+        },
+        "url": "http://eid-systest-oidc-app01.dmz.local:10001/idporten-oidc-provider/admin/authorizations/"
+      },
+      "response": []
     }
   ]
 }
