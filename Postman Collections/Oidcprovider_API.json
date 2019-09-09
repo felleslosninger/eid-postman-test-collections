@@ -289,6 +289,45 @@
         "url": "http://eid-systest-oidc-app01.dmz.local:10001/idporten-oidc-provider/admin/authorizations/"
       },
       "response": []
+    },
+    {
+      "name": "/admin/authorizations/{auth_id}",
+      "_postman_id": "f09523fc-9d37-46fa-a630-d2c6077cbeb8",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "System-id",
+            "type": "text",
+            "value": ""
+          },
+          {
+            "key": "admin-user-id",
+            "type": "text",
+            "value": ""
+          },
+          {
+            "key": "Client-Token",
+            "type": "text",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{oidc_provider}}/admin/authorizations/{{auth_id}}"
+      },
+      "response": []
     }
   ]
 }
