@@ -1365,43 +1365,6 @@
             "url": "{{oidc_provider}}/userinfo"
           },
           "response": []
-        },
-        {
-          "name": "/revoke",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "91cd340f-8ac1-47c9-8b56-f7edd48f1414",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "03d1bf7a-53c2-4e9f-ae3e-6684d8ba69b6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{oidctoken}}"
-              }
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{oidc_provider}}/revoke"
-          },
-          "response": []
         }
       ],
       "_postman_id": "c6fb8742-c62d-4f28-94bf-783147018689",
