@@ -177,9 +177,13 @@
           "script": {
             "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
             "exec": [
-              "var jsonData=pm.response.json();",
-              "pm.environment.set(\"oidctoken\",jsonData.access_token);",
-              ""
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    var jsonData=pm.response.json();",
+              "    pm.environment.set(\"oidctoken\",jsonData.access_token);",
+              "",
+              "});"
             ],
             "type": "text/javascript"
           }
