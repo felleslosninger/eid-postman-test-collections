@@ -285,6 +285,93 @@
             "url": "{{oidc_provider}}/tokeninfo"
           },
           "response": []
+        },
+        {
+          "name": "/userinfo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5b377bbe-83c8-4893-a836-096ea3e592ce",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "30bb26bb-0bd5-4cc8-9053-f10c9bd1189a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{oidctoken}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": "{{oidc_provider}}/userinfo"
+          },
+          "response": []
+        },
+        {
+          "name": "/revoke",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "91cd340f-8ac1-47c9-8b56-f7edd48f1414",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "f92624f0-ad35-463b-b875-1f30c276407f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{oidctoken}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{oidc_provider}}/revoke"
+          },
+          "response": []
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
