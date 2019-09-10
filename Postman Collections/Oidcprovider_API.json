@@ -1408,6 +1408,50 @@
             "url": "{{oidc_provider}}/tokeninfo"
           },
           "response": []
+        },
+        {
+          "name": "/userinfo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5b377bbe-83c8-4893-a836-096ea3e592ce",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7385fdde-5dab-4aef-ad0c-95ffe112728e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{oidctoken}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": "{{oidc_provider}}/userinfo"
+          },
+          "response": []
         }
       ],
       "_postman_id": "c6fb8742-c62d-4f28-94bf-783147018689",
@@ -1433,50 +1477,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "/userinfo",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "5b377bbe-83c8-4893-a836-096ea3e592ce",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "7385fdde-5dab-4aef-ad0c-95ffe112728e",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{oidctoken}}"
-          }
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": []
-        },
-        "url": "{{oidc_provider}}/userinfo"
-      },
-      "response": []
     },
     {
       "name": "/revoke",
