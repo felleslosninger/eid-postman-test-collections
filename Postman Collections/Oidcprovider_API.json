@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "Hente gyldig accesstoken med riktig scope",
+      "name": "Hente gyldig accesstoken med riktig scope med Jwtgrant",
       "item": [
         {
           "name": "postreq",
@@ -163,6 +163,67 @@
               "raw": ""
             },
             "url": "http://localhost:9515/session/{{session}}/source"
+          },
+          "response": []
+        },
+        {
+          "name": "/token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "    pm.environment.set(\"oidctoken\",jsonData.access_token);",
+                  "",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "17dd94fe-6ea3-4365-8dda-116226028c90",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                  "type": "text"
+                },
+                {
+                  "key": "assertion",
+                  "value": "{{assertion}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
           },
           "response": []
         }
