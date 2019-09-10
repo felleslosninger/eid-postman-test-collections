@@ -3773,6 +3773,68 @@
               "response": []
             },
             {
+              "name": "/scopes/access{?consumer_orgno, owner_orgno, inactive, scope*}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4459e122-5953-49a3-9e48-5d9cf7beb2fe",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "56dc767b-0cbe-4dc8-b2c1-0213879a9869",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbEtSRGFDWDN3VzNIVWlNQ1pHNGhzb3lWajFiVTdlTXQwNEFDZ0lwM2k0PSIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImNsaWVudF9pZCI6Im9pZGNfdGVzdF9hcGktcG9zdG1hbiIsImF1ZCI6InVuc3BlY2lmaWVkIiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJpZHBvcnRlbjpkY3IucmVhZCBvcGVuaWQgcHJvZmlsZSBpZHBvcnRlbjpzY29wZXMucmVhZCIsInN1cHBsaWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MDk4MzI5MSJ9LCJleHAiOjE1NjgxMDQwNjcsImRlbGVnYXRpb25fc291cmNlIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiaWF0IjoxNTY4MTAzODg3LCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiI4OGdZdUk1bVFHS0VTY2xkQkRVQkx3U0x3cWNha1JzaVNPY1VkYnZnSDR3IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTkxODI1ODI3In19.sphuYw8DU3hwIUzxIbXLr2kRkNb7YXr7jZNWiXFH586FENMy1SJl_lw8N4JJW2QIN_sUskYTX0643trj_Uw8A8YOs7gkfc1yiY1IFwPLYopMuocTOJjqiPx9VmypraZkC0f8f5yYzjd4bpip_uSBBjG5ImuP2gsEthsz4g3G8x-XfOcnqHJ7VMU791Oi4ww2By5wqRgomLyH9ynfS85pzh7PDOSD9drI6bGo7SJnHlqqfRz-wrJ-Nk-tdzFqTZmiOQA7FaQYGXZeFxnPNV7DCuLiD2Shoo9TDmmsa5bkVDFdcHo21SRKEbqMAW_n2WuoTvnnP9dULtowLGaIosqnsA"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes/access?=true&scope=test334534:test2",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes",
+                    "access"
+                  ],
+                  "query": [
+                    {
+                      "key": "consumer_orgno",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "owner_orgno",
+                      "value": "889640782",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "true"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "test334534:test2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "Put /scopes{?scope}",
               "event": [
                 {
@@ -3873,68 +3935,6 @@
                     {
                       "key": "inactive",
                       "value": "true"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "/scopes/access{?consumer_orgno, owner_orgno, inactive, scope*}",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "4459e122-5953-49a3-9e48-5d9cf7beb2fe",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "56dc767b-0cbe-4dc8-b2c1-0213879a9869",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{access_token_sp}}"
-                  }
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{serviceprovider_api}}/scopes/access?inactive=true&scope={{new_scope}}",
-                  "host": [
-                    "{{serviceprovider_api}}"
-                  ],
-                  "path": [
-                    "scopes",
-                    "access"
-                  ],
-                  "query": [
-                    {
-                      "key": "consumer_orgno",
-                      "value": "",
-                      "disabled": true
-                    },
-                    {
-                      "key": "owner_orgno",
-                      "value": "889640782",
-                      "disabled": true
-                    },
-                    {
-                      "key": "inactive",
-                      "value": "true"
-                    },
-                    {
-                      "key": "scope",
-                      "value": "{{new_scope}}"
                     }
                   ]
                 }
