@@ -1118,7 +1118,7 @@
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
                   " pm.environment.set(\"krrtoken\", token);",
                   "     console.log('krrtoken test token',token);",
-                  "console.log('krrtoken',pm.environment.get(\"krrtoken\"));",
+                  "console.log('oidctoken',pm.environment.get(\"krrtoken\"));",
                   "});"
                 ],
                 "type": "text/javascript"
