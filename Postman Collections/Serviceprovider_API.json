@@ -3878,6 +3878,68 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "/scopes/access{?consumer_orgno, owner_orgno, inactive, scope*}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4459e122-5953-49a3-9e48-5d9cf7beb2fe",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "56dc767b-0cbe-4dc8-b2c1-0213879a9869",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes/access?inactive=true&scope={{new_scope}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes",
+                    "access"
+                  ],
+                  "query": [
+                    {
+                      "key": "consumer_orgno",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "owner_orgno",
+                      "value": "889640782",
+                      "disabled": true
+                    },
+                    {
+                      "key": "inactive",
+                      "value": "true"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_id": "2014e2cd-f7ff-4cf6-b389-fce544ca1840",
