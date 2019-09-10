@@ -167,7 +167,7 @@
           "response": []
         },
         {
-          "name": "tokenendepunkt",
+          "name": "token",
           "event": [
             {
               "listen": "test",
