@@ -1116,9 +1116,9 @@
                   " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"krrtoken\", token);",
-                  "     console.log('krrtoken test token',token);",
-                  "console.log('oidctoken',pm.environment.get(\"krrtoken\"));",
+                  " pm.environment.set(\"oidctoken\", token);",
+                  "     console.log('oidctoken test token',token);",
+                  "console.log('oidctoken',pm.environment.get(\"oidctoken\"));",
                   "});"
                 ],
                 "type": "text/javascript"
