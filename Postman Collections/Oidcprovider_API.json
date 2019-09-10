@@ -6,1359 +6,6 @@
   },
   "item": [
     {
-      "name": "Hente gyldig accesstoken med feil scope",
-      "item": [
-        {
-          "name": "seleniumsession",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
-                "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1e57c679-d901-4e24-91a1-4b9391e73677",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
-            },
-            "url": "http://localhost:9515/session",
-            "description": "\n"
-          },
-          "response": []
-        },
-        {
-          "name": "redirecturl",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "f32d6f05-2e34-4788-9d50-03fd801eb09e",
-                "exec": [
-                  "",
-                  "pm.environment.get(\"oidc_url_serviceprovider\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6bb0ffcc-4114-4231-9a00-603e0e8dec8f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n"
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        },
-        {
-          "name": "findclientelementid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
-                "exec": [
-                  "pm.test(\"find element id for client_id \", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"clientid\", jsonData.value.ELEMENT);",
-                  " ",
-                  "console.log(pm.globals.get(\"clientid\"));",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "f95fa546-9c05-4776-812f-3a20ddf42014",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"name\",\"value\":\"client_id\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "selectdropdown",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "b36b4b74-6dd9-4965-92da-e6241f9c287f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e6cc3125-a426-44dc-901a-eb57bf23a585",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "selectclientid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "330c52df-14f2-4706-8245-5196d8d7e915",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "clickenter",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "8ea5b261-4985-436c-9ecd-8af7e62edb63",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE007\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "findscopeid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
-                "exec": [
-                  "pm.test(\"Scope element id\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"scope\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "d19d26d5-36b5-4913-b507-0a70aaff849f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"name\",\"value\":\"scope\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setscope",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e39d2250-9aac-4ea3-8290-73437542e60f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"    idporten:dcr.read idporten:scopes.read\" ]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "findloginelementid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1d20f14d-4667-407b-b870-4b0051ebd97b",
-                "exec": [
-                  "pm.test(\"Your test name\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"loginid\", jsonData.value.ELEMENT);",
-                  "",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "c22221a9-126a-4982-bf32-930cc0a199ab",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"login\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clicklogin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "5f95f475-e14e-4a9f-9448-803200c232cd",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "eb5d298c-a0ea-4053-84fc-7cc1f796c1c7",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{loginid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "elementonthispage",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4d4bd4ba-154b-4b05-923d-64e1d36be0a1",
-                "exec": [
-                  "pm.test(\"element if for MinID \", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"minid_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ccbbb1cf-31ec-46cf-accb-60fc99daf8d6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clickonminid",
-          "_postman_id": "185299b0-9359-4732-a6d0-f87b114dccc3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{minid_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidssn",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "189f83ec-8efd-438c-b133-0fbc201abad0",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"ssn_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a8986545-03ba-4ad1-86f5-5e61fc016ec0",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_USERNAME_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "getelementidpassword",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8929c791-35e2-41f7-8b0b-8678e9309e58",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  " pm.globals.set(\"password_elementid\", jsonData.value.ELEMENT);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "426b6396-117f-4fb8-856d-5e60e39643ad",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PASSWORD_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setssn",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e65befc8-4e49-43f6-a2bc-3ebfdc77a6dc",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "9c99dc29-f947-48a9-9eda-98e6a9021a53",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"{{ssn}}\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "setpassword",
-          "_postman_id": "de433687-4e43-4b30-b147-3b1c2885a434",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"password01\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "submit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d4ee6a6d-0d1e-4948-aaa6-a2829f185475",
-                "exec": [
-                  "pm.test(\"next_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"next_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "6e7ae8bb-69de-445a-8eb5-de833337c03a",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "clicksubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e75ea17b-88ea-4c32-b35f-8758d03c48c1",
-                "exec": [
-                  "setTimeout(checkStatusCode, 500);\r",
-                  "\r",
-                  "    function checkStatusCode() {\r",
-                  "\r",
-                  "        pm.sendRequest('https://postman-echo.com/get', function (err, res) {\r",
-                  "\r",
-                  "            tests['status code should be 200']= res.code ===200;\r",
-                  "\r",
-                  "        });\r",
-                  "    }"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ad48155e-13c4-4bc7-a638-4c1bc5ab53c9",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{next_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "pinnumberid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "49f2b57c-29a8-41bf-9041-7400083bf039",
-                "exec": [
-                  "pm.test(\"pin_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"pin_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e9b5314c-0109-43ab-9465-d71b725f17df",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"input_PINCODE1_IDPORTEN\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "setppin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "95b50532-96b7-405c-afd1-52b576a70e9f",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "f15a1b54-4ef0-4e6a-8159-59d80b035fe5",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"12345\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{pin_elementid}}/value"
-          },
-          "response": []
-        },
-        {
-          "name": "getsubmitid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"submit_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "5b2d9014-fc5e-4bd5-9c0c-1a502fb33f57",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"nextbtn\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit ",
-          "_postman_id": "70bef18d-4716-43c1-8d38-9a912fe1a1d4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getconsentid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"consent_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"consent_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e0f1f522-8bca-4ea0-9c2a-49171f7874b0",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"name\",\"value\":\"consentAccepted\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "acceptconsent",
-          "_postman_id": "8acc7469-b8f5-4cfd-acf9-e78f5b991cc2",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "file",
-              "file": {
-                "src": ""
-              }
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "gettokenid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"token_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"token_elementid\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "4e03c1f2-42d0-4c12-a259-ebe0b27c7a44",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"get-tokens\"}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "henttoken",
-          "_postman_id": "15e7e281-0343-471e-a978-8156422b673b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "file",
-              "file": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
-          },
-          "response": []
-        },
-        {
-          "name": "getTokensElements",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"tokens\", function () {",
-                  " var jsonData = pm.response.json();",
-                  " console.log('tokens test jsonData',jsonData);",
-                  " var tokens=jsonData.value;",
-                  "  console.log('tokens test tokens',tokens);",
-                  " var temptoken=tokens.split('access_token:').pop();",
-                  "   console.log('tokens test temptoken',temptoken);",
-                  " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
-                  "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
-                  " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"invalid_access_token_sp\", token);",
-                  "     console.log('invalid tokens test token',token);",
-                  "console.log('invalid_access_token_sp',pm.environment.get(\"invalid_access_token_sp\"));",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "20e67876-afb6-4443-8511-79882d48d195",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/source"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "17184dc4-cb80-4f83-917f-b78a0c1cfea6"
-    },
-    {
-      "name": "oidc-controller negative tests",
-      "item": [
-        {
-          "name": "oidc-client-controller",
-          "item": [
-            {
-              "name": "/clients",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "81193e3f-c47b-4c82-b2e3-b07850b74304",
-                    "exec": [
-                      "pm.test(\"Get Clients \", function () {",
-                      "        ",
-                      "pm.response.to.have.status(200);",
-                      "var jsonData = pm.response.json();",
-                      "console.log(\"clients \",jsonData);",
-                      "",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "id": "71df21c3-6cee-487b-93dd-b7f740e5cc5e",
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "b0760257-0cd7-44f1-a13d-a3ef21d0c6c6",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{serviceprovider_api}}/clients?inactive=true",
-                  "host": [
-                    "{{serviceprovider_api}}"
-                  ],
-                  "path": [
-                    "clients"
-                  ],
-                  "query": [
-                    {
-                      "key": "inactive",
-                      "value": "true"
-                    }
-                  ]
-                },
-                "description": "Optional attributt \"inactive\" [true|false] som filtreringsparameter"
-              },
-              "response": []
-            },
-            {
-              "name": "/clients",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "d3d45bdc-d96a-4461-965a-a4858d750ff3",
-                    "exec": [
-                      "pm.test(\"Access is denied\", function () {",
-                      "    pm.response.to.have.status(403);",
-                      "});",
-                      "",
-                      "pm.test(\"Error description\", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "    console.log(\"error\",jsonData.error);",
-                      "    console.log(\"error_description\",jsonData.error_description);",
-                      "",
-                      "}",
-                      "",
-                      ");"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "31e8a3ca-e3f0-4278-8261-1d2fa180c199",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"client_name\": \"knut-oidc-test\",\n    \"description\": \"Knut sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": false,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\"\n}"
-                },
-                "url": "{{serviceprovider_api}}/clients"
-              },
-              "response": []
-            },
-            {
-              "name": "/clients/{id}",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "cd27aa17-bac8-4ef4-85c7-a38399314692",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"/get clients \", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "   console.log(\"get clients \",jsonData.value);",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "768f76bc-7dd4-4bfd-b8eb-ab61c1bfb1c2",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{serviceprovider_api}}/clients/{{sp_client_id}}?inactive=true",
-                  "host": [
-                    "{{serviceprovider_api}}"
-                  ],
-                  "path": [
-                    "clients",
-                    "{{sp_client_id}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "inactive",
-                      "value": "true"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "/clients/{id}/secret",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "b9f3a50e-fc94-4689-9f9f-b8381510c971",
-                    "exec": [
-                      "pm.test(\"Status code is 403\", function () {",
-                      "    pm.response.to.have.status(403);",
-                      "});",
-                      "",
-                      "pm.test(\"Error description\", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "    console.log(\"error\",jsonData.error);",
-                      "    console.log(\"error_description\",jsonData.error_description);",
-                      "",
-                      "}",
-                      "",
-                      ");"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "5445d0dd-9af7-43d0-a5e4-c510b741af60",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "{{serviceprovider_api}}/clients/test11/secret"
-              },
-              "response": []
-            },
-            {
-              "name": "/clients",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "a8881322-43a7-4570-bdd3-88d8f73c9a97",
-                    "exec": [
-                      "pm.test(\"Status code is 403\", function () {",
-                      "    pm.response.to.have.status(403);",
-                      "});",
-                      "",
-                      "pm.test(\"Error description\", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "    console.log(\"error\",jsonData.error);",
-                      "    console.log(\"error_description\",jsonData.error_description);",
-                      "",
-                      "}",
-                      "",
-                      ");"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "8e8ab4fc-a2b5-4e8a-b211-9022fe170fad",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"client_name\": \"oidc_testautomasjon_test3\",\n    \"description\": \"cucumber-creating_oidc_client_for_postman\",\n\t\"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],    \n    \"scopes\": [\n        \"openid\",\n        \"profile\"\n    ]\n}"
-                },
-                "url": "{{serviceprovider_api}}/clients/test12"
-              },
-              "response": []
-            },
-            {
-              "name": "/clients/{id}",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "587a4b78-014f-4a13-85c8-147881ab6d24",
-                    "exec": [
-                      "pm.test(\"Status code is 403\", function () {",
-                      "    pm.response.to.have.status(403);",
-                      "});",
-                      "pm.test(\"Error description\", function () {",
-                      "    var jsonData = pm.response.json();",
-                      "    console.log(\"error\",jsonData.error);",
-                      "    console.log(\"error_description\",jsonData.error_description);",
-                      "",
-                      "}",
-                      "",
-                      ");"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "4bc34907-8f0d-4b1f-b21e-ea83ab107b5b",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{invalid_access_token_sp}}"
-                  }
-                },
-                "method": "DELETE",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "{{serviceprovider_api}}/clients/tetsts"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "36cbf1d1-79eb-4184-ab6c-6ad808b837bc",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "8e6df318-4559-4430-929b-f60841bc276e",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "a772d638-b89f-4d6a-96ca-c77af18fe48c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "_postman_isSubFolder": true
-        }
-      ],
-      "_postman_id": "12f329b2-2d5c-47b6-b654-b1334912f75d",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "8e6df318-4559-4430-929b-f60841bc276e",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "a772d638-b89f-4d6a-96ca-c77af18fe48c",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Hente gyldig accesstoken med riktig scope",
       "item": [
         {
@@ -1578,6 +225,228 @@
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
+    },
+    {
+      "name": "/token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "15e6c826-835e-4173-8fb9-b67746e3dce2",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "97c5d6ac-739a-4abc-8824-42bf2305bb63",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic dGVzdF9ycF9zeXN0ZXN0OnBhc3N3b3Jk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "test_rp_systest",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "code",
+              "value": "hd8AbRw2rc2fcDXyjBxYz6sB4mP5Uexrfg9_plzGnM8",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://eid-systest-web01.dmz.local/idporten-oidc-client/authorize/response",
+              "type": "text"
+            },
+            {
+              "key": "client_assertion",
+              "value": "eyJraWQiOiJtcVQ1QTNMT1NJSGJwS3JzY2IzRUhHcnItV0lGUmZMZGFxWl81SjlHUjlzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiItdi1sY2FlNXJHRy1qbHZ6dXY5WTlIN1I4Tm1BZU0yLWtoMHFXYi12UElFPSIsImF1ZCI6InRlc3RfcnBfeXQyIiwiYWNyIjoiTGV2ZWw0IiwiYXV0aF90aW1lIjoxNDk3NjA1MjE4LCJhbXIiOiJCYW5rSUQiLCJpc3MiOiJodHRwczpcL1wvb2lkYy15dDIuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDEwOTE4IiwiZXhwIjoxNDk3NjA1MzgyLCJsb2NhbGUiOiJuYiIsImlhdCI6MTQ5NzYwNTI2Miwibm9uY2UiOiJtaW5fZmluZV9ub25jZV92ZXJkaSIsImp0aSI6IkhnYjN6d085ZzBiam1TYkNDdFFDeE1vd3NaRXUwMGxDSjJFeGc0Wmh2M2c9In0.Pl9APC3_GGJBLYR3AqZRC8-fjOWdIW3eQAn2zbqstGEyv8AJ6yPLiH0EA4e1RgHxK-dPwtydJF0fV-1aiPjDGYM8d-saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": "{{oidc_provider}}/token"
+      },
+      "response": []
+    },
+    {
+      "name": "/revoke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "91cd340f-8ac1-47c9-8b56-f7edd48f1414",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "03d1bf7a-53c2-4e9f-ae3e-6684d8ba69b6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{oidc_provider}}/revoke"
+      },
+      "response": []
+    },
+    {
+      "name": "/tokeninfo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "3ba45f82-4ce7-45f0-a759-b952b2ed6768",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    ",
+              "        var jsonData=pm.response.json();",
+              "pm.environment.set(\"auth_id\",jsonData.active);",
+              "    pm.expect(jsonData.active).to.eql(true);",
+              "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
+              "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
+              "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "52ce75ec-30e0-47f6-ac30-144f7330c09d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "token",
+              "value": "{{oidctoken}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{oidc_provider}}/tokeninfo"
+      },
+      "response": []
+    },
+    {
+      "name": "/userinfo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5b377bbe-83c8-4893-a836-096ea3e592ce",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "7385fdde-5dab-4aef-ad0c-95ffe112728e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": "{{oidc_provider}}/userinfo"
+      },
+      "response": []
     }
   ]
 }
