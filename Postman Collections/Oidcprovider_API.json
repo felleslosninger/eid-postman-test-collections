@@ -226,6 +226,65 @@
             "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
           },
           "response": []
+        },
+        {
+          "name": "/tokeninfo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3ba45f82-4ce7-45f0-a759-b952b2ed6768",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    ",
+                  "        var jsonData=pm.response.json();",
+                  "pm.environment.set(\"auth_id\",jsonData.active);",
+                  "    pm.expect(jsonData.active).to.eql(true);",
+                  "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
+                  "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
+                  "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "be23f5af-5d48-46a5-8a29-6e9166742d8f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "token",
+                  "value": "{{oidctoken}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{oidc_provider}}/tokeninfo"
+          },
+          "response": []
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
