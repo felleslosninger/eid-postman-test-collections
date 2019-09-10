@@ -3832,6 +3832,52 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "/scopes/access/all{?inactive}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "c1960a1d-9b2f-4c60-9edf-9a122f03c397",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "44f2bc72-875a-4faf-9e4c-4c1340238bd1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes/access/all?inactive=true",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes",
+                    "access",
+                    "all"
+                  ],
+                  "query": [
+                    {
+                      "key": "inactive",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_id": "2014e2cd-f7ff-4cf6-b389-fce544ca1840",
