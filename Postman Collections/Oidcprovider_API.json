@@ -377,7 +377,7 @@
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
     },
     {
-      "name": "Hente gyldig accesstoken med riktig scope",
+      "name": "Hente gyldig accesstoken med riktig scope med code grant",
       "item": [
         {
           "name": "seleniumsession",
@@ -1351,7 +1351,29 @@
           "response": []
         }
       ],
-      "_postman_id": "c6fb8742-c62d-4f28-94bf-783147018689"
+      "_postman_id": "c6fb8742-c62d-4f28-94bf-783147018689",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f4a9f38e-d0e4-4879-ab65-f889cf12094e",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "7b7f1c97-7c59-4651-9b42-6ab2f5d9c79c",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "/token",
