@@ -165,63 +165,6 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
-        },
-        {
-          "name": "token",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
-                "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.environment.set(\"oidctoken\",jsonData.access_token);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "2eb5219c-67e0-44ab-a804-96a85a6fd826",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "grant_type",
-                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                  "type": "text"
-                },
-                {
-                  "key": "assertion",
-                  "value": "{{assertion}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
-          },
-          "response": []
         }
       ],
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
@@ -445,6 +388,63 @@
           "urlencoded": []
         },
         "url": "{{oidc_provider}}/userinfo"
+      },
+      "response": []
+    },
+    {
+      "name": "token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+            "exec": [
+              "var jsonData=pm.response.json();",
+              "pm.environment.set(\"oidctoken\",jsonData.access_token);",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "2eb5219c-67e0-44ab-a804-96a85a6fd826",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "assertion",
+              "value": "{{assertion}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
       },
       "response": []
     }
