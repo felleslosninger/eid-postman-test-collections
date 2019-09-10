@@ -170,7 +170,7 @@
       "_postman_id": "0b4f43b9-da3c-4f28-bfa8-15ce0ccd1221"
     },
     {
-      "name": "token",
+      "name": "/token",
       "event": [
         {
           "listen": "test",
