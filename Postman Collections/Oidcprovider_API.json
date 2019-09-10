@@ -113,7 +113,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"{{jwt_bearer_url_scope_for_alle_api}}\"}\n"
+              "raw": "{\"url\":\"{{jwt_bearer_url_for_oidc}}\"}\n"
             },
             "url": "http://localhost:9515/session/{{session}}/url"
           },
