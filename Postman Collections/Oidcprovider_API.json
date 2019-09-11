@@ -1285,7 +1285,7 @@
                   "console.log(myDate.toGMTString()+\"<br>\"+myDate.toLocaleString());",
                   "var exp= jsonData.exp;",
                   "var iat= jsonData.iat;",
-                  "pm.expect(iat>exp);",
+                  "console.log(\"exp should be great than iat \"+pm.expect(iat>exp)+\"exp value is \"+exp+\" iat value is\"+iat);",
                   "",
                   "var expires_in=exp-iat;",
                   "",
