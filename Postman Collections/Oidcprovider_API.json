@@ -1424,7 +1424,7 @@
       ]
     },
     {
-      "name": "/token",
+      "name": "/token invalid grant test (grant has used)",
       "event": [
         {
           "listen": "test",
