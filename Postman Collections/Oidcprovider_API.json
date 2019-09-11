@@ -248,7 +248,7 @@
                   "    var exp= jsonData.exp;",
                   "var iat= jsonData.iat;",
                   "",
-                  "console.log(\"comes herer\"+pm.expect((jsonData.exp>jsonData.iat)));",
+                  "console.log(\"comes herer\"+pm.expect((jsonData.exp-jsonData.iat)));",
                   "console.log(\"exp should be great than exp value \"+exp+\" iat value is\"+iat);",
                   "",
                   "",
