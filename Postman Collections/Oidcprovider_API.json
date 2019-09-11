@@ -247,12 +247,16 @@
                   "    ",
                   "    var exp= jsonData.exp;",
                   "var iat= jsonData.iat;",
+                  "",
                   "pm.expect((jsonData.exp>jsonData.iat).to.be.true);",
                   "console.log(\"exp should be great than exp value \"+exp+\" iat value is\"+iat);",
+                  "",
                   "",
                   "var expires_in=exp-iat;",
                   "console.log(\"expires_in should be great than 0 \"+expires_in);",
                   "pm.expect(expires_in>0);",
+                  "",
+                  "",
                   "});"
                 ],
                 "type": "text/javascript"
