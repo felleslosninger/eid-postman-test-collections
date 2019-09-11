@@ -245,7 +245,7 @@
                   "    pm.expect(jsonData.token_type).to.eql(\"Bearer\");    ",
                   "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
                   "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
-                  "    ",
+                  "      pm.expect(jsonData.consumer[0].authority).to.eql(jsonData.supplier[0].authority);",
                   "});",
                   "",
                   "  ",
@@ -1422,6 +1422,67 @@
           }
         }
       ]
+    },
+    {
+      "name": "/token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+            "exec": [
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    var jsonData=pm.response.json();",
+              "    pm.environment.set(\"oidctoken\",jsonData.access_token);",
+              "",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "32df9a2b-f45d-41a8-921e-ada196775aca",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "assertion",
+              "value": "{{assertion}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
+      },
+      "response": []
     }
   ]
 }
