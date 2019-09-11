@@ -1292,7 +1292,7 @@
                   "",
                   "var exp= jsonData.exp;",
                   "var iat= jsonData.iat;",
-                  "pm.expect(true.to.eql(exp>iat));",
+                  "pm.expect(\"true\".to.eql(exp>iat));",
                   "console.log(\"exp should be great than exp value \"+exp+\" iat value is\"+iat);",
                   "",
                   "",
