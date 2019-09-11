@@ -1282,7 +1282,7 @@
                   "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
                   "    ",
                   "    var myDate = new Date(jsonData.expires_in*1000);",
-                  "console.write(myDate.toGMTString()+\"<br>\"+myDate.toLocaleString());",
+                  "console.log(myDate.toGMTString()+\"<br>\"+myDate.toLocaleString());",
                   "});"
                 ],
                 "type": "text/javascript"
