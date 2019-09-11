@@ -1436,6 +1436,7 @@
               "    pm.response.to.have.status(400);",
               "    var jsonData=pm.response.json();",
               "    console.log(\"values\"+jsonData.error);",
+              "    pm.expect(jsonData.error.to.include(\"Invalid assertion. Grant has been used before. (correlation id: XXjCPgrz3IgAAFm1EHIAAAAH)\"));",
               "    pm.expect((jsonData.error_description).to.include(\"Invalid assertion. Grant has been used before. (correlation id: XXjCPgrz3IgAAFm1EHIAAAAH)\"));",
               "    ",
               "    console.log(\"values\"+jsonData.error);",
