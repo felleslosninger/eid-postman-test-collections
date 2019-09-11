@@ -1283,6 +1283,13 @@
                   "    ",
                   "    var myDate = new Date(jsonData.expires_in*1000);",
                   "console.log(myDate.toGMTString()+\"<br>\"+myDate.toLocaleString());",
+                  "var exp= jsonData.exp;",
+                  "var iat= jsonData.iat;",
+                  "pm.expect(true.to.eql((exp>iat)));",
+                  "",
+                  "var expires_in=exp-iat;",
+                  "",
+                  "pm.expect(expires_in>0);",
                   "});"
                 ],
                 "type": "text/javascript"
