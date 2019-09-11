@@ -1287,7 +1287,7 @@
                   "var iat= jsonData.iat;",
                   "pm.expect(exp>iat);",
                   "",
-                  "var expires_in=exp-iat;",
+                  "var expires_in=iat-exp;",
                   "",
                   "pm.expect(expires_in>0);",
                   "});"
