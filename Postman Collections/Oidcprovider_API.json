@@ -247,7 +247,7 @@
                   "    ",
                   "    var exp= jsonData.exp;",
                   "var iat= jsonData.iat;",
-                  "pm.expect(true.to.eql(exp>iat));",
+                  "pm.expect((jsonData.exp>jsonData.iat).to.be.true);",
                   "console.log(\"exp should be great than exp value \"+exp+\" iat value is\"+iat);",
                   "",
                   "var expires_in=exp-iat;",
