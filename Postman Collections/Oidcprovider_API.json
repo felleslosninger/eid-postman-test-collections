@@ -1490,7 +1490,7 @@
       "response": []
     },
     {
-      "name": "/token invalid grant test (grant has used) Copy",
+      "name": "/token invalid grant test (expired grant )",
       "event": [
         {
           "listen": "test",
