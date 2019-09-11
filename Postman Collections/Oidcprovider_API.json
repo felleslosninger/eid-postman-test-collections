@@ -1280,6 +1280,9 @@
                   "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
                   "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
                   "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
+                  "    ",
+                  "    var myDate = new Date(jsonData.expires_in*1000);",
+                  "console.write(myDate.toGMTString()+\"<br>\"+myDate.toLocaleString());",
                   "});"
                 ],
                 "type": "text/javascript"
