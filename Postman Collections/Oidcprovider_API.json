@@ -1284,7 +1284,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3ba45f82-4ce7-45f0-a759-b952b2ed6768",
+                "id": "9e64abfc-00a1-49d4-99b5-3a34a0641dd5",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -1296,17 +1296,17 @@
                   "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
                   "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
                   "",
-                  "var exp= jsonData.exp;",
-                  "var iat= jsonData.iat;",
-                  " pm.expect((jsonData.exp>jsonData.iat).to.be.true);",
                   "",
-                  "console.log(\"exp should be great than exp value \"+exp+\" iat value is\"+iat);",
+                  "});",
                   "",
-                  "",
-                  "var expires_in=exp-iat;",
-                  "console.log(\"expires_in should be great than 0 \"+expires_in);",
-                  "pm.expect(expires_in>0);",
-                  "});"
+                  "pm.test(\"expires_in should be above 0\", function () {",
+                  "    var jsonData=pm.response.json();",
+                  "        var exp= jsonData.exp;",
+                  "    var iat= jsonData.iat;",
+                  "    var expires_in=exp-iat;",
+                  "    pm.expect(expires_in).to.be.above(0);",
+                  "});",
+                  ""
                 ],
                 "type": "text/javascript"
               }
