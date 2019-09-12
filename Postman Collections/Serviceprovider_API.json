@@ -5963,8 +5963,8 @@
                         "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
                         "exec": [
                           "",
-                          "pm.test(\"Response time is less than 200ms\", function () {",
-                          "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
                           "});"
                         ],
                         "type": "text/javascript"
