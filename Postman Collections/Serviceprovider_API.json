@@ -5058,6 +5058,45 @@
                     "url": "http://localhost:9515/session/{{session}}/source"
                   },
                   "response": []
+                },
+                {
+                  "name": "selectclientid Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "179a71a1-b974-4ba8-96cf-8f9be7f875d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\"value\":[\"\\uE015\"]}"
+                    },
+                    "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+                  },
+                  "response": []
                 }
               ],
               "_postman_id": "608c3302-66c9-447d-8676-0db71033ed32",
