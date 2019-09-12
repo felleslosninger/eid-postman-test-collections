@@ -7342,7 +7342,7 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope}}",
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope3}}",
                   "host": [
                     "{{serviceprovider_api}}"
                   ],
@@ -7352,7 +7352,7 @@
                   "query": [
                     {
                       "key": "scope",
-                      "value": "{{new_scope}}"
+                      "value": "{{new_scope3}}"
                     }
                   ]
                 }
