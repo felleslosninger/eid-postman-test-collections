@@ -5543,13 +5543,10 @@
                         "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
                         "exec": [
                           "",
-                          "pm.test(\"Status code is 400\", function () {",
-                          "    pm.response.to.have.status(400);",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
                           "    var jsonData=pm.response.json();",
-                          "    pm.expect(jsonData.error).to.equal(\"invalid_scope\");",
-                          "    var txt=\"Token contains scopes not available to the client: \"+pm.globals.get(\"new_scope1\")+\",\"+pm.globals.get(\"new_scope2\");",
-                          "    console.log(\"error description  \"+txt);",
-                          "    pm.expect(jsonData.error_description).to.be.include(txt);",
+                          "   ",
                           "    ",
                           "})",
                           "",
@@ -6715,7 +6712,7 @@
               "_postman_isSubFolder": true
             },
             {
-              "name": "allescope_registrert_p\u00e5_klient_og_setteopp_accessable_for_all_true",
+              "name": "allescope_registrert_p\u00e5_klient_og_setteopp_accessable_for_all_true_oget_scope_require_user_consent_true",
               "item": [
                 {
                   "name": "oppdatere scope 1 accessable_all true",
