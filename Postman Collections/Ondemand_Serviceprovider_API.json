@@ -2841,7 +2841,7 @@
                         "src": ""
                       }
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{token_elementid}}/click"
                   },
                   "response": []
                 },
@@ -2889,7 +2889,7 @@
                       "mode": "raw",
                       "raw": ""
                     },
-                    "url": "http://localhost:9515/session/{{session}}/source"
+                    "url": "http://chromedriver:4444/session/{{session}}/source"
                   },
                   "response": []
                 }
