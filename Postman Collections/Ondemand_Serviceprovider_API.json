@@ -2002,7 +2002,7 @@
                       "mode": "raw",
                       "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/url"
+                    "url": "http://chromedriver:4444/session/{{session}}/url"
                   },
                   "response": []
                 },
