@@ -5196,6 +5196,11 @@
         }
       ],
       "_postman_id": "e3c699be-9e05-4258-a0db-ae2534f218cf"
+    },
+    {
+      "name": "token_exchange_basert_mot_orgnummer",
+      "item": [],
+      "_postman_id": "ca9393e5-bde9-433c-a287-034f77c1b358"
     }
   ],
   "auth": {
