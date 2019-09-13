@@ -2125,7 +2125,7 @@
                       "mode": "raw",
                       "raw": "{\"value\":[\"\\uE007\"]}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{client_id}}/value"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{client_id}}/value"
                   },
                   "response": []
                 },
