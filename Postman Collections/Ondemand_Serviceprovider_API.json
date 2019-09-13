@@ -2298,7 +2298,7 @@
                       "mode": "raw",
                       "raw": ""
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{loginid}}/click"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{loginid}}/click"
                   },
                   "response": []
                 },
