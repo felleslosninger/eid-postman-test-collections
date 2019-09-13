@@ -2720,7 +2720,7 @@
                       "mode": "raw",
                       "raw": ""
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{submit_elementid}}/click"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{submit_elementid}}/click"
                   },
                   "response": []
                 },
