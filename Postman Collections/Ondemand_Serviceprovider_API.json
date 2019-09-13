@@ -2501,7 +2501,7 @@
                       "mode": "raw",
                       "raw": "{\"value\":[\"password01\"]}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{password_elementid}}/value"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{password_elementid}}/value"
                   },
                   "response": []
                 },
