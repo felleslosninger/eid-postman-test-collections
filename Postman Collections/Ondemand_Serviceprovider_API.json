@@ -3202,7 +3202,7 @@
                       "mode": "raw",
                       "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
                     },
-                    "url": "http://localhost:9515/session"
+                    "url": "http://chromedriver:4444/session"
                   },
                   "response": [
                     {
@@ -3622,7 +3622,7 @@
                       "mode": "raw",
                       "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
                     },
-                    "url": "http://localhost:9515/session"
+                    "url": "http://chromedriver:4444/session"
                   },
                   "response": [
                     {
