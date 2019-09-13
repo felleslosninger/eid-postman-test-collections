@@ -2047,7 +2047,7 @@
                       "mode": "raw",
                       "raw": "{\"using\":\"name\",\"value\":\"client_id\"}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element"
+                    "url": "http://chromedriver:4444/session/{{session}}/element"
                   },
                   "response": []
                 },
@@ -2086,7 +2086,7 @@
                       "mode": "raw",
                       "raw": ""
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{client_id}}/click"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{client_id}}/click"
                   },
                   "response": []
                 },
