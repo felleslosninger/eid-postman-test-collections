@@ -3803,7 +3803,7 @@
                         }
                       ]
                     },
-                    "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
+                    "url": "{{oidc_provider_url}}/token"
                   },
                   "response": []
                 }
