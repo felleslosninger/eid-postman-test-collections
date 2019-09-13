@@ -7403,6 +7403,25 @@
         }
       ],
       "_postman_id": "721d7381-59ea-476c-b8fe-9dbe6fe21f3d"
+    },
+    {
+      "name": "token_exchange_basert_mot_orgnummer",
+      "item": [
+        {
+          "name": "/selfservice/access",
+          "_postman_id": "e3917b77-d853-48d5-8da0-30afd0953fd1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "60da0d88-8ec9-44f8-a2c1-e20b2548329b"
     }
   ],
   "auth": {
