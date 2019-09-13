@@ -1031,8 +1031,10 @@
                   "   console.log('tokens test temptoken',temptoken);",
                   " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
-                  " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"access_token_sp\", token);",
+                  " var token = temptoken.substring(1,refreshtokenpos-1);  ",
+                  "",
+                  "pm.environment.unset(\"access_token_sp\");",
+                  "pm.environment.set(\"access_token_sp\", token);",
                   "     console.log('tokens test token',token);",
                   "console.log('access_token_sp',pm.environment.get(\"access_token_sp\"));",
                   "});"
@@ -6232,7 +6234,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{sp_client_scope}}&audience=https://eid-systest-web01.dmz.local/idporten-oidc-provider/&scope={{new_scope2}}\"}\n"
+                      "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{sp_client_scope}}&audience=https://eid-systest-web01.dmz.local/idporten-oidc-provider/&scope={{new_scope1}}%20{{new_scope2}}%20{{new_scope3}}\"}\n"
                     },
                     "url": "http://localhost:9515/session/{{session}}/url"
                   },
