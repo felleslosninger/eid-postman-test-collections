@@ -3692,7 +3692,7 @@
                       "mode": "raw",
                       "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{sp_client_scope}}&audience=https://eid-atest-web01.dmz.local/idporten-oidc-provider/&scope={{new_scope1}}%20{{new_scope2}}%20{{new_scope3}}\"}\n"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/url"
+                    "url": "http://chromedriver:4444/session/{{session}}/url"
                   },
                   "response": []
                 },
