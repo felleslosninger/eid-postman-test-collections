@@ -7414,9 +7414,34 @@
             "disableBodyPruning": true
           },
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
             "method": "GET",
             "header": [],
-            "url": ""
+            "url": {
+              "raw": "https://eid-systest-web01.dmz.local/serviceprovider-api/selfservice/access?audience=sp-api",
+              "protocol": "https",
+              "host": [
+                "eid-systest-web01",
+                "dmz",
+                "local"
+              ],
+              "path": [
+                "serviceprovider-api",
+                "selfservice",
+                "access"
+              ],
+              "query": [
+                {
+                  "key": "audience",
+                  "value": "sp-api"
+                }
+              ]
+            }
           },
           "response": []
         }
