@@ -2206,7 +2206,7 @@
                       "mode": "raw",
                       "raw": "{\"value\":[\"   idporten:authorizations.revoke idporten:user.log.read krr:user.log.all.read idporten:dcr.read idporten:dcr.write idporten:dcr.modify idporten:scopes.write idporten:scopes.read\"]}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{scope}}/value"
                   },
                   "response": []
                 },
