@@ -2474,7 +2474,7 @@
                       "mode": "raw",
                       "raw": "{\"value\":[\"{{ssn}}\"]}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{ssn_elementid}}/value"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{ssn_elementid}}/value"
                   },
                   "response": []
                 },
