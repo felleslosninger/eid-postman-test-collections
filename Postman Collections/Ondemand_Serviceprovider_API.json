@@ -2777,7 +2777,7 @@
                         "src": ""
                       }
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{consent_elementid}}/click"
+                    "url": "http://chromedriver:4444/session/{{session}}/element/{{consent_elementid}}/click"
                   },
                   "response": []
                 },
