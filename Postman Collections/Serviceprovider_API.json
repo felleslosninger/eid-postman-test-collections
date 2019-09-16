@@ -2521,45 +2521,6 @@
           "response": []
         },
         {
-          "name": "selectclientid Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "39aa1e30-563b-4369-9f0d-5c9c003b46eb",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE015\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
           "name": "selectclientid",
           "event": [
             {
@@ -3337,6 +3298,45 @@
               "raw": ""
             },
             "url": "http://localhost:9515/session/{{session}}/source"
+          },
+          "response": []
+        },
+        {
+          "name": "selectclientid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "39aa1e30-563b-4369-9f0d-5c9c003b46eb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"value\":[\"\\uE015\"]}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
           },
           "response": []
         }
