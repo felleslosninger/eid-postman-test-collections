@@ -234,7 +234,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"value\":[\"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke tokeninfo openid idporten:scopes.read  idporten:scopes.write user/spraak.write samarbeid:sp-web user/kontaktinformasjon.read\"]}"
+              "raw": "{\"value\":[\"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke tokeninfo openid idporten:scopes.read  idporten:scopes.write user/spraak.write user/kontaktinformasjon.read\"]}"
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
           },
