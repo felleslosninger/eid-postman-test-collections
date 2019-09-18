@@ -918,7 +918,7 @@
             "auth": {
               "type": "bearer",
               "bearer": {
-                "token": "eyJraWQiOiJIdFlaMU1UbFZXUGNCV0JQVWV3TmxZd1RCRklicU1Hb081OFJ4bmN6TWJNIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhNkRwMDJMbk50emZ6dHc3Q1o3M0YxY0dXajVuNzN6M3haSU5EUDl0ZW9RPSIsImlzcyI6Imh0dHBzOlwvXC9vaWRjLXRlc3QxLmRpZmkuZW9uLm5vXC9pZHBvcnRlbi1vaWRjLXByb3ZpZGVyXC8iLCJwaWQiOiIyMzA3OTQwMjQ1MSIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJjbGllbnRfaWQiOiJ0ZXN0X3JwIiwiYXVkIjoidW5zcGVjaWZpZWQiLCJhY3IiOiJMZXZlbDMiLCJzY29wZSI6Im9wZW5pZCBpZHBvcnRlbjp1c2VyLmxvZy5yZWFkIHByb2ZpbGUgaWRwb3J0ZW46c2NvcGVzLnJlYWQgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMuYWRtaW4gdXNlclwva29udGFrdGluZm9ybWFzam9uLnJlYWQgaWRwb3J0ZW46ZGNyLnJlYWQgZ2xvYmFsXC9rb250YWt0aW5mb3JtYXNqb24ucmVhZCBpZHBvcnRlbjpkY3Iud3JpdGUgaWRwb3J0ZW46c2NvcGVzLndyaXRlIGlkcG9ydGVuOnVzZXIubG9nLmFsbC5yZWFkIGlkcG9ydGVuOmRjci5tb2RpZnkgdXNlclwvc3ByYWFrLndyaXRlIGlkcG9ydGVuOmF1dGhvcml6YXRpb25zLnJldm9rZSB0b2tlbmluZm8iLCJleHAiOjE1Njg4NDAyODksImlhdCI6MTU2ODgzOTY4OSwiY2xpZW50X29yZ25vIjoiOTkxODI1ODI3IiwianRpIjoieWgzdEd4MDVxeHdXQlJGamdjdVJiQjJ1Wnh2bUlYN3cyeFE2TnUxajFLVSIsImNvbnN1bWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MTgyNTgyNyJ9fQ.j9zk2Zn2Q9-J4NOqWV8eCIRNoyhiJOSWeblPH1ym-uV6OqBzExgF3x8FcOJDlIA_XzQlKWdL6E0dNuForY6uvZb10k-uXmlg2OK58zU3bDHfICKU2J9T0WyyWSRG4Xw8ilmpD2IvPu_lUKz0AAEU_DtA-iH58TqO-6DG5DelBP-8budUu9rSbVEvx2MVKk21u_gN5DkuDe2BTvbtEIdZsdfyVaBJHNVUfMEDCLAFrMcLnoXw0Vlxd8xbcweQWp15TplJ8-7qFIKgg-uN6irYMn7TUZbHuq-owidCq3tw4VhMspsoxByFKMF6y-hif4GaX6p6hJekklnGEW1PDp2emg"
+                "token": "{{access_token}}"
               }
             },
             "method": "GET",
