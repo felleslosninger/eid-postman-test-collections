@@ -7487,6 +7487,41 @@
       "item": [
         {
           "name": "/selfservice/access",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "44955e59-c068-4d05-8a3c-e6520817d3f5",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Get selfservice access \", function () {",
+                  "        ",
+                  "pm.response.to.have.status(200);",
+                  "var jsonData = pm.response.json();",
+                  "  pm.expect(jsonData[0].audience).to.equal(\"sp-api\");",
+                  "  pm.expect(jsonData[0].orgno).to.equal(\"991825827\");",
+                  "  pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "   ",
+                  "  pm.expect(jsonData[1].audience).to.equal(\"sp-api\");",
+                  "  pm.expect(jsonData[1].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "  pm.expect(jsonData[1].scope[0]).to.equal(\"idporten:dcr.read\");",
+                  "  pm.expect(jsonData[1].scope[1]).to.equal(\"idporten:dcr.supplier\");",
+                  "  pm.expect(jsonData[1].scope[2]).to.equal(\"idporten:dcr.write\");",
+                  "  pm.expect(jsonData[1].scope[3]).to.equal(\"idporten:scopes.read\");",
+                  "  pm.expect(jsonData[1].scope[4]).to.equal(\"idporten:scopes.write\");",
+                  "  ",
+                  "",
+                  "",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "e3917b77-d853-48d5-8da0-30afd0953fd1",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -7495,7 +7530,7 @@
             "auth": {
               "type": "bearer",
               "bearer": {
-                "token": "{{access_token_sp}}"
+                "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbEtSRGFDWDN3VzNIVWlNQ1pHNGhzb3lWajFiVTdlTXQwNEFDZ0lwM2k0PSIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImNsaWVudF9pZCI6Im9pZGNfdGVzdF9hcGktcG9zdG1hbiIsImF1ZCI6InVuc3BlY2lmaWVkIiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJrcnI6dXNlci5sb2cuYWxsLnJlYWQgaWRwb3J0ZW46dXNlci5sb2cucmVhZCB1c2VyXC92YXJzbGluZ3NzdGF0dXMucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9uc3Rlc3QucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9ucy5hZG1pbiBpZHBvcnRlbjpkY3IucmVhZCBnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGlkcG9ydGVuOmRjci53cml0ZSBpZHBvcnRlbjp1c2VyLmxvZy5hbGwucmVhZCBkc2YtYWRyZXNzZSBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGlkcG9ydGVuOmRjci5tb2RpZnkgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIGRzZi1uYXZuIHRva2VuaW5mbyB1c2VyXC9zcHJhYWsucmVhZCBpZHBvcnRlbjp0b2tlbmV4Y2hhbmdlIG9wZW5pZCBwcm9maWxlIGlkcG9ydGVuOnNjb3Blcy5yZWFkIHVzZXJcL3NlcnRpZmlrYXQucmVhZCB1c2VyXC9kaWdpdGFscG9zdC5yZWFkIGlkcG9ydGVuOnNjb3Blcy53cml0ZSB1c2VyXC9zcHJhYWsud3JpdGUgc2FtYXJiZWlkOnNwLXdlYiIsInN1cHBsaWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MDk4MzI5MSJ9LCJleHAiOjE1Njg4MzAzMjYsImRlbGVnYXRpb25fc291cmNlIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiaWF0IjoxNTY4ODI2NzI3LCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJMNThJQXlVbWRsYWxXTmRPQk5wUHBIUFhFY0FkS1RoTEZWejB5azhOSnJnIiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTkxODI1ODI3In19.nGVJqT6fJm8mOuIb9K-HHtT4pQLybs_TdFCxazBvjdp-PzhPmGMH4JPbyK1ITJRVNMeDY0tQuICPaS973tKvuHI8wY9otQWJXX8jN0xE0GGzbzCK1FbXqcZA2ecFNeY8uuxxio5N8liSJsBb7X80pri9j8yVTR80HMIeQebCNlvSvsxoBcSFq-V0bPPK4tXKnCa8UotRFS8sII0fBBHuU2j7kmvVx8ye79YBjRYOf674v0HU4QGrVANDuk5aVyQtD4urd95RuLmGzEKSgeqMO1bvKC5zn-pw5vkyNvQHS0CjY1YEQmFfNawpVg7malVVa0MyyA5YWgwHuJoxTWsqmg"
               }
             },
             "method": "GET",
