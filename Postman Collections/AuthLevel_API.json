@@ -218,7 +218,7 @@
                 }
               ]
             },
-            "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
+            "url": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/token"
           },
           "response": []
         }
