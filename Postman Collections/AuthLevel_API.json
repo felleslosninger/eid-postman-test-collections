@@ -281,7 +281,7 @@
               "mode": "raw",
               "raw": "{\r\n  \"harbruktnivaa4\": true,\r\n  \"personidentifikator\": {{ssn}}\r\n}"
             },
-            "url": "http://eid-systest-admin01.dmz.local:8080/rest/v1/sikkerhetsnivaa"
+            "url": "{{sp_backend}}/rest/v1/sikkerhetsnivaa"
           },
           "response": []
         }
