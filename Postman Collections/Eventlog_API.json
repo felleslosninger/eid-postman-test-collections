@@ -158,7 +158,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/click"
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
           },
           "response": []
         },
