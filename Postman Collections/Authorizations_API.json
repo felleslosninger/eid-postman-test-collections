@@ -967,7 +967,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://eid-systest-api-web01.dmz.local:10010/{{authorization_id}}"
+            "url": "{{authorizations_url}}/{{authorization_id}}"
           },
           "response": []
         }
