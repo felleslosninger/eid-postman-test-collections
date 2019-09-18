@@ -1892,7 +1892,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": "http://eid-systest-api-web01.dmz.local:10010/"
+            "url": "{{authorizations_url}}"
           },
           "response": []
         },
