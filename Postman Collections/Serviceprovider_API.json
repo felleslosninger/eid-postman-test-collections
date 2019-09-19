@@ -3986,7 +3986,7 @@
                       "pm.test(\"Status code is 201\", function () {",
                       "    pm.response.to.have.status(201);",
                       "var jsonData=pm.response.json();",
-                      "pm.globals.unset(\"new_scope1\");",
+                      "pm.globals.unset(\"new_scope3\");",
                       "pm.globals.set(\"new_scope3\",jsonData.name);",
                       "console.log(\"new scope3 \",pm.globals.get(\"new_scope3\"));",
                       "        ",
