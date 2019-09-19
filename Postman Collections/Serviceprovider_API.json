@@ -4692,7 +4692,7 @@
               "name": "user_authentcation_true_for_et_scope",
               "item": [
                 {
-                  "name": "/scopes",
+                  "name": "/get scope for scope1",
                   "event": [
                     {
                       "listen": "test",
