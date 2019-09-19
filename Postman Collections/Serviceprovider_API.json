@@ -1175,8 +1175,9 @@
             "header": [
               {
                 "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
               }
             ],
             "body": {
