@@ -4786,6 +4786,53 @@
                   "response": []
                 },
                 {
+                  "name": "/scopes Copy Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "d7ebcdef-b67e-44df-82ec-bfecebf423ba",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "092fac18-c86d-4e75-94b0-0ddf1548a0be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": {
+                        "token": "{{access_token_sp}}"
+                      }
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                      "host": [
+                        "{{serviceprovider_api}}"
+                      ],
+                      "path": [
+                        "scopes"
+                      ],
+                      "query": [
+                        {
+                          "key": "scope",
+                          "value": "{{new_scope2}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
                   "name": "Put /scopes{?scope}",
                   "event": [
                     {
