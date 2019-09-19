@@ -1456,7 +1456,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"eldar:nyttscope13199\",\n    \"active\": true,\n    \"prefix\": \"difi\",\n    \"subscope\": \"nyttscope13199\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"INTERNAL\",\n    \"last_updated\": \"2019-08-02T11:47:51.630+02:00\",\n    \"created\": \"2019-08-02T11:47:51.630+02:00\",\n    \"owner_orgno\": \"991825827\",\n    \"token_type\": \"SELF_CONTAINED\"\n}"
+              "raw": "{\n    \"name\": \"eldar:nyttscope13199\",\n    \"active\": true,\n    \"prefix\": \"{{prefix}}\",\n    \"subscope\": \"nyttscope13199\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"INTERNAL\",\n    \"last_updated\": \"2019-08-02T11:47:51.630+02:00\",\n    \"created\": \"2019-08-02T11:47:51.630+02:00\",\n    \"owner_orgno\": \"991825827\",\n    \"token_type\": \"SELF_CONTAINED\"\n}"
             },
             "url": {
               "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope}}",
