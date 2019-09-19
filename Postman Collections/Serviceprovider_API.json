@@ -3988,9 +3988,9 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": ""
+                      "raw": "\r\n{\r\n\t\"value\":{{client_drop_down}}\r\n}"
                     },
-                    "url": "http://localhost:9515/session/{{session}}/element/{{client_id}}/click"
+                    "url": "http://localhost:9515/session/{{session}}/element/{{client_id}}/value"
                   },
                   "response": []
                 },
