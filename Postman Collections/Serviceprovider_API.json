@@ -5577,7 +5577,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"nyttscope11324\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}"
+                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"{{prefix}}\",\r\n    \"subscope\": \"nyttscope11324\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}"
                     },
                     "url": {
                       "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
