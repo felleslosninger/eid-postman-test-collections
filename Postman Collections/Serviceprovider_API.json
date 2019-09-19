@@ -3694,7 +3694,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\n    \"name\": \"tullenamn:eldar\",\n    \"active\": true,\n    \"prefix\": \"eldar\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
+                  "raw": "{\n\t\n    \"name\": \"tullenamn:eldar\",\n    \"active\": true,\n    \"prefix\": \"difi\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
                 },
                 "url": "{{serviceprovider_api}}/scopes"
               },
@@ -3755,52 +3755,6 @@
                     {
                       "key": "scope",
                       "value": "{{new_scope}}"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "/scopes/access/all{?inactive}",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "c1960a1d-9b2f-4c60-9edf-9a122f03c397",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "44f2bc72-875a-4faf-9e4c-4c1340238bd1",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "auth": {
-                  "type": "noauth"
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{serviceprovider_api}}/scopes/access/all?inactive=true",
-                  "host": [
-                    "{{serviceprovider_api}}"
-                  ],
-                  "path": [
-                    "scopes",
-                    "access",
-                    "all"
-                  ],
-                  "query": [
-                    {
-                      "key": "inactive",
-                      "value": "true"
                     }
                   ]
                 }
