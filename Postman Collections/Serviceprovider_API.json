@@ -4739,7 +4739,7 @@
                   "response": []
                 },
                 {
-                  "name": "/scopes Copy",
+                  "name": "/get scope for scope2",
                   "event": [
                     {
                       "listen": "test",
