@@ -6222,15 +6222,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://eid-systest-web01.dmz.local/serviceprovider-api/selfservice/access?audience=sp-api",
-              "protocol": "https",
+              "raw": "{{serviceprovider-api}}/selfservice/access?audience=sp-api",
               "host": [
-                "eid-systest-web01",
-                "dmz",
-                "local"
+                "{{serviceprovider-api}}"
               ],
               "path": [
-                "serviceprovider-api",
                 "selfservice",
                 "access"
               ],
