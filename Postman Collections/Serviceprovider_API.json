@@ -5028,6 +5028,53 @@
                     "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
                   },
                   "response": []
+                },
+                {
+                  "name": "/scopes Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "d7ebcdef-b67e-44df-82ec-bfecebf423ba",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "5e193134-c9ff-4cb9-b989-7928e8cac9b6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": {
+                        "token": "{{access_token_sp}}"
+                      }
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                      "host": [
+                        "{{serviceprovider_api}}"
+                      ],
+                      "path": [
+                        "scopes"
+                      ],
+                      "query": [
+                        {
+                          "key": "scope",
+                          "value": "{{new_scope2}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ],
               "_postman_id": "45a16103-5561-450e-8e33-129b4ee43c92",
