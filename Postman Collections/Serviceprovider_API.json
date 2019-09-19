@@ -4244,7 +4244,7 @@
                       {
                         "key": "Content-Type",
                         "name": "Content-Type",
-                        "value": "application/x-www-form-urlencoded",
+                        "value": "text/plain",
                         "type": "text"
                       },
                       {
@@ -4268,7 +4268,7 @@
                         }
                       ]
                     },
-                    "url": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/token"
+                    "url": "{{oidc_provider}}/token"
                   },
                   "response": []
                 }
