@@ -943,8 +943,7 @@
                   "tests[\"status is present\"]=responseBody.has(\"status\");",
                   "tests[\"spraak is present\"]=responseBody.has(\"spraak\");",
                   "tests[\"epostadresse is present\"]=responseBody.has(\"epostadresse\");",
-                  "tests[\"epostadresse_oppdatert is present\"]=responseBody.has(\"epostadresse_oppdatert\");",
-                  "tests[\"epostadresse_sist_verifisert is present\"]=responseBody.has(\"epostadresse_sist_verifisert\");"
+                  "tests[\"epostadresse_oppdatert is present\"]=responseBody.has(\"epostadresse_oppdatert\");"
                 ],
                 "type": "text/javascript"
               }
@@ -993,7 +992,7 @@
                   "        pm.expect(jsonData.personer[0].personidentifikator).to.eql(pm.environment.get(\"ssn\"));\r",
                   "        pm.expect(jsonData.personer[0].reservasjon).to.eql(\"NEI\");\r",
                   "        pm.expect(jsonData.personer[0].status).to.eql(\"AKTIV\");\r",
-                  "        pm.expect(jsonData.personer[0].spraak).to.eql(\"en\");  \r",
+                  "      //  pm.expect(jsonData.personer[0].spraak).to.eql(\"en\");  \r",
                   "\r",
                   "});\r",
                   "\r",
@@ -1086,7 +1085,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"personidentifikatorer\": [\r\n    \"23079403164\",\"23079403083\",\"23079402966\",\"23079402885\",\"23079402613\",\"23079402532\"\r\n  ]\r\n}"
+              "raw": "{\r\n  \"personidentifikatorer\": [\r\n    {{ssn}},\"23079403083\",\"23079402966\",\"23079402885\",\"23079402613\",\"23079402532\"\r\n  ]\r\n}"
             },
             "url": "{{krr_oauth2_server}}/rest/v1/personer"
           },
