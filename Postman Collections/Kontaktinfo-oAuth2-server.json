@@ -228,8 +228,8 @@
               {
                 "key": "Content-Type",
                 "name": "Content-Type",
-                "type": "text",
-                "value": "application/json"
+                "value": "application/json",
+                "type": "text"
               }
             ],
             "body": {
