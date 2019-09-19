@@ -65,7 +65,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{serviceprovider_api}}/saml2?entityId=systest-sptest1",
+              "raw": "{{serviceprovider_api}}/saml2?entityId={{entity_id}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -75,7 +75,7 @@
               "query": [
                 {
                   "key": "entityId",
-                  "value": "systest-sptest1"
+                  "value": "{{entity_id}}"
                 }
               ]
             }
