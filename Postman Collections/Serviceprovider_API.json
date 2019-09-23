@@ -6243,20 +6243,28 @@
           "response": []
         },
         {
-          "name": "/serviceprovider/tokenexchangeaccess",
-          "_postman_id": "d04a2249-a2ec-4486-a5db-5e24a79a21fa",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": ""
-          },
-          "response": []
-        },
-        {
           "name": " /serviceprovider/tokenexchangeaccess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "45736f92-0b19-4fbd-8ade-0522f114a300",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\" create new audience \", function () {",
+                  "        ",
+                  "pm.response.to.have.status(201);",
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"id\", jsonData.id);});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "634a4a84-2099-4d1a-91a3-1bf4360245e2",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -6269,11 +6277,31 @@
               }
             },
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "    {\r\n        \"last_updated\": \"\",\r\n        \"created\": \"\",\r\n        \"audience\": \"test-sp-api\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
             },
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
+          },
+          "response": []
+        },
+        {
+          "name": "/serviceprovider/tokenexchangeaccess",
+          "_postman_id": "d04a2249-a2ec-4486-a5db-5e24a79a21fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
           },
           "response": []
