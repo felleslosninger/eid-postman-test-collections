@@ -6328,7 +6328,7 @@
           "request": {
             "method": "PUT",
             "header": [],
-            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/231"
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}"
           },
           "response": []
         },
