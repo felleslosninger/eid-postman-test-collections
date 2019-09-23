@@ -6277,6 +6277,19 @@
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
           },
           "response": []
+        },
+        {
+          "name": " /serviceprovider/tokenexchangeaccess/{id}",
+          "_postman_id": "078178aa-225e-4c98-b083-c7d56f3dbe9e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "60da0d88-8ec9-44f8-a2c1-e20b2548329b"
