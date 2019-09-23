@@ -6282,7 +6282,7 @@
                   "        pm.expect(jsonData.audience).to.eql(\"test-sp-api\");",
                   "            pm.expect(jsonData.orgno).to.eql(\"991825827\");",
                   "            pm.expect(jsonData.subject_token_scope).to.eql(\"samarbeid:sp-web\");",
-                  "            pm.expect(jsonData.person_identifier).to.eql(\"lra1\");",
+                  "            pm.expect(jsonData.person_identifier).to.eql(\"lra11\");",
                   "            pm.expect(jsonData.scope).to.eql([",
                   "        \"idporten:dcr.read\",",
                   "        \"idporten:dcr.write\",",
