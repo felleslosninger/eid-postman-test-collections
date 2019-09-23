@@ -6290,6 +6290,19 @@
             "url": ""
           },
           "response": []
+        },
+        {
+          "name": " /serviceprovider/tokenexchangeaccess/{id}",
+          "_postman_id": "eb3b0999-12a5-4ba2-be6c-78855b095277",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/231"
+          },
+          "response": []
         }
       ],
       "_postman_id": "60da0d88-8ec9-44f8-a2c1-e20b2548329b"
