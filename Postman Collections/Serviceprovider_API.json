@@ -6171,7 +6171,7 @@
       "_postman_id": "721d7381-59ea-476c-b8fe-9dbe6fe21f3d"
     },
     {
-      "name": "token_exchange_basert_mot_orgnummer",
+      "name": "token-exchange-access-controller",
       "item": [
         {
           "name": "/selfservice/access",
