@@ -4263,6 +4263,62 @@
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}"
           },
           "response": []
+        },
+        {
+          "name": " /serviceprovider/tokenexchangeaccess/{id}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7c4f88fd-c069-4a73-80ec-2039cce5ecaf",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"get audience detail\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set(\"id\", jsonData.id);",
+                  "        pm.expect(jsonData.audience).to.eql(\"test-sp-api\");",
+                  "            pm.expect(jsonData.orgno).to.eql(\"991825827\");",
+                  "            pm.expect(jsonData.subject_token_scope).to.eql(\"samarbeid:sp-web\");",
+                  "            pm.expect(jsonData.person_identifier).to.eql(\"lra1\");",
+                  "            pm.expect(jsonData.scope).to.eql([",
+                  "        \"idporten:dcr.read\",",
+                  "        \"idporten:dcr.write\",",
+                  "        \"idporten:dcr:supplier\",",
+                  "        \"idporten:scopes.read\"",
+                  "    ]);",
+                  "",
+                  "            ",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2ecdcae4-95c6-4c72-934c-a81ab30089c7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\r\n        \"last_updated\": \"\",\r\n        \"created\": \"\",\r\n        \"audience\": \"test-sp-api\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"person_identifier\": \"lra1\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
+            },
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}"
+          },
+          "response": []
         }
       ],
       "_postman_id": "e3abc805-ac5e-4b32-818d-d354f80c1ee3"
