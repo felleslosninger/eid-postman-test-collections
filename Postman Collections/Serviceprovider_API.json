@@ -6241,6 +6241,19 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "/serviceprovider/tokenexchangeaccess",
+          "_postman_id": "d04a2249-a2ec-4486-a5db-5e24a79a21fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "60da0d88-8ec9-44f8-a2c1-e20b2548329b"
