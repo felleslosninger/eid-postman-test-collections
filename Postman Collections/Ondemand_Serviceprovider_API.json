@@ -4250,6 +4250,19 @@
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
           },
           "response": []
+        },
+        {
+          "name": " /serviceprovider/tokenexchangeaccess/{id}",
+          "_postman_id": "57a29b54-81ae-4735-a404-7f8049d18f8c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}"
+          },
+          "response": []
         }
       ],
       "_postman_id": "e3abc805-ac5e-4b32-818d-d354f80c1ee3"
