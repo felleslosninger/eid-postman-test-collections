@@ -4223,6 +4223,33 @@
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
           },
           "response": []
+        },
+        {
+          "name": "/serviceprovider/tokenexchangeaccess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c5804b0d-f08b-4b3a-bd1a-083f3a3ff958",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d86101c3-8881-4789-a1a3-89e8195d205b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
+          },
+          "response": []
         }
       ],
       "_postman_id": "e3abc805-ac5e-4b32-818d-d354f80c1ee3"
