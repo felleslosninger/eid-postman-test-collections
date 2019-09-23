@@ -6333,7 +6333,7 @@
           "response": []
         },
         {
-          "name": " /serviceprovider/tokenexchangeaccess/{id} Copy",
+          "name": "/serviceprovider/tokenexchangeaccess/filtered",
           "_postman_id": "9def7aff-684d-4c93-80a4-9b5bc7b1a4ed",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
