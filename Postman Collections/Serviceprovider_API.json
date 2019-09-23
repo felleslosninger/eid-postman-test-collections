@@ -6226,6 +6226,20 @@
         },
         {
           "name": "/serviceprovider/tokenexchangeaccess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c5804b0d-f08b-4b3a-bd1a-083f3a3ff958",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "d04a2249-a2ec-4486-a5db-5e24a79a21fa",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
