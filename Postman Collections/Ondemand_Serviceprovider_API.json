@@ -4171,7 +4171,7 @@
       "_postman_id": "e3c699be-9e05-4258-a0db-ae2534f218cf"
     },
     {
-      "name": "token-exchange-access-controller",
+      "name": "token-exchange-access-controller (mot systest)",
       "item": [
         {
           "name": " /serviceprovider/tokenexchangeaccess",
