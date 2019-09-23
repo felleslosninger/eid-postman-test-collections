@@ -6408,14 +6408,14 @@
               }
             ],
             "url": {
-              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/231",
+              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}",
               "host": [
                 "{{sp_backend}}"
               ],
               "path": [
                 "serviceprovider",
                 "tokenexchangeaccess",
-                "231"
+                "{{id}}"
               ],
               "query": [
                 {
