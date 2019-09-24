@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "ae011c08-d64c-4b52-8b59-2ccc0f83f863",
-    "name": "Dev_Eventlog API",
+    "name": "Eventlog API",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
