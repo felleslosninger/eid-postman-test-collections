@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "b162ef8c-9501-404f-8b87-2eb1f8e8643c",
-    "name": "Dev_Oidcprovider API",
+    "name": "Oidcprovider API",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
