@@ -1432,7 +1432,7 @@
             }
           ]
         },
-        "url": "{{oidc_provider}}//token"
+        "url": "{{oidc_provider}}/token"
       },
       "response": []
     }
