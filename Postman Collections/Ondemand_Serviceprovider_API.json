@@ -4171,7 +4171,7 @@
       "_postman_id": "e3c699be-9e05-4258-a0db-ae2534f218cf"
     },
     {
-      "name": "token-exchange-access-controller (mot systest)",
+      "name": "token-exchange-access-controller",
       "item": [
         {
           "name": " /serviceprovider/tokenexchangeaccess",
@@ -4360,6 +4360,65 @@
           "response": []
         },
         {
+          "name": "/serviceprovider/serviceaccess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "dbe86dfb-1e21-4d10-a98d-be41e9ff4288",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    ",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
+                  "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
+                  "    pm.expect(jsonData.person_name).to.equal(\"lra\");",
+                  "",
+                  "",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0b3f8c62-f6bc-4138-90d6-c195350a56b2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api",
+              "host": [
+                "{{serviceprovider_api}}"
+              ],
+              "path": [
+                "selfservice",
+                "access"
+              ],
+              "query": [
+                {
+                  "key": "audience",
+                  "value": "test-sp-api"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "/serviceprovider/tokenexchangeaccess/{id}",
           "_postman_id": "de8410ff-e467-4758-a6e8-6c006485e898",
           "protocolProfileBehavior": {
@@ -4367,7 +4426,10 @@
           },
           "request": {
             "auth": {
-              "type": "noauth"
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
             },
             "method": "DELETE",
             "header": [
@@ -4379,14 +4441,14 @@
               }
             ],
             "url": {
-              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}",
+              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/247",
               "host": [
                 "{{sp_backend}}"
               ],
               "path": [
                 "serviceprovider",
                 "tokenexchangeaccess",
-                "{{id}}"
+                "247"
               ],
               "query": [
                 {
