@@ -1348,7 +1348,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{serviceprovider_api}}/scopes?scope=eldar:public",
+              "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -1358,7 +1358,7 @@
               "query": [
                 {
                   "key": "scope",
-                  "value": "eldar:public"
+                  "value": "{{new_scope}}"
                 }
               ]
             }
