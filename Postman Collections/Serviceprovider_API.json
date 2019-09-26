@@ -6377,9 +6377,9 @@
                   "    var jsonData = pm.response.json();",
                   "    console.log(jsonData);",
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
-                  "    pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
-                  "    pm.expect(jsonData[0].orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra1\");",
+                  "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
+                  "    pm.expect(jsonData.person_name).to.equal(\"lra1\");",
                   "",
                   "",
                   "});"
@@ -6404,8 +6404,8 @@
               {
                 "key": "Content-Type",
                 "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
+                "type": "text",
+                "value": "application/x-www-form-urlencoded"
               }
             ],
             "url": {
