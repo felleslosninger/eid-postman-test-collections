@@ -4441,14 +4441,14 @@
               }
             ],
             "url": {
-              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/247",
+              "raw": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}",
               "host": [
                 "{{sp_backend}}"
               ],
               "path": [
                 "serviceprovider",
                 "tokenexchangeaccess",
-                "247"
+                "{{id}}"
               ],
               "query": [
                 {
