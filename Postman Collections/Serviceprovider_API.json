@@ -1261,6 +1261,64 @@
       "name": "scope-controller",
       "item": [
         {
+          "name": "/scopes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "06bc0f89-04c7-40d6-abec-9f10a1e4eed1",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"new_scope\",jsonData.name);",
+                  "console.log(\"new scope \",pm.globals.get(\"new_scope\"));",
+                  "        ",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "264685f4-4dc0-407d-ab9e-2fe02be2637c",
+                "exec": [
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d288560a-23f3-4e59-831a-ae3e1a3d9e50",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\n    \"name\": \"tullenamn:{{prefix}}\",\n    \"active\": true,\n    \"prefix\": \"{{prefix}}\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
+            },
+            "url": "{{serviceprovider_api}}/scopes"
+          },
+          "response": []
+        },
+        {
           "name": "/scopes{?inactive, scope}",
           "event": [
             {
@@ -1354,64 +1412,6 @@
                 }
               ]
             }
-          },
-          "response": []
-        },
-        {
-          "name": "/scopes",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "06bc0f89-04c7-40d6-abec-9f10a1e4eed1",
-                "exec": [
-                  "pm.test(\"Status code is 201\", function () {",
-                  "    pm.response.to.have.status(201);",
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"new_scope\",jsonData.name);",
-                  "console.log(\"new scope \",pm.globals.get(\"new_scope\"));",
-                  "        ",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "264685f4-4dc0-407d-ab9e-2fe02be2637c",
-                "exec": [
-                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "d288560a-23f3-4e59-831a-ae3e1a3d9e50",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token_sp}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\n    \"name\": \"tullenamn:{{prefix}}\",\n    \"active\": true,\n    \"prefix\": \"{{prefix}}\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
-            },
-            "url": "{{serviceprovider_api}}/scopes"
           },
           "response": []
         },
