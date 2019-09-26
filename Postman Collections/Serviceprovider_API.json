@@ -1409,7 +1409,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\n    \"name\": \"tullenamn:eldar\",\n    \"active\": true,\n    \"prefix\": \"{{prefix}}\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
+              "raw": "{\n\t\n    \"name\": \"tullenamn:{{prefix}}\",\n    \"active\": true,\n    \"prefix\": \"{{prefix}}\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}"
             },
             "url": "{{serviceprovider_api}}/scopes"
           },
@@ -4149,7 +4149,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{sp_client_scope}}&audience={{oidc_provider}}/&scope={{new_scope1}}%20{{new_scope2}}%20{{new_scope3}}\"}\n"
+                      "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{sp_client_scope}}&audience={{audience_url}}/&scope={{new_scope1}}%20{{new_scope2}}%20{{new_scope3}}\"}\n"
                     },
                     "url": "http://localhost:9515/session/{{session}}/url"
                   },
