@@ -3553,8 +3553,8 @@
                   "script": {
                     "id": "d7ebcdef-b67e-44df-82ec-bfecebf423ba",
                     "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
                       "});"
                     ],
                     "type": "text/javascript"
@@ -6400,6 +6400,88 @@
                   "value": "231",
                   "type": "text",
                   "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/serviceprovider/serviceaccess",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d4b4ab91-2d5d-4ef7-baf6-dce9828a0765",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    ",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
+                  "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
+                  "    pm.expect(jsonData.person_name).to.equal(\"lra\");",
+                  "",
+                  "",
+                  "});",
+                  "",
+                  "",
+                  "[",
+                  "    {",
+                  "        \"last_updated\": \"2019-09-26T13:37:53.427+02:00\",",
+                  "        \"created\": \"2019-09-26T13:37:53.427+02:00\",",
+                  "        \"audience\": \"test-sp-api\",",
+                  "        \"orgno\": \"991825827\",",
+                  "        \"subject_token_scope\": \"samarbeid:sp-web\",",
+                  "        \"person_name\": \"lra\",",
+                  "        \"scope\": [",
+                  "            \"idporten:dcr.read\",",
+                  "            \"idporten:dcr.write\",",
+                  "            \"idporten:dcr:supplier\",",
+                  "            \"idporten:scopes.read\"",
+                  "        ]",
+                  "    }",
+                  "]"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "9c835083-1078-4a06-9777-34e43d7409dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbEtSRGFDWDN3VzNIVWlNQ1pHNGhzb3lWajFiVTdlTXQwNEFDZ0lwM2k0PSIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImNsaWVudF9pZCI6Im9pZGNfdGVzdF9hcGktcG9zdG1hbiIsImF1ZCI6InVuc3BlY2lmaWVkIiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJrcnI6dXNlci5sb2cuYWxsLnJlYWQgaWRwb3J0ZW46dXNlci5sb2cucmVhZCB1c2VyXC92YXJzbGluZ3NzdGF0dXMucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9uc3Rlc3QucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9ucy5hZG1pbiBpZHBvcnRlbjpkY3IucmVhZCBnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGlkcG9ydGVuOmRjci53cml0ZSBpZHBvcnRlbjp1c2VyLmxvZy5hbGwucmVhZCBkc2YtYWRyZXNzZSBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGlkcG9ydGVuOmRjci5tb2RpZnkgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIGRzZi1uYXZuIHRva2VuaW5mbyB1c2VyXC9zcHJhYWsucmVhZCBpZHBvcnRlbjp0b2tlbmV4Y2hhbmdlIG9wZW5pZCBwcm9maWxlIGlkcG9ydGVuOnNjb3Blcy5yZWFkIHVzZXJcL3NlcnRpZmlrYXQucmVhZCB1c2VyXC9kaWdpdGFscG9zdC5yZWFkIGlkcG9ydGVuOnNjb3Blcy53cml0ZSB1c2VyXC9zcHJhYWsud3JpdGUgc2FtYXJiZWlkOnNwLXdlYiIsInN1cHBsaWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MDk4MzI5MSJ9LCJleHAiOjE1Njk1MDE0NjQsImRlbGVnYXRpb25fc291cmNlIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiaWF0IjoxNTY5NDk3ODY0LCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJUXzhCNmN6bTJHVzNSOEVaMDQ1V05uWWt6UWtIQ25fbzl3akxjLUY4d3lnIiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTkxODI1ODI3In19.cEKfG4Q8lM2zbo0sEU4Zit-QuSJoHgPZ3kObFt-TsJZfevSlg-zcyLb9iSVuxayia5n3IVNX3vWeVyXqwFLzxF_eq0VK4PeEEn3DtBQ2eW-eC5rAsblH4rUAuw8p5OqWy0Kuhtkxr4h3SypKrEflj71-YcMASb-xJWmYR4Gluh3rzMWzbiB5E0x8XWODP2bWmnRCyNWwH9Og3psOon1W5IkmSptqQPJX9OKRuzAXs2-NDyYkE6neHmH56Y3Bs985cnNBmG6TdGAN_rFFpWG3mZIu9DVln_ssoqVcTT-KLy0QpWILJJwwVSSvjgiXyrcDr2F8mHjqE_iGkufXYAbL_w"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api",
+              "host": [
+                "{{serviceprovider_api}}"
+              ],
+              "path": [
+                "selfservice",
+                "access"
+              ],
+              "query": [
+                {
+                  "key": "audience",
+                  "value": "test-sp-api"
                 }
               ]
             }
