@@ -6381,10 +6381,20 @@
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
                   "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData.person_name).to.equal(\"lra1\");",
+                  "    pm.expect(jsonData.identifier).to.equal(\"lra1\");",
                   "",
                   "",
                   "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "0a148f1c-f681-4c86-9f29-72e173e6e72a",
+                "exec": [
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
                 ],
                 "type": "text/javascript"
               }
@@ -6411,7 +6421,7 @@
               }
             ],
             "url": {
-              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api",
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{new_audience}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -6422,7 +6432,7 @@
               "query": [
                 {
                   "key": "audience",
-                  "value": "test-sp-api"
+                  "value": "{{new_audience}}"
                 }
               ]
             }
