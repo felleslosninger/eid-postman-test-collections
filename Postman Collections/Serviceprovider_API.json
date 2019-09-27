@@ -6372,13 +6372,9 @@
               "script": {
                 "id": "d4b4ab91-2d5d-4ef7-baf6-dce9828a0765",
                 "exec": [
-                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});    ",
-                  "",
-                  " pm.test(\"get serviceaccess detail\", function () {",
-                  "     ",
+                  "    ",
                   "    var jsonData = pm.response.json();",
                   "    console.log(\"jsonData: \"+jsonData);",
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
