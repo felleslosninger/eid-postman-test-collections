@@ -6381,7 +6381,7 @@
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
                   "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData.identifier).to.equal(\"lra1\");",
+                  "    pm.expect(jsonData.person_identifier).to.equal(\"lra1\");",
                   "",
                   "",
                   "});"
