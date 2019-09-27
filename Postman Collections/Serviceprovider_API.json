@@ -6376,7 +6376,9 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});    ",
-                  "    ",
+                  "",
+                  " pm.test(\"get serviceaccess detail\", function () {",
+                  "     ",
                   "    var jsonData = pm.response.json();",
                   "    console.log(\"jsonData: \"+jsonData);",
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
@@ -6384,7 +6386,7 @@
                   "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
                   "    pm.expect(jsonData.person_identifier).to.equal(\"lra1\");",
                   "",
-                  "",
+                  "});",
                   ""
                 ],
                 "type": "text/javascript"
