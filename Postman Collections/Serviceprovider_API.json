@@ -6375,6 +6375,7 @@
                   "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
+                  "});    ",
                   "    ",
                   "    var jsonData = pm.response.json();",
                   "    console.log(\"jsonData: \"+jsonData);",
@@ -6384,7 +6385,7 @@
                   "    pm.expect(jsonData.person_identifier).to.equal(\"lra1\");",
                   "",
                   "",
-                  "});"
+                  ""
                 ],
                 "type": "text/javascript"
               }
