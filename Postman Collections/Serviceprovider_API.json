@@ -6377,7 +6377,7 @@
                   "    pm.response.to.have.status(200);",
                   "    ",
                   "    var jsonData = pm.response.json();",
-                  "    console.log(\"jsonData[1] : \"+jsonData[1].audience);",
+                  "    console.log(\"jsonData[1] : \"+jsonData[1]);",
                   "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
                   "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
