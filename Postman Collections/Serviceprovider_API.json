@@ -6378,7 +6378,7 @@
                   "    ",
                   "    var jsonData = pm.response.json();",
                   "    console.log(\"jsonData.orgnr: \"+jsonData.orgnr);",
-                  "    pm.expect(jsonData.audience).to.equal(pm.environment.get(\"new_audience\"));",
+                  "    pm.expect(jsonData.audience).to.equal(pm.environment.get(\"audience\"));",
                   "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
                   "    pm.expect(jsonData.person_identifier).to.equal(\"lra1\");",
@@ -6421,7 +6421,7 @@
               }
             ],
             "url": {
-              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{new_audience}}",
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{audience}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -6432,7 +6432,7 @@
               "query": [
                 {
                   "key": "audience",
-                  "value": "{{new_audience}}"
+                  "value": "{{audience}}"
                 }
               ]
             }
