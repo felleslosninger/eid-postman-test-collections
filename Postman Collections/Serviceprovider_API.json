@@ -6317,7 +6317,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "    {\r\n        \"audience\": \"test-sp-api\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"person_identifier\": \"lra1\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
+              "raw": "    {\r\n        \"audience\": \"{{audience}}\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"person_identifier\": \"lra1\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
             },
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess/{{id}}"
           },
