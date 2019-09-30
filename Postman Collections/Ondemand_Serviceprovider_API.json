@@ -4181,16 +4181,31 @@
               "script": {
                 "id": "45736f92-0b19-4fbd-8ade-0522f114a300",
                 "exec": [
-                  "pm.test(\"Status code is 201\", function () {",
-                  "    pm.response.to.have.status(201);",
-                  "});",
-                  "",
-                  "pm.test(\" create new audience \", function () {",
-                  "        ",
-                  "pm.response.to.have.status(201);",
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"id\", jsonData.id);});"
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\" create new audience \", function () {\r",
+                  "        \r",
+                  "pm.response.to.have.status(201);\r",
+                  "var jsonData = pm.response.json();\r",
+                  "pm.environment.unset(\"audience\");\r",
+                  "pm.environment.set(\"audience\", jsonData.audience);\r",
+                  "pm.environment.set(\"id\", jsonData.id);\r",
+                  "\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "cece912d-a69b-40f0-b9e5-502ec5427d38",
+                "exec": [
+                  "\r",
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 50000));"
                 ],
                 "type": "text/javascript"
               }
@@ -4202,10 +4217,7 @@
           },
           "request": {
             "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbEtSRGFDWDN3VzNIVWlNQ1pHNGhzb3lWajFiVTdlTXQwNEFDZ0lwM2k0PSIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImNsaWVudF9pZCI6Im9pZGNfdGVzdF9hcGktcG9zdG1hbiIsImF1ZCI6InVuc3BlY2lmaWVkIiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJrcnI6dXNlci5sb2cuYWxsLnJlYWQgaWRwb3J0ZW46dXNlci5sb2cucmVhZCB1c2VyXC92YXJzbGluZ3NzdGF0dXMucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9uc3Rlc3QucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9ucy5hZG1pbiBpZHBvcnRlbjpkY3IucmVhZCBnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGlkcG9ydGVuOmRjci53cml0ZSBpZHBvcnRlbjp1c2VyLmxvZy5hbGwucmVhZCBkc2YtYWRyZXNzZSBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGlkcG9ydGVuOmRjci5tb2RpZnkgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIGRzZi1uYXZuIHRva2VuaW5mbyB1c2VyXC9zcHJhYWsucmVhZCBpZHBvcnRlbjp0b2tlbmV4Y2hhbmdlIG9wZW5pZCBwcm9maWxlIGlkcG9ydGVuOnNjb3Blcy5yZWFkIHVzZXJcL3NlcnRpZmlrYXQucmVhZCB1c2VyXC9kaWdpdGFscG9zdC5yZWFkIGlkcG9ydGVuOnNjb3Blcy53cml0ZSB1c2VyXC9zcHJhYWsud3JpdGUgc2FtYXJiZWlkOnNwLXdlYiIsInN1cHBsaWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MDk4MzI5MSJ9LCJleHAiOjE1NjkyMjc1NTgsImRlbGVnYXRpb25fc291cmNlIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiaWF0IjoxNTY5MjIzOTU5LCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJ4RjVxaUJ4d1RuWDhKQWRtS0NWUzJDak9Rb3o1S2NBaDh3MVQ4ckdSWGdJIiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTkxODI1ODI3In19.KwSvcVLDcD-Sbn2zQGas-i33TgwdtjKaVumIZllUqSieOr8MdcBLgJq0DrC_Rqbhn-WXatzWhpRjaQH_YDBDh0WhpPdxXO0SzkuO3vrOi4rFzX5zz26mjo2jpUxlRuiQB96SNpp0V6IokV5CoMr_NBP6CGOqltyzPkUKpf9gXFVbyNa42itd1LO8rDaVEtvk0rH6IkczJ5METQLtPsgaePEKnWxmifgH0bBv1-5cTX80SW00AcEuEvXkyC_XurZAKinFNNYjJdcHY_gf6o0NVduyMcD73COLVU_o_P1Se5ZG7a_1VItZr9qWxBo3Z8a4clGo2Mcpn46l-M34JKFbtw"
-              }
+              "type": "noauth"
             },
             "method": "POST",
             "header": [
@@ -4218,7 +4230,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "    {\r\n        \"last_updated\": \"\",\r\n        \"created\": \"\",\r\n        \"audience\": \"test-sp-api\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"person_identifier\": \"lra\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
+              "raw": "    {\r\n        \"last_updated\": \"\",\r\n        \"created\": \"\",\r\n        \"audience\": \"test-sp-api{{ran}}\",\r\n        \"orgno\": \"991825827\",\r\n        \"subject_token_scope\": \"samarbeid:sp-web\",\r\n        \"person_identifier\": \"lra\",\r\n        \"scope\": [\r\n            \"idporten:dcr.read\",\r\n            \"idporten:dcr.write\",\r\n            \"idporten:dcr:supplier\",\r\n            \"idporten:scopes.read\"\r\n        ]\r\n    }"
             },
             "url": "{{sp_backend}}/serviceprovider/tokenexchangeaccess"
           },
@@ -4272,6 +4284,7 @@
               "script": {
                 "id": "7c4f88fd-c069-4a73-80ec-2039cce5ecaf",
                 "exec": [
+                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -4279,11 +4292,11 @@
                   "pm.test(\"get audience detail\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.environment.set(\"id\", jsonData.id);",
-                  "        pm.expect(jsonData.audience).to.eql(\"test-sp-api\");",
-                  "            pm.expect(jsonData.orgno).to.eql(\"991825827\");",
-                  "            pm.expect(jsonData.subject_token_scope).to.eql(\"samarbeid:sp-web\");",
-                  "            pm.expect(jsonData.person_identifier).to.eql(\"lra1\");",
-                  "            pm.expect(jsonData.scope).to.eql([",
+                  "        pm.expect(jsonData.audience).to.eql(pm.environment.get(\"audience\"));",
+                  "        pm.expect(jsonData.orgno).to.eql(\"991825827\");",
+                  "        pm.expect(jsonData.subject_token_scope).to.eql(\"samarbeid:sp-web\");",
+                  "        pm.expect(jsonData.person_identifier).to.eql(\"lra1\");",
+                  "        pm.expect(jsonData.scope).to.eql([",
                   "        \"idporten:dcr.read\",",
                   "        \"idporten:dcr.write\",",
                   "        \"idporten:dcr:supplier\",",
@@ -4292,6 +4305,7 @@
                   "",
                   "            ",
                   "});",
+                  "",
                   ""
                 ],
                 "type": "text/javascript"
@@ -4367,19 +4381,19 @@
               "script": {
                 "id": "dbe86dfb-1e21-4d10-a98d-be41e9ff4288",
                 "exec": [
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "    ",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.audience).to.equal(\"test-sp-api\");",
-                  "    pm.expect(jsonData.subject_token_scope).to.equal(\"samarbeid:sp-web\");",
-                  "    pm.expect(jsonData.orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData.person_name).to.equal(\"lra\");",
-                  "",
-                  "",
-                  "});",
-                  "",
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    console.log(\"jsonData.orgnr: \"+jsonData.orgnr);\r",
+                  "    console.log(\"jsonData.orgnr: \"+jsonData[0].audience);\r",
+                  "    \r",
+                  "    \r",
+                  "    pm.expect(jsonData[0].audience).to.equal(pm.environment.get(\"audience\"));\r",
+                  "    pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");\r",
+                  "    pm.expect(jsonData[0].orgno).to.equal(\"991825827\");\r",
+                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra1\");\r",
+                  "\r",
+                  "});\r",
                   ""
                 ],
                 "type": "text/javascript"
@@ -4400,7 +4414,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api",
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{audience}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -4411,7 +4425,7 @@
               "query": [
                 {
                   "key": "audience",
-                  "value": "test-sp-api"
+                  "value": "{{audience}}"
                 }
               ]
             }
