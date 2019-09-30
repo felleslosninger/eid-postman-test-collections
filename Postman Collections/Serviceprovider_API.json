@@ -6393,7 +6393,7 @@
                   "    pm.expect(jsonData[0].audience).to.equal(pm.environment.get(\"audience\"));",
                   "    pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData[0].orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra\");",
+                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra1\");",
                   "",
                   "});",
                   "",
