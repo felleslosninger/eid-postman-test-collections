@@ -6393,7 +6393,7 @@
                   "    pm.expect(jsonData[0].audience).to.equal(pm.environment.get(\"audience\"));",
                   "    pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
                   "    pm.expect(jsonData[0].orgno).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra1\");",
+                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra\");",
                   "",
                   "});",
                   "",
@@ -6434,7 +6434,7 @@
               }
             ],
             "url": {
-              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api4740",
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{audience}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -6445,7 +6445,7 @@
               "query": [
                 {
                   "key": "audience",
-                  "value": "test-sp-api4740"
+                  "value": "{{audience}}"
                 }
               ]
             }
