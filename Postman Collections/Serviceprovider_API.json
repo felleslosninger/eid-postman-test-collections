@@ -6385,15 +6385,19 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "    ",
+                  "    var jsonData = pm.response.json();",
                   "    var jsonData = pm.response.json();",
                   "    console.log(\"jsonData.orgnr: \"+jsonData.orgnr);",
-                  "    pm.expect(jsonData.audience[0]).to.equal(pm.environment.get(\"audience\"));",
-                  "    pm.expect(jsonData.subject_token_scope[0]).to.equal(\"samarbeid:sp-web\");",
-                  "    pm.expect(jsonData.orgno[0]).to.equal(\"991825827\");",
-                  "    pm.expect(jsonData.person_identifier[0]).to.equal(\"lra1\");",
+                  "    console.log(\"jsonData.orgnr: \"+jsonData[0].audience);",
+                  "    ",
+                  "    ",
+                  "    pm.expect(jsonData[0].audience).to.equal(pm.environment.get(\"audience\"));",
+                  "    pm.expect(jsonData[0].subject_token_scope).to.equal(\"samarbeid:sp-web\");",
+                  "    pm.expect(jsonData[0].orgno).to.equal(\"991825827\");",
+                  "    pm.expect(jsonData[0].person_name).to.equal(\"lra1\");",
                   "",
                   "});",
+                  "",
                   ""
                 ],
                 "type": "text/javascript"
@@ -6418,7 +6422,7 @@
             "auth": {
               "type": "bearer",
               "bearer": {
-                "token": "{{access_token_sp}}"
+                "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhbEtSRGFDWDN3VzNIVWlNQ1pHNGhzb3lWajFiVTdlTXQwNEFDZ0lwM2k0PSIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImNsaWVudF9pZCI6Im9pZGNfdGVzdF9hcGktcG9zdG1hbiIsImF1ZCI6InVuc3BlY2lmaWVkIiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJrcnI6dXNlci5sb2cuYWxsLnJlYWQgaWRwb3J0ZW46dXNlci5sb2cucmVhZCB1c2VyXC92YXJzbGluZ3NzdGF0dXMucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9uc3Rlc3QucmVhZCBpZHBvcnRlbjphdXRob3JpemF0aW9ucy5hZG1pbiBpZHBvcnRlbjpkY3IucmVhZCBnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGlkcG9ydGVuOmRjci53cml0ZSBpZHBvcnRlbjp1c2VyLmxvZy5hbGwucmVhZCBkc2YtYWRyZXNzZSBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGlkcG9ydGVuOmRjci5tb2RpZnkgaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIGRzZi1uYXZuIHRva2VuaW5mbyB1c2VyXC9zcHJhYWsucmVhZCBpZHBvcnRlbjp0b2tlbmV4Y2hhbmdlIG9wZW5pZCBwcm9maWxlIGlkcG9ydGVuOnNjb3Blcy5yZWFkIHVzZXJcL3NlcnRpZmlrYXQucmVhZCB1c2VyXC9kaWdpdGFscG9zdC5yZWFkIGlkcG9ydGVuOnNjb3Blcy53cml0ZSB1c2VyXC9zcHJhYWsud3JpdGUgc2FtYXJiZWlkOnNwLXdlYiIsInN1cHBsaWVyIjp7ImF1dGhvcml0eSI6ImlzbzY1MjMtYWN0b3JpZC11cGlzIiwiSUQiOiIwMTkyOjk5MDk4MzI5MSJ9LCJleHAiOjE1Njk4MzUzNjUsImRlbGVnYXRpb25fc291cmNlIjoiaHR0cHM6XC9cL2VpZC1zeXN0ZXN0LXdlYjAxLmRtei5sb2NhbFwvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwiaWF0IjoxNTY5ODMxNzY2LCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJNY184RmlMWF82RWhtbnhRUElKQ3JpTGtyQnJ4UzZKajVwYjVPVTN1RFM4IiwiY29uc3VtZXIiOnsiYXV0aG9yaXR5IjoiaXNvNjUyMy1hY3RvcmlkLXVwaXMiLCJJRCI6IjAxOTI6OTkxODI1ODI3In19.U6Hwxvo8UInSe3JJcVCOAmtLid8UuQVCPEZ03zOWfxMOHQxBLp9YyVhTDVX5UDyqPuXqCb2aGXoZh_CzFWon1U91Fiza3k79qJI7GFnSmuJL1WBqIll4VZFDya9vfzLev9C94ul0kaMkTIbjLI2j4AcvwQBweipTvFpL2ApJ3fVy-9qy5-gHoNVNcGfc7JzqMZebwMZ56ULeloz_Cy6pfywdUrcJXfHo_SN7Z5M3fYTSx9eJhOp2Hr69qfn8e9s1zQg4tL2ueR8zmtf9I0UeiuTQhJu9jxVLiag8cccb_qfNv1CWtUVFC1oRNLn359u5EHCQcv7XqLrqh8xEgv_XCA"
               }
             },
             "method": "GET",
@@ -6431,7 +6435,7 @@
               }
             ],
             "url": {
-              "raw": "{{serviceprovider_api}}/selfservice/access?audience={{audience}}",
+              "raw": "{{serviceprovider_api}}/selfservice/access?audience=test-sp-api4740",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -6442,7 +6446,7 @@
               "query": [
                 {
                   "key": "audience",
-                  "value": "{{audience}}"
+                  "value": "test-sp-api4740"
                 }
               ]
             }
