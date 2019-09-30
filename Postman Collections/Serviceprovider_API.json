@@ -6189,10 +6189,10 @@
                   "        ",
                   "pm.response.to.have.status(201);",
                   "var jsonData = pm.response.json();",
-                  "pm.environment.get(\"audience\");",
+                  "pm.environment.unset(\"audience\");",
                   "pm.environment.set(\"audience\", jsonData.audience);",
                   "pm.environment.set(\"id\", jsonData.id);",
-                  "    ",
+                  "",
                   "});"
                 ],
                 "type": "text/javascript"
