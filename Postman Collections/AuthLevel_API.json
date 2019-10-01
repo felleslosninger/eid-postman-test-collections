@@ -292,9 +292,9 @@
             "disableBodyPruning": true
           },
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [],
-            "url": ""
+            "url": "http://localhost:9515/session/{{session}}"
           },
           "response": []
         }
