@@ -218,7 +218,7 @@
                 }
               ]
             },
-            "url": "{{oidc_provider}}/idporten-oidc-provider/token"
+            "url": "{{oidc_provider}}/token"
           },
           "response": []
         }
