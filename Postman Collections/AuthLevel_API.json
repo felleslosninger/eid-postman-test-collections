@@ -281,7 +281,7 @@
               "mode": "raw",
               "raw": "{\r\n  \"harbruktnivaa4\": true,\r\n  \"personidentifikator\": {{ssn}}\r\n}"
             },
-            "url": "{{sp_backend}}/rest/v1/sikkerhetsnivaa"
+            "url": "{{sp_backend}}rest/v1/sikkerhetsnivaa"
           },
           "response": []
         }
