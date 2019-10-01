@@ -1009,6 +1009,19 @@
             "url": "{{authorizations_url}}{{authorization_id}}"
           },
           "response": []
+        },
+        {
+          "name": "deleteSession",
+          "_postman_id": "5be3a0f0-b3d6-420a-9987-c165f96dbb37",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:9515/session/{{session}}"
+          },
+          "response": []
         }
       ],
       "_postman_id": "54ae6c60-f486-4f90-b9d1-6528085d34fe",
