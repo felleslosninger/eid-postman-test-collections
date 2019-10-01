@@ -967,7 +967,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{authorizations_url}}/{{authorization_id}}"
+            "url": "{{authorizations_url}}{{authorization_id}}"
           },
           "response": []
         }
