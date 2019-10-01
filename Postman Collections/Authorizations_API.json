@@ -186,15 +186,15 @@
               {
                 "key": "Content-Type",
                 "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
+                "type": "text",
+                "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"value\":{{client_drop_down}}\n}\n\n"
+              "raw": ""
             },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+            "url": "http://localhost:9515/session/{{session}}/screenshot"
           },
           "response": []
         },
