@@ -284,22 +284,22 @@
             "url": "{{sp_admin}}/rest/v1/sikkerhetsnivaa"
           },
           "response": []
+        },
+        {
+          "name": "deleteSession",
+          "_postman_id": "599de439-1fef-4bd5-87a6-6eaba2512c4b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "8c210a41-406d-4b69-8719-a95f7e4968a5"
-    },
-    {
-      "name": "deleteSession",
-      "_postman_id": "599de439-1fef-4bd5-87a6-6eaba2512c4b",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": ""
-      },
-      "response": []
     }
   ],
   "auth": {
