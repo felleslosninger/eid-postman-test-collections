@@ -183,7 +183,7 @@
                   "});",
                   "pm.test(\"test should check scope parameter\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.scope).to.eql(\"idporten:scopes.write openid profile idporten:scopes.read idporten:authorizations.revoke tokeninfo\");",
+                  "    pm.expect(jsonData.scope).to.eql(\"idporten:scopes.write profile idporten:scopes.read idporten:authorizations.revoke tokeninfo\");",
                   "});"
                 ],
                 "type": "text/javascript"
