@@ -245,7 +245,7 @@
                   "    var jsonData=pm.response.json();",
                   "    pm.environment.set(\"auth_id\",jsonData.active);",
                   "    pm.expect(jsonData.active).to.eql(true);",
-                  "    pm.expect(jsonData.client_id).to.eql(pm.environment.get(\"client_id\"));",
+                  "    pm.expect(jsonData.client_id).to.eql(pm.environment.get(\"clientId\"));",
                   "    pm.expect(jsonData.token_type).to.eql(\"Bearer\");    ",
                   "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
                   "    ",
