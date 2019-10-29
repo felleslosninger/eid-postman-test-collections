@@ -979,7 +979,7 @@
             "auth": {
               "type": "bearer",
               "bearer": {
-                "token": "eyJraWQiOiJBTUhVZWpoMnJWLUpCMU4teWJUVjhLNmQ5QlRFUEhEaTBYR29xUGxuNXprIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ1bnNwZWNpZmllZCIsInN1YiI6IkdGdDNKYkxfSHN6ZW5ud251TWtzdEVaM0hXRG12SEtPekhGSFczTUNWRW89IiwiYWNyIjoiTGV2ZWwzIiwic2NvcGUiOiJvcGVuaWQgaWRwb3J0ZW46dXNlci5sb2cucmVhZCIsImlzcyI6Imh0dHBzOlwvXC9laWQtc3lzdGVzdC13ZWIwMS5kbXoubG9jYWxcL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDAzMTY0IiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImV4cCI6MTU2NTY4ODg3MywiaWF0IjoxNTY1Njg1Mjc2LCJjbGllbnRfaWQiOiJ0ZXN0X3JwX3N5c3Rlc3QiLCJjbGllbnRfb3Jnbm8iOiI5OTE4MjU4MjciLCJqdGkiOiJnSTEwRHNsT1lLZGRYVVFOM1RDVHNMVVRXWlVpRlNuTk4wS2w2OFBIdU9vIn0.ZZ3uh8wDZp1lzL1t2ym0MDWaLaTRtmExEmB4KNCLzfOvrdCifmemyy_3nh8PjPOjJYQb83TZJ8FRHoNDoRsCkXCNyDIatVzGczcnvibw6NOY8LkZVoyb3XGNV61q6ZIL0lIJJmtt6tP9i6h6Jih4gLbwsf-6oh4iPNfm2iWPjInFWdNzIdKcPkipOqHxH68T3Ey3nBsrlYpRcGPPo874Zz-R0fMfDqwvdnw00zCBAJwvwMBa-8qI_Nr-KLd4M_MW4pkdPczQH5P7RQPd3UAfP7TnZS_PxdBSaVwE5DqYvB7zgz9h3ht7YXR17UXjqbqVNtRkSwflz5TkAZrj5uuFsw"
+                "token": "{{accesstoken_eventlogapi}}"
               }
             },
             "method": "GET",
