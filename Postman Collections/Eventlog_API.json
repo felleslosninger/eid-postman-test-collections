@@ -990,7 +990,7 @@
               "mode": "raw",
               "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
             },
-            "url": "https://eid-systest-web01.dmz.local/kontaktinfo-oauth2-server/rest/v1/person"
+            "url": "{{eventlogapiurl}}/kontaktinfo-oauth2-server/rest/v1/person"
           },
           "response": []
         }
@@ -1059,7 +1059,7 @@
               "mode": "raw",
               "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
             },
-            "url": "https://eid-systest-web01.dmz.local/eventlog-api/logg/kontaktregisteret/all"
+            "url": "{{eventlogapiurl}}/eventlog-api/logg/kontaktregisteret/all"
           },
           "response": []
         }
