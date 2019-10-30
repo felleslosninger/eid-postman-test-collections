@@ -934,12 +934,9 @@
               "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
             },
             "url": {
-              "raw": "https://eid-systest-web01.dmz.local/eventlog-api/logg/idporten?maxhits=1",
-              "protocol": "https",
+              "raw": "{{eventlogapiurl}}/eventlog-api/logg/idporten?maxhits=1",
               "host": [
-                "eid-systest-web01",
-                "dmz",
-                "local"
+                "{{eventlogapiurl}}"
               ],
               "path": [
                 "eventlog-api",
