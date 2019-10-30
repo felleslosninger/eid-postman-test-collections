@@ -1059,7 +1059,7 @@
               "mode": "raw",
               "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
             },
-            "url": "{{eventlogapiurl}}/eventlog-api/logg/kontaktregisteret/all"
+            "url": "https://eid-systest-web01.dmz.local/eventlog-api/logg/kontaktregisteret/all"
           },
           "response": []
         }
