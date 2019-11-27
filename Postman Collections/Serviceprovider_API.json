@@ -943,6 +943,45 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "selectdropdown Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "71b563e6-3d7a-4ec1-825f-2add357ef0b1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n\t\"value\":{{client_drop_down}}\r\n}"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
         }
       ],
       "_postman_id": "7e3f0ded-c3a9-4510-9507-f5d473484cda"
@@ -6376,7 +6415,7 @@
           "response": []
         },
         {
-          "name": "/serviceprovider/serviceaccess",
+          "name": "/serviceprovider/selfservice/access",
           "event": [
             {
               "listen": "test",
