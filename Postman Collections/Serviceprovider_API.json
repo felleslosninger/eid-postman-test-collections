@@ -318,7 +318,7 @@
           "response": []
         },
         {
-          "name": "selectdropdown Copy Copy Copy",
+          "name": "selectdropdown",
           "event": [
             {
               "listen": "test",
