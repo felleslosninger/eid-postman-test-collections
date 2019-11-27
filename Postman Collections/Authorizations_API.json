@@ -900,6 +900,45 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "selectdropdown Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9c5f504-80da-4b67-bd66-86c7cb3558c4",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b65fbcc5-1eb1-41ce-8ee3-291af83d79c6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"value\":{{client_drop_down}}\n}\n\n"
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+          },
+          "response": []
         }
       ],
       "_postman_id": "920cf181-0e35-4e90-8154-576ee3ce1bf3"
