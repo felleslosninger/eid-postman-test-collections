@@ -279,7 +279,7 @@
           "response": []
         },
         {
-          "name": "selectdropdown Copy Copy",
+          "name": "selectdropdown",
           "event": [
             {
               "listen": "test",
