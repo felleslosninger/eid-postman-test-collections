@@ -2330,45 +2330,6 @@
           "response": []
         },
         {
-          "name": "clickenter",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93942b66-73f7-40cd-816a-8f6eac550aec",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "8b6fc654-3521-4341-bb61-7887742b78d4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"value\":[\"\\uE007\"]}"
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
-          },
-          "response": []
-        },
-        {
           "name": "findscopeid",
           "event": [
             {
