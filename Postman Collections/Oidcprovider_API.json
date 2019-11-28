@@ -1186,8 +1186,8 @@
                   "        var exp= jsonData.exp;",
                   "    var iat= jsonData.iat;",
                   "    var expires_in=exp-iat;",
-                  "    console.log(iat);",
-                  "    console.log(expires_in);",
+                  "        console.log('oidctoken test iat',iat);",
+                  "     console.log('oidctoken test expires_in',expires_in);",
                   "    pm.expect(expires_in).to.be.above(0);",
                   "});",
                   ""
