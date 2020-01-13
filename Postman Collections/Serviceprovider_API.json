@@ -1786,6 +1786,19 @@
             "url": "{{serviceprovider_api}}/prefix"
           },
           "response": []
+        },
+        {
+          "name": "create",
+          "_postman_id": "8559b282-6c0e-43be-b9c7-f6b3ccf180ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "ef2f624e-17f7-490e-a15f-76dec24f8331",
