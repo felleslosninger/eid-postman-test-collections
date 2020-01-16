@@ -233,7 +233,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "\r\n{\r\n\t\"value\":{{client_drop_down}}\r\n}"
+              "raw": "\r\n{\r\n\t\"value\":{{\"\\uE015\",\"\\uE015\",\"\\uE015\",\"\\uE015\",\"\\uE015\"}}\r\n}"
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
           },
