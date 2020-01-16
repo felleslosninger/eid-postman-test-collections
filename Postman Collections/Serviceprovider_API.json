@@ -4078,7 +4078,7 @@
                           "    pm.response.to.have.status(400);",
                           "    var jsonData=pm.response.json();",
                           "    pm.expect(jsonData.error).to.equal(\"invalid_scope\");",
-                          "    var txt=\"Token contains scopes not available to the client: \"+pm.globals.get(\"new_scope1\")+\",\"+pm.globals.get(\"new_scope2\");",
+                          "    var txt=\"Token request contains invalid scopes for client: \"+pm.globals.get(\"new_scope1\")+\",\"+pm.globals.get(\"new_scope2\")+\",\"+pm.globals.get(\"new_scope2\");",
                           "    console.log(\"error description  \"+txt);",
                           "    pm.expect(jsonData.error_description).to.be.include(txt);",
                           "    ",
