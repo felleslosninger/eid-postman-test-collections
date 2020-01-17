@@ -287,6 +287,20 @@
         },
         {
           "name": "deleteSession",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8c024a64-4bc0-4583-a9e8-2381fa231e6b",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "599de439-1fef-4bd5-87a6-6eaba2512c4b",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
