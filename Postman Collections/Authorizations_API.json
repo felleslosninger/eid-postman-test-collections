@@ -39,7 +39,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\",\r\n\t\t\t\"acceptSslCerts\": true\t            \r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\",\r\n\t\t\t\"acceptInsecureCerts\": true\t            \r\n        }\r\n    }\r\n}"
             },
             "url": "http://localhost:9515/session",
             "description": "\n"
