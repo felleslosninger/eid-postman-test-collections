@@ -251,7 +251,9 @@
                   "",
                   "pm.test(\"Checking correct ssn is returned\", function () {",
                   "    var jsonData = pm.response.json();",
+                  "    console.log('jsonData',jsonData);",
                   "    pm.expect(jsonData.personidentifikator).to.eql(pm.environment.get(\"ssn\"));",
+                  "        console.log('ssn ',pm.environment.get(\"ssn\"));",
                   "});",
                   "",
                   "pm.test(\"response must have a body with json\", function () {",
@@ -288,7 +290,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"harbruktnivaa4\": true,\r\n  \"personidentifikator\": {{ssn}}\r\n}"
+              "raw": "{\r\n  \"harbruktnivaa4\": true,\r\n  \"personidentifikator\": {{ssn}}\r\n}",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "{{sp_admin}}/rest/v1/sikkerhetsnivaa"
           },
