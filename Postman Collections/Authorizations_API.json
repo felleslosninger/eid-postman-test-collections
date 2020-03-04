@@ -128,7 +128,7 @@
           "response": []
         },
         {
-          "name": "finalsubmit  Copy Copy",
+          "name": "finalsubmit",
           "event": [
             {
               "listen": "test",
