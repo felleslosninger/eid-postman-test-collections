@@ -77,6 +77,120 @@
           "response": []
         },
         {
+          "name": "finalsubmit  Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f25e5428-1256-40c6-a140-e027254b0ec4",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "7b3d29ac-5643-469a-aaf9-e4e5ea726348",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "finalsubmit  Copy",
+          "_postman_id": "c4655d15-f6ee-4e1c-87a5-cdfa38688fa3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
+          },
+          "response": []
+        },
+        {
+          "name": "finalsubmit  Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4e3ef304-8df2-4b66-8a6f-dd5d967d7b52",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"link\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "11f46c8c-b409-4774-b9f7-abec33f9680f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"proceed-link\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "finalsubmit  Copy Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4e3ef304-8df2-4b66-8a6f-dd5d967d7b52",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "150ef3ed-ab2b-409c-8684-b27730c849ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{link}}/click"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -234,7 +348,8 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke tokeninfo openid idporten:scopes.read  idporten:scopes.write user/spraak.write user/kontaktinformasjon.read\"\n    ]\n}"
+              "raw": "{\n    \"value\": [\n        \"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke tokeninfo openid idporten:scopes.read idporten:scopes.write user/spraak.write user/kontaktinformasjon.read idporten:authorizationstest.read\"\n    ]\n}",
+              "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
           },
@@ -368,6 +483,24 @@
               "raw": "{\"using\":\"id\",\"value\":\"MinIDChain\"}"
             },
             "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
+          "name": "clickonminid Copy",
+          "_postman_id": "4dd8831b-ad82-4fd0-8965-49a263f87d69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/timeouts/implicit_wait"
           },
           "response": []
         },
@@ -972,6 +1105,112 @@
           "response": []
         },
         {
+          "name": "getRevokedAccessTokenList",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Test will check client id and client name\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
+                  "    ",
+                  "pm.globals.set(\"jti\", jsonData[0].jti);",
+                  "    ",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response must be valid and have a body\", function () {",
+                  "     // assert that the status code is 200",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+                  "     // assert that the response has a valid JSON body",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+                  "});",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.not.be.error; ",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3dba7321-ffe3-4f1d-a3a6-429bbb9520bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": "{{oidc_provider}}/revokelist"
+          },
+          "response": []
+        },
+        {
+          "name": "deleteExpiredRevokedAccessTokens",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "a2647475-3213-4280-b1c2-102f9019e07b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{oidc_provider}}/admin/tasks/revokedAccessTokens/removeExpired"
+          },
+          "response": []
+        },
+        {
           "name": "deleteSession",
           "_postman_id": "5be3a0f0-b3d6-420a-9987-c165f96dbb37",
           "protocolProfileBehavior": {
@@ -1043,7 +1282,8 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
+              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\",\r\n            \"acceptInsecureCerts\" : true\r\n        }\r\n    }\r\n}",
+              "options": {}
             },
             "url": "http://localhost:9515/session",
             "description": "\n"
