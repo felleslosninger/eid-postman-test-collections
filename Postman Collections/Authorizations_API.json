@@ -161,7 +161,7 @@
           "response": []
         },
         {
-          "name": "finalsubmit  Copy Copy Copy",
+          "name": "finalsubmit",
           "event": [
             {
               "listen": "test",
