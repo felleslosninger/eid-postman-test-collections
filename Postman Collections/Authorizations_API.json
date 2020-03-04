@@ -70,7 +70,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n"
+              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/url"
           },
