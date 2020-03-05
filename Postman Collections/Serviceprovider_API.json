@@ -943,6 +943,39 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f25e5428-1256-40c6-a140-e027254b0ec4",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0731b6bf-7dbd-42bc-b6eb-45cb154b0307",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
         }
       ],
       "_postman_id": "7e3f0ded-c3a9-4510-9507-f5d473484cda"
