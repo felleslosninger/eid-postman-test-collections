@@ -897,6 +897,24 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "finalsubmit",
+          "_postman_id": "2fac682f-9ad1-4085-b224-9bd10f9b5d50",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
+          },
+          "response": []
         }
       ],
       "_postman_id": "390fecc1-ca0d-4b04-92c1-28153247a800"
