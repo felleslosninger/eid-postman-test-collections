@@ -241,6 +241,36 @@
           "response": []
         },
         {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4e3ef304-8df2-4b66-8a6f-dd5d967d7b52",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1298b2f8-52c4-480f-ab62-ff65c7617128",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{link}}/click"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -1025,36 +1055,6 @@
               "raw": ""
             },
             "url": "http://localhost:9515/session/{{session}}/source"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4e3ef304-8df2-4b66-8a6f-dd5d967d7b52",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1298b2f8-52c4-480f-ab62-ff65c7617128",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{link}}/click"
           },
           "response": []
         }
