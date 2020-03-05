@@ -2205,7 +2205,7 @@
                   "    pm.response.to.have.jsonBody(\"error\"); ",
                   "    tests[\"error is present\"]=responseBody.has(\"error\");",
                   "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
-                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
+                  "   // tests[\"scope is present\"]=responseBody.has(\"scope\");",
                   "});",
                   ""
                 ],
