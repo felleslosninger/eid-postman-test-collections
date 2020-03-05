@@ -157,6 +157,39 @@
           "response": []
         },
         {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f25e5428-1256-40c6-a140-e027254b0ec4",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "0731b6bf-7dbd-42bc-b6eb-45cb154b0307",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -946,22 +979,7 @@
         },
         {
           "name": "finalsubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f25e5428-1256-40c6-a140-e027254b0ec4",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "0731b6bf-7dbd-42bc-b6eb-45cb154b0307",
+          "_postman_id": "87f973f8-5b89-4c41-b51e-e5d4299e20aa",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -970,10 +988,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
+              "raw": "",
               "options": {}
             },
-            "url": "http://localhost:9515/session/{{session}}/element"
+            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
           },
           "response": []
         }
