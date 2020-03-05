@@ -113,6 +113,24 @@
           "response": []
         },
         {
+          "name": "finalsubmit",
+          "_postman_id": "2fac682f-9ad1-4085-b224-9bd10f9b5d50",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -900,7 +918,22 @@
         },
         {
           "name": "finalsubmit",
-          "_postman_id": "2fac682f-9ad1-4085-b224-9bd10f9b5d50",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4e3ef304-8df2-4b66-8a6f-dd5d967d7b52",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"link\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "834a494a-4883-4ed7-b939-b77ed8f6c6fa",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -909,10 +942,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "",
+              "raw": "{\"using\":\"id\",\"value\":\"proceed-link\"}",
               "options": {}
             },
-            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
+            "url": "http://localhost:9515/session/{{session}}/element"
           },
           "response": []
         }
