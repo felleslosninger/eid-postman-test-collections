@@ -860,7 +860,7 @@
                 "type": "text"
               }
             ],
-            "url": "{{oidc_provider}}/revokelist"
+            "url": "{{oidc_provider_url}}/revokelist"
           },
           "response": []
         },
