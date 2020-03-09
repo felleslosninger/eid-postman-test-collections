@@ -1107,7 +1107,7 @@
                   "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
                   "    ",
                   "//pm.globals.set(\"jti\", jsonData[0].jti);",
-                  "    console.write(jsonData[0].jti);",
+                  "//    console.write(jsonData[0].jti);",
                   "});",
                   "",
                   "",
