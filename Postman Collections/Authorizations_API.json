@@ -490,24 +490,6 @@
           "response": []
         },
         {
-          "name": "clickonminid Copy",
-          "_postman_id": "4dd8831b-ad82-4fd0-8965-49a263f87d69",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/timeouts/implicit_wait"
-          },
-          "response": []
-        },
-        {
           "name": "clickonminid",
           "_postman_id": "09f590a1-2399-46c8-9040-db9ad4da53a5",
           "protocolProfileBehavior": {
