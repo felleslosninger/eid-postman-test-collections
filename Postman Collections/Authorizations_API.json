@@ -2,6 +2,7 @@
   "info": {
     "_postman_id": "7ee5b4e8-e8d8-4927-b6fd-737abf5a12a9",
     "name": "Authorizations API",
+    "description": "Dette apiet gjer det mogleg \u00e5 hente ut og slette samtykke for ein brukar basert p\u00e5 personnummer",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
