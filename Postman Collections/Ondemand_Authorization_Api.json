@@ -798,6 +798,71 @@
             "url": "{{apiurl}}{{authorization_id}}"
           },
           "response": []
+        },
+        {
+          "name": "getRevokedAccessTokenList",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Test will check client id and client name\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
+                  "    ",
+                  "//pm.globals.set(\"jti\", jsonData[0].jti);",
+                  "//    console.write(jsonData[0].jti);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response must be valid and have a body\", function () {",
+                  "     // assert that the status code is 200",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+                  "     // assert that the response has a valid JSON body",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+                  "});",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.not.be.error; ",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bb25a82f-07d9-4aae-a53f-5f062cbb60f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": "{{oidc_provider}}/revokelist"
+          },
+          "response": []
         }
       ],
       "_postman_id": "cb62e17f-947b-44a8-a573-30b9601b49f0",
