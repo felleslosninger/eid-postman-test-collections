@@ -904,6 +904,19 @@
             "url": "{{oidc_provider}}/admin/tasks/revokedAccessTokens/removeExpired"
           },
           "response": []
+        },
+        {
+          "name": "deleteSession",
+          "_postman_id": "8b32bccf-6585-4a6c-96d1-1d29c270cab0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:9515/session/{{session}}"
+          },
+          "response": []
         }
       ],
       "_postman_id": "cb62e17f-947b-44a8-a573-30b9601b49f0",
