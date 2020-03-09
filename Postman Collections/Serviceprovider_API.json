@@ -3936,7 +3936,10 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\"\n}"
+                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\",\n    \"integration_type\": \"maskinporten\"\n\t\n}",
+                  "options": {
+                    "raw": {}
+                  }
                 },
                 "url": "{{serviceprovider_api}}/clients"
               },
