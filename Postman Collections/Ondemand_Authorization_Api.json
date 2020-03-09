@@ -901,7 +901,7 @@
                 "value": "application/json"
               }
             ],
-            "url": "{{oidc_provider}}/admin/tasks/revokedAccessTokens/removeExpired"
+            "url": "{{oidc_provider_url}}/admin/tasks/revokedAccessTokens/removeExpired"
           },
           "response": []
         },
