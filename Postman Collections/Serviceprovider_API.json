@@ -5809,7 +5809,7 @@
                   "response": []
                 },
                 {
-                  "name": "/clients",
+                  "name": "put /clients",
                   "event": [
                     {
                       "listen": "test",
