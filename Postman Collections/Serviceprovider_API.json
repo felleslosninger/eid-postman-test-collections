@@ -5845,7 +5845,10 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"client_name\": \"lra-oidc-test\",\r\n    \"description\": \"lra sin testklient oidc\",\r\n    \"scopes\": [\r\n        \"openid\",\r\n        \"profile\",\r\n        \"{{new_scope1}}\",\r\n        \"{{new_scope2}}\",\r\n        \"{{new_scope3}}\"\r\n    ],\r\n    \"authorization_lifetime\": 3600,\r\n    \"access_token_lifetime\": 3600,\r\n    \"refresh_token_lifetime\": 3600,\r\n    \"refresh_token_usage\": \"ONETIME\",\r\n    \"frontchannel_logout_session_required\": false,\r\n    \"grant_types\": [\r\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\r\n    ],\r\n    \"active\": true,\r\n    \"client_uri\": \"https://wwww.knut.no\",\r\n    \"last_updated\": \"2019-09-12T14:35:00.765+02:00\",\r\n    \"created\": \"2019-09-12T14:29:32.273+02:00\",\r\n    \"client_id\": \"08bcfe94-b704-4c66-b654-a7a1458b75df\"\r\n    \r\n}"
+                      "raw": "{\r\n    \"client_name\": \"lra-oidc-test\",\r\n    \"description\": \"lra sin testklient oidc\",\r\n    \"scopes\": [\r\n        \"openid\",\r\n        \"profile\",\r\n        \"{{new_scope1}}\",\r\n        \"{{new_scope2}}\",\r\n        \"{{new_scope3}}\"\r\n    ],\r\n    \"authorization_lifetime\": 3600,\r\n    \"access_token_lifetime\": 3600,\r\n    \"refresh_token_lifetime\": 3600,\r\n    \"refresh_token_usage\": \"ONETIME\",\r\n    \"frontchannel_logout_session_required\": false,\r\n    \"grant_types\": [\r\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\r\n    ],\r\n    \"active\": true,\r\n    \"client_uri\": \"https://wwww.knut.no\",\r\n    \"last_updated\": \"2019-09-12T14:35:00.765+02:00\",\r\n    \"created\": \"2019-09-12T14:29:32.273+02:00\",\r\n    \"client_id\": \"08bcfe94-b704-4c66-b654-a7a1458b75df\",\r\n    \"integration_type\":\"maskinporten\"\r\n    \r\n}",
+                      "options": {
+                        "raw": {}
+                      }
                     },
                     "url": "{{serviceprovider_api}}/clients/{{sp_client_scope}}"
                   },
