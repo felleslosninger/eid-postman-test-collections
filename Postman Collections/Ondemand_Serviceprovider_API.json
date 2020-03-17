@@ -1395,7 +1395,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\n    \"name\": \"tullenamn:lra\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n\"integration_type\":\"maskinporten\"   \n\n}",
+              "raw": "{\n\t\n    \"name\": \"tullenamn:lra\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}",
               "options": {
                 "raw": {}
               }
@@ -1950,10 +1950,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\",\n    \"integration_type\":\"maskinporten\"\n}",
-                  "options": {
-                    "raw": {}
-                  }
+                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\"\n}"
                 },
                 "url": "{{serviceprovider_api}}/clients"
               },
