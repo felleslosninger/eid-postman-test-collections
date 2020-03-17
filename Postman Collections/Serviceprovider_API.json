@@ -4154,7 +4154,18 @@
                     "exec": [
                       "pm.test(\"Status code is 200\", function () {",
                       "    pm.response.to.have.status(200);",
-                      "});"
+                      "});",
+                      "",
+                      "",
+                      "pm.test(\"/put clients \", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    console.log(\"generated new client is  \",jsonData.client_id);",
+                      "    pm.environment.set(\"sp_client_scope\", jsonData.client_id);",
+                      "    console.log(\"sp_client_scope\",jsonData.client_id);",
+                      "",
+                      "}",
+                      "",
+                      ");"
                     ],
                     "type": "text/javascript"
                   }
