@@ -1395,7 +1395,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\n    \"name\": \"tullenamn:lra\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\"\n\n}",
+              "raw": "{\n\t\n    \"name\": \"tullenamn:lra\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er Knut sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n\"integration_type\":\"maskinporten\"   \n\n}",
               "options": {
                 "raw": {}
               }
@@ -1950,7 +1950,10 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\"\n}"
+                  "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"client_type\": \"PUBLIC\",\n    \"token_reference\": \"OPAQUE\",\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"force_pkce\": false,\n    \"client_id\": \"123456789\",\n    \"client_orgno\": null,\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"supplier_orgno\": null,\n    \"active\": true,\n    \"default_scopes\": [],\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\",\n    \"integration_type\":\"maskinporten\"\n}",
+                  "options": {
+                    "raw": {}
+                  }
                 },
                 "url": "{{serviceprovider_api}}/clients"
               },
@@ -2134,6 +2137,64 @@
                   "raw": "{\n\t\n    \"name\": \"tullenamn:lra\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"last_updated\": \"2019-02-08T09:09:12.057+01:00\",\n    \"created\": \"2019-02-07T10:47:00.086+01:00\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":false   \n\n}"
                 },
                 "url": "{{serviceprovider_api}}/scopes"
+              },
+              "response": []
+            },
+            {
+              "name": "/clients",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "a8881322-43a7-4570-bdd3-88d8f73c9a97",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "",
+                      "pm.test(\"/put clients \", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    console.log(\"generated new client is  \",jsonData.client_id);",
+                      "    pm.environment.set(\"sp_client_scope\", jsonData.client_id);",
+                      "    console.log(\"sp_client_scope\",jsonData.client_id);",
+                      "",
+                      "}",
+                      "",
+                      ");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "bf16dc39-a294-4396-bf69-101a1c37dd0c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\n{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"grant_types\": [\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n    ],\n    \"integration_type\": \"maskinporten\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"active\": true,\n     \"scopes\": [\n       \"{{new_scope1}}\",\"{{new_scope2}}\",\"{{new_scope3}}\"\n        \n    ]\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": "{{serviceprovider_api}}/clients/{{sp_client_id}}"
               },
               "response": []
             }
@@ -2783,7 +2844,10 @@
                           "value": "{{assertion}}",
                           "type": "text"
                         }
-                      ]
+                      ],
+                      "options": {
+                        "urlencoded": {}
+                      }
                     },
                     "url": "{{oidc_provider_url}}/token"
                   },
