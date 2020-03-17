@@ -1259,7 +1259,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"client_name\": \"oidc_testautomasjon_test3\",\n    \"description\": \"cucumber-creating_oidc_client\",\n\t\"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],    \n    \"scopes\": [\n        \"openid\",\n        \"profile\"\n    ]\n}"
+              "raw": "{\n    \"client_name\": \"oidc_testautomasjon_test3\",\n    \"description\": \"cucumber-creating_oidc_client\",\n\t\"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],    \n\t\"integration_type\": \"maskinporten\",\n    \"scopes\": [\n        \"openid\",\n        \"profile\"\n    ]\n}",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "{{serviceprovider_api}}/clients/{{sp_client_id}}"
           },
