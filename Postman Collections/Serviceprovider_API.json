@@ -4182,7 +4182,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "\n{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"grant_types\": [\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n    ],\n    \"integration_type\": \"maskinporten\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"client_orgno\": \"991825827\",\n    \"active\": true,\n     \"scopes\": [\n       {{new_scope1}},{{new_scope2}},{{new_scope3}}\n        \n    ]\n}",
+                  "raw": "\n{\n    \"description\": \"lra sin testklient oidc\",\n    \"authorization_lifetime\": 3600,\n    \"access_token_lifetime\": 3600,\n    \"refresh_token_lifetime\": 3600,\n    \"refresh_token_usage\": \"ONETIME\",\n    \"frontchannel_logout_session_required\": false,\n    \"grant_types\": [\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n    ],\n    \"integration_type\": \"maskinporten\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"active\": true,\n     \"scopes\": [\n       \"{{new_scope1}}\",\"{{new_scope2}}\",\"{{new_scope3}}\"\n        \n    ]\n}",
                   "options": {
                     "raw": {}
                   }
