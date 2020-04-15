@@ -113,7 +113,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{clientId}}&audience={{audience_url}}/&scope=profile%20idporten:scopes.write%20idporten:scopes.read%20idporten:authorizations.revoke\"}\n",
+              "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{clientId}}&audience={{audience_url}}/&scope=profile%20idporten:scopes.write%20idporten:scopes.read%20idporten:authorizations.revoke%20tokeninfo\"}\n",
               "options": {
                 "raw": {}
               }
