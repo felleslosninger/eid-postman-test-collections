@@ -113,7 +113,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{clientId}}&audience={{audience_url}}/&scope=profile%20idporten:scopes.write%20idporten:scopes.read%20tokeninfo%20idporten:authorizations.revoke\"}\n"
+              "raw": "{\"url\":\"http://34.239.102.186/jwtgrant?issuer={{clientId}}&audience={{audience_url}}/&scope=profile%20idporten:scopes.write%20idporten:scopes.read%20idporten:authorizations.revoke\"}\n",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/url"
           },
