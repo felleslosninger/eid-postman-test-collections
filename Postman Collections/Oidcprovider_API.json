@@ -186,7 +186,7 @@
                   "});",
                   "pm.test(\"test should check scope parameter\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.scope).to.eql(\"idporten:scopes.write profile idporten:scopes.read idporten:authorizations.revoke tokeninfo profile\");",
+                  "    pm.expect(jsonData.scope).to.eql(\"idporten:scopes.read idporten:scopes.write profile tokeninfo idporten:authorizations.revoke\");",
                   "});"
                 ],
                 "type": "text/javascript"
