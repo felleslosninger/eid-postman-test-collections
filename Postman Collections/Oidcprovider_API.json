@@ -1330,7 +1330,7 @@
               "    console.log(\"values\"+jsonData.error);",
               "    var error=jsonData.error;",
               "    pm.expect(jsonData.error).to.include(\"invalid_grant\");",
-              "    pm.expect(jsonData.error_description).to.include(\"Invalid assertion. Grant has been used before.\");",
+              "    pm.expect(jsonData.error_description).to.be.include(\"Invalid assertion. Client authentication failed. Expired JWT. .* \");",
               "    ",
               "    console.log(\"values\"+jsonData.error);",
               "",
@@ -1375,7 +1375,10 @@
               "value": "{{assertion}}",
               "type": "text"
             }
-          ]
+          ],
+          "options": {
+            "urlencoded": {}
+          }
         },
         "url": "{{oidc_provider}}/token"
       },
