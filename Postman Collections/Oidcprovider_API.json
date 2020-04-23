@@ -1330,10 +1330,10 @@
               "    console.log(\"values\"+jsonData.error);",
               "    var error=jsonData.error;",
               "    pm.expect(jsonData.error).to.include(\"invalid_grant\");",
-              "    pm.expect(jsonData.error_description).to.be.include(\"Invalid assertion. Client authentication failed. Expired JWT. .* \");",
+              "    pm.expect(jsonData.error_description).to.be.include(\"Invalid assertion. Client authentication failed. Expired JWT. (correlation id: 6e6545e5-d4a3-43fc-a52c-e5eafc926f8d) \");",
               "    ",
-              "    console.log(\"values\"+jsonData.error);",
-              "",
+              "  ",
+              "console.log(\"values\"+jsonData.error_description);",
               "});"
             ],
             "type": "text/javascript"
