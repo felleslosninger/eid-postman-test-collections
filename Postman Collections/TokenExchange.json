@@ -1983,15 +1983,11 @@
           }
         },
         "url": {
-          "raw": "https://eid-systest-web01.dmz.local/idporten-oidc-provider/tokenexchange",
-          "protocol": "https",
+          "raw": "{{web_host}}idporten-oidc-provider/tokenexchange",
           "host": [
-            "eid-systest-web01",
-            "dmz",
-            "local"
+            "{{web_host}}idporten-oidc-provider"
           ],
           "path": [
-            "idporten-oidc-provider",
             "tokenexchange"
           ],
           "query": [
