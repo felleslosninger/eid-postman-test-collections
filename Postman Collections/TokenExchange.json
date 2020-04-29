@@ -1850,15 +1850,11 @@
           }
         },
         "url": {
-          "raw": "https://eid-systest-web01.dmz.local/idporten-tokenexchange/token",
-          "protocol": "https",
+          "raw": "{{web_host}}idporten-tokenexchange/token",
           "host": [
-            "eid-systest-web01",
-            "dmz",
-            "local"
+            "{{web_host}}idporten-tokenexchange"
           ],
           "path": [
-            "idporten-tokenexchange",
             "token"
           ],
           "query": [
