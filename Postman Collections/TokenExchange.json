@@ -162,7 +162,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "\r\n{\r\n\t\"value\":{{client_drop_down}}\r\n}",
+              "raw": "\r\n{\r\n\t\"value\":{{client_drop_down_midifi}}\r\n}",
               "options": {
                 "raw": {}
               }
