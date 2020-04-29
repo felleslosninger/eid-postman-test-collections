@@ -1767,6 +1767,20 @@
     },
     {
       "name": "idporten-tokenExchange",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "99abf1e2-559a-406a-939e-ff52e7202a04",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "_postman_id": "df975b89-6025-4756-aa6d-38fde085a340",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
