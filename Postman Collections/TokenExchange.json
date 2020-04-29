@@ -1904,6 +1904,20 @@
     },
     {
       "name": "tokenExchange",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "997cf00a-a44f-435c-a45a-021174b47103",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "_postman_id": "5423c421-9c51-4fed-8eac-2fbd95a2d95a",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
