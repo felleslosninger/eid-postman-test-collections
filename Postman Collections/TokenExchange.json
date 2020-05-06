@@ -39,7 +39,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"desiredCapabilities\": {\n        \"caps\": {\n            \"nativeEvents\": true,\n            \"browserName\": \"firefox\",\n            \"version\": \"\",\n            \"platform\": \"ANY\",\n            \"acceptInsecureCerts\": \"true\",\n            \"acceptSslCerts\": true,\n            \"maxInstances\": 2,\n            \"goog:chromeOptions\": {\n                \"args\": \"--incognito\"\n            }\n        }\n    }\n}",
+              "raw": "{\n    \"desiredCapabilities\": {\n        \"caps\": {\n            \"nativeEvents\": true,\n            \"browserName\": \"chrome\",\n            \"version\": \"\",\n            \"platform\": \"ANY\"\n        }\n    }\n}",
               "options": {
                 "raw": {
                   "language": "json"
