@@ -39,9 +39,11 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}",
+              "raw": "\r\n{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": true,\r\n            \"browserName\": \"firefox\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\",\r\n\t\t\t\"acceptInsecureCerts\": true,\r\n\t\t\t\"acceptSslCerts\": true,\r\n\t\t\t \"maxInstances\": 2,\r\n    \"goog:chromeOptions\": {\r\n      \"args\":\"--ignore-certificate-errors,--disable-web-security\"\r\n   \r\n    }\r\n        }\r\n}\r\n}",
               "options": {
-                "raw": {}
+                "raw": {
+                  "language": "json"
+                }
               }
             },
             "url": "http://localhost:9515/session",
