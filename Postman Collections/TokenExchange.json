@@ -25,7 +25,12 @@
           ],
           "_postman_id": "438b5d28-1269-4784-ab57-ca3cebd3a43a",
           "protocolProfileBehavior": {
-            "disableBodyPruning": true
+            "disableBodyPruning": true,
+            "tlsPreferServerCiphers": true,
+            "removeRefererHeaderOnRedirect": true,
+            "tlsDisabledProtocols": [
+              "SSLv3"
+            ]
           },
           "request": {
             "method": "POST",
@@ -39,7 +44,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"desiredCapabilities\": {\n        \"caps\": {\n            \"nativeEvents\": true,\n            \"browserName\": \"chrome\",\n            \"version\": \"\",\n            \"platform\": \"ANY\"\n        }\n    }\n}",
+              "raw": "{\n    \"desiredCapabilities\": {\n        \"caps\": {\n            \"nativeEvents\": true,\n            \"browserName\": \"chrome\",\n            \"version\": \"\",\n            \"platform\": \"ANY\"\n        },\n        \"goog:chromeOptions\": {\n            \"args\": \"--ignore-certificate-errors\"\n        }\n    }\n}",
               "options": {
                 "raw": {
                   "language": "json"
