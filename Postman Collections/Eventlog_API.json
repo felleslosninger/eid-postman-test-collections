@@ -2032,226 +2032,6 @@
       "_postman_id": "0063687a-0624-4d27-b8f8-9ff4143d8344"
     },
     {
-      "name": "Logg-innslag",
-      "item": [
-        {
-          "name": "/logg/idporten",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "75ea3cc3-43ca-4719-b8de-974667c6ad94",
-                "exec": [
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "pm.test(\"Test will check integrasjon_id\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].integrasjon_id).to.eql(\"oidc_test_api-postman\");",
-                  "",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"response must be valid and have a body\", function () {",
-                  "     // assert that the status code is 200",
-                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
-                  "     // assert that the response has a valid JSON body",
-                  "     pm.response.to.be.withBody;",
-                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-                  "});",
-                  "",
-                  "pm.test(\"response should be okay to process\", function () { ",
-                  "    pm.response.to.not.be.error; ",
-                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
-                  "});",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "tests[\"tidspunkt is present\"]=responseBody.has(\"tidspunkt\");",
-                  "tests[\"tjeneste is present\"]=responseBody.has(\"tjeneste\");",
-                  "tests[\"eid is present\"]=responseBody.has(\"eid\");",
-                  "tests[\"integrasjon_id is present\"]=responseBody.has(\"integrasjon_id\");",
-                  "tests[\"orgno is present\"]=responseBody.has(\"orgno\");",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "df4324ac-d5f0-42b2-b725-8f32402864ec",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{accesstoken_eventlogapi}}"
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
-            },
-            "url": {
-              "raw": "{{eventlogapiurl}}/eventlog-api/logg/idporten?maxhits=1",
-              "host": [
-                "{{eventlogapiurl}}"
-              ],
-              "path": [
-                "eventlog-api",
-                "logg",
-                "idporten"
-              ],
-              "query": [
-                {
-                  "key": "maxhits",
-                  "value": "1"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "/rest/v1/person",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "299aba29-2bbf-43bd-bdf9-bec968ee3a7c",
-                "exec": [
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "007914f6-b3aa-49b1-b2ad-4b7042478824",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{accesstoken_eventlogapi}}"
-              }
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
-            },
-            "url": "{{eventlogapiurl}}/kontaktinfo-oauth2-server/rest/v1/person"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "78aa6570-a65a-44d0-bea7-e0a34c2e0516"
-    },
-    {
-      "name": "Bruk av kontaktinfo",
-      "item": [
-        {
-          "name": "/logg/kontaktregisteret/all",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "75ea3cc3-43ca-4719-b8de-974667c6ad94",
-                "exec": [
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"response must be valid and have a body\", function () {",
-                  "     // assert that the status code is 200",
-                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
-                  "     // assert that the response has a valid JSON body",
-                  "     pm.response.to.be.withBody;",
-                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-                  "});",
-                  "",
-                  "pm.test(\"response should be okay to process\", function () { ",
-                  "    pm.response.to.not.be.error; ",
-                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
-                  "});",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "tests[\"tidspunkt is present\"]=responseBody.has(\"timeStamp\");",
-                  "tests[\"tjeneste is present\"]=responseBody.has(\"informasjonsbehov\");",
-                  "tests[\"eid is present\"]=responseBody.has(\"log_type\");",
-                  "tests[\"integrasjon_id is present\"]=responseBody.has(\"log_type_description\");",
-                  "tests[\"orgno is present\"]=responseBody.has(\"orgno\");",
-                  "tests[\"on_behalf_of is present\"]=responseBody.has(\"on_behalf_of\");",
-                  "tests[\"person_identifier is present\"]=responseBody.has(\"person_identifier\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "fa740821-bf3c-4c36-8522-374e9cebd96c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{accesstoken_eventlogapi}}"
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
-            },
-            "url": "{{eventlogapiurl}}/eventlog-api/logg/kontaktregisteret/all"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "a62cd937-da80-4b91-8bec-618cf03708fc",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "f2ab9df1-0590-436e-be37-72ee56a1ce6d",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "73abcd08-bcd5-45fc-84ca-6886d19efe8a",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "Hente gyldig accesstoken med riktig scopen Copy Copy",
       "item": [
         {
@@ -3299,6 +3079,226 @@
         }
       ],
       "_postman_id": "d513d728-a1fb-49fb-bbb7-3e5ed1d26a4e"
+    },
+    {
+      "name": "Logg-innslag",
+      "item": [
+        {
+          "name": "/logg/idporten",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "75ea3cc3-43ca-4719-b8de-974667c6ad94",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Test will check integrasjon_id\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].integrasjon_id).to.eql(\"oidc_test_api-postman\");",
+                  "",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"response must be valid and have a body\", function () {",
+                  "     // assert that the status code is 200",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+                  "     // assert that the response has a valid JSON body",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+                  "});",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.not.be.error; ",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "tests[\"tidspunkt is present\"]=responseBody.has(\"tidspunkt\");",
+                  "tests[\"tjeneste is present\"]=responseBody.has(\"tjeneste\");",
+                  "tests[\"eid is present\"]=responseBody.has(\"eid\");",
+                  "tests[\"integrasjon_id is present\"]=responseBody.has(\"integrasjon_id\");",
+                  "tests[\"orgno is present\"]=responseBody.has(\"orgno\");",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "df4324ac-d5f0-42b2-b725-8f32402864ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{accesstoken_eventlogapi}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
+            },
+            "url": {
+              "raw": "{{eventlogapiurl}}/eventlog-api/logg/idporten?maxhits=1",
+              "host": [
+                "{{eventlogapiurl}}"
+              ],
+              "path": [
+                "eventlog-api",
+                "logg",
+                "idporten"
+              ],
+              "query": [
+                {
+                  "key": "maxhits",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/rest/v1/person",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "299aba29-2bbf-43bd-bdf9-bec968ee3a7c",
+                "exec": [
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "007914f6-b3aa-49b1-b2ad-4b7042478824",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{accesstoken_eventlogapi}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
+            },
+            "url": "{{eventlogapiurl}}/kontaktinfo-oauth2-server/rest/v1/person"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "78aa6570-a65a-44d0-bea7-e0a34c2e0516"
+    },
+    {
+      "name": "Bruk av kontaktinfo",
+      "item": [
+        {
+          "name": "/logg/kontaktregisteret/all",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "75ea3cc3-43ca-4719-b8de-974667c6ad94",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"response must be valid and have a body\", function () {",
+                  "     // assert that the status code is 200",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+                  "     // assert that the response has a valid JSON body",
+                  "     pm.response.to.be.withBody;",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+                  "});",
+                  "",
+                  "pm.test(\"response should be okay to process\", function () { ",
+                  "    pm.response.to.not.be.error; ",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); ",
+                  "});",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
+                  "tests[\"tidspunkt is present\"]=responseBody.has(\"timeStamp\");",
+                  "tests[\"tjeneste is present\"]=responseBody.has(\"informasjonsbehov\");",
+                  "tests[\"eid is present\"]=responseBody.has(\"log_type\");",
+                  "tests[\"integrasjon_id is present\"]=responseBody.has(\"log_type_description\");",
+                  "tests[\"orgno is present\"]=responseBody.has(\"orgno\");",
+                  "tests[\"on_behalf_of is present\"]=responseBody.has(\"on_behalf_of\");",
+                  "tests[\"person_identifier is present\"]=responseBody.has(\"person_identifier\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "fa740821-bf3c-4c36-8522-374e9cebd96c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{accesstoken_eventlogapi}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
+            },
+            "url": "{{eventlogapiurl}}/eventlog-api/logg/kontaktregisteret/all"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "a62cd937-da80-4b91-8bec-618cf03708fc",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f2ab9df1-0590-436e-be37-72ee56a1ce6d",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "73abcd08-bcd5-45fc-84ca-6886d19efe8a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     }
   ],
   "auth": {
