@@ -773,6 +773,36 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4a45222b-cd2c-407e-8745-c92e60cd5769",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "596d8739-d4c4-40fe-b7be-9d23462101bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{link}}/click"
+          },
+          "response": []
         }
       ],
       "_postman_id": "0bd8eb93-047e-489a-9cbc-c42bc033812c",
