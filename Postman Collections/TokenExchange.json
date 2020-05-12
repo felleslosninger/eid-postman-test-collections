@@ -90,6 +90,39 @@
           "response": []
         },
         {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "08f004e9-ebf5-47ef-b6ea-05d8d77c8cdd",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "ad579881-d3e7-425a-aa5c-f3f30df11257",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -687,39 +720,6 @@
               }
             },
             "url": "http://localhost:9515/session/{{session}}/source"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "08f004e9-ebf5-47ef-b6ea-05d8d77c8cdd",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"crtlink\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "ad579881-d3e7-425a-aa5c-f3f30df11257",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"details-button\"}",
-              "options": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
           },
           "response": []
         }
