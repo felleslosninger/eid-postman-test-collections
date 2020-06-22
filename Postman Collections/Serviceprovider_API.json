@@ -206,7 +206,7 @@
                 {
                   "key": "assertion",
                   "type": "text",
-                  "value": "{{maskinporten_assertion}}"
+                  "value": "{{access_token_sp}}"
                 }
               ],
               "options": {
