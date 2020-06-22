@@ -6666,6 +6666,201 @@
         }
       ],
       "_postman_id": "60da0d88-8ec9-44f8-a2c1-e20b2548329b"
+    },
+    {
+      "name": "Hente gyldig accesstoken med riktig scope",
+      "item": [
+        {
+          "name": "postreq",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "20b811ca-8f56-45f6-8f22-03b88471758f",
+                "exec": [
+                  "pm.globals.set(\"maskinporten_assertion\",pm.response.text());"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8559260e-bf9c-43f3-8025-9ebf4facd325",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": "{{maskinporten_jwtgranturl}}"
+          },
+          "response": [
+            {
+              "id": "c6eb9722-486c-41e8-8750-1aec215a0290",
+              "name": "postreq",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                },
+                "url": "http://localhost:9515/session"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "60d6181a-bc34-45f7-acd9-b73563408b7a",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "    pm.globals.set(\"krrtoken\",jsonData.access_token);",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "6a67f3ba-5e9d-47e1-8554-627d2a4e0219",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "type": "text",
+                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer"
+                },
+                {
+                  "key": "assertion",
+                  "type": "text",
+                  "value": "{{maskinporten_assertion}}"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{audience_url}}/token"
+          },
+          "response": []
+        },
+        {
+          "name": "tokeninfo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "be8e86e5-7e06-41e5-bc3b-c7bddd7b02d0",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "   // pm.globals.set(\"krrtoken\",jsonData.access_token);",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "85e1ca69-f344-4db7-95f7-191807b01b1c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "token",
+                  "type": "text",
+                  "value": "{{oidctoken}}"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{audience_url}}/tokeninfo"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "1e049047-a6f4-4f95-a70f-d8384e45293c"
     }
   ],
   "auth": {
