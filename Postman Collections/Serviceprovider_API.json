@@ -96,7 +96,12 @@
               "script": {
                 "id": "20b811ca-8f56-45f6-8f22-03b88471758f",
                 "exec": [
-                  "pm.globals.set(\"maskinporten_assertion\",pm.response.text());"
+                  "\r",
+                  "\r",
+                  "pm.test(\"tokens\", function () {\r",
+                  "pm.globals.set(\"access_token_sp\",pm.response.text());\r",
+                  " \r",
+                  "});"
                 ],
                 "type": "text/javascript"
               }
@@ -120,7 +125,7 @@
                 "disabled": true
               }
             ],
-            "url": "{{maskinporten_jwtgranturl}}"
+            "url": "{{jwt_sp_url}}"
           },
           "response": [
             {
@@ -164,7 +169,7 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "    var jsonData=pm.response.json();",
-                  "    pm.globals.set(\"krrtoken\",jsonData.access_token);",
+                  "    pm.globals.set(\"oidctoken\",jsonData.access_token);",
                   "",
                   "});",
                   ""
