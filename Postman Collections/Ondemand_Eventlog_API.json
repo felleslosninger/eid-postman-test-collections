@@ -75,7 +75,7 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "    var jsonData=pm.response.json();",
-                  "    pm.globals.set(\"access_token_sp\",jsonData.access_token);",
+                  "    pm.globals.set(\"eventlog_token\",jsonData.access_token);",
                   "",
                   "});",
                   ""
