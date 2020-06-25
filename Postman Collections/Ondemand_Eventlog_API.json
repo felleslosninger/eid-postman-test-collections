@@ -41,7 +41,7 @@
               }
             ],
             "url": {
-              "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=idporten:dcr.read idporten:dcr.write idporten:dcr.modify",
+              "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=idporten:dcr.read idporten:dcr.write idporten:dcr.modify user/kontaktinformasjon.read user/spraak.read  user/spraak.write idporten:user.log.read idporten:user.log.read idporten:user.log.all.read krr:user.log.all.read",
               "host": [
                 "{{jwt_grant_url}}"
               ],
@@ -56,7 +56,7 @@
                 },
                 {
                   "key": "scope",
-                  "value": "idporten:dcr.read idporten:dcr.write idporten:dcr.modify"
+                  "value": "idporten:dcr.read idporten:dcr.write idporten:dcr.modify user/kontaktinformasjon.read user/spraak.read  user/spraak.write idporten:user.log.read idporten:user.log.read idporten:user.log.all.read krr:user.log.all.read"
                 }
               ]
             }
