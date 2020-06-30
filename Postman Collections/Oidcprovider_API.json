@@ -132,75 +132,6 @@
       "_postman_id": "6e4ebe69-5fe1-4c6c-82ec-e56fe28c1938"
     },
     {
-      "name": "/token invalid grant test (grant has used)",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
-            "exec": [
-              "",
-              "pm.test(\"invalid_grant should return 400\", function () {",
-              "    pm.response.to.have.status(400);",
-              "    var jsonData=pm.response.json();",
-              "    console.log(\"values\"+jsonData.error);",
-              "    var error=jsonData.error;",
-              "    pm.expect(jsonData.error).to.include(\"invalid_grant\");",
-              "    pm.expect(jsonData.error_description).to.be.that.include(\"Invalid assertion. Client authentication failed. Expired JWT.\");",
-              "    ",
-              "  ",
-              "console.log(\"values\"+jsonData.error_description);",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "32df9a2b-f45d-41a8-921e-ada196775aca",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "type": "text"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "grant_type",
-              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-              "type": "text"
-            },
-            {
-              "key": "assertion",
-              "value": "{{assertion}}",
-              "type": "text"
-            }
-          ],
-          "options": {
-            "urlencoded": {}
-          }
-        },
-        "url": "{{oidc_provider}}/token"
-      },
-      "response": []
-    },
-    {
       "name": "getTokensElements",
       "event": [
         {
@@ -366,6 +297,75 @@
           "urlencoded": []
         },
         "url": "{{oidc_provider}}/userinfo"
+      },
+      "response": []
+    },
+    {
+      "name": "/token invalid grant test (grant has used)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+            "exec": [
+              "",
+              "pm.test(\"invalid_grant should return 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "    var jsonData=pm.response.json();",
+              "    console.log(\"values\"+jsonData.error);",
+              "    var error=jsonData.error;",
+              "    pm.expect(jsonData.error).to.include(\"invalid_grant\");",
+              "    pm.expect(jsonData.error_description).to.be.that.include(\"Invalid assertion. Client authentication failed. Expired JWT.\");",
+              "    ",
+              "  ",
+              "console.log(\"values\"+jsonData.error_description);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "32df9a2b-f45d-41a8-921e-ada196775aca",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "assertion",
+              "value": "{{assertion}}",
+              "type": "text"
+            }
+          ],
+          "options": {
+            "urlencoded": {}
+          }
+        },
+        "url": "{{oidc_provider}}/token"
       },
       "response": []
     },
