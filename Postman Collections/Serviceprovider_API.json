@@ -6,42 +6,6 @@
   },
   "item": [
     {
-      "name": "saml2-entity-meta-data (no auth)",
-      "item": [
-        {
-          "name": "/saml2",
-          "_postman_id": "7ff2eed5-827f-464d-9865-e078c1e0dcd3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{serviceprovider_api}}/saml2?entityId={{entity_id}}",
-              "host": [
-                "{{serviceprovider_api}}"
-              ],
-              "path": [
-                "saml2"
-              ],
-              "query": [
-                {
-                  "key": "entityId",
-                  "value": "{{entity_id}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "55d8ffe8-f78c-4e5b-ad5a-4bc830f64597"
-    },
-    {
       "name": "Hente gyldig accesstoken med riktig scope",
       "item": [
         {
