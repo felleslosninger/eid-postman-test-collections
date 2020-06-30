@@ -6,6 +6,132 @@
   },
   "item": [
     {
+      "name": "getToken",
+      "item": [
+        {
+          "name": "getJWTGrant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f44f369f-1324-43da-b54a-5f3623f935f0",
+                "exec": [
+                  "pm.globals.set(\"oidc_maskinporten_assertion\",pm.response.text());"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8b718eb4-7902-40af-9866-52e18aa212c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=idporten:dcr.read idporten:dcr.write idporten:dcr.modify",
+              "host": [
+                "{{jwt_grant_url}}"
+              ],
+              "query": [
+                {
+                  "key": "issuer",
+                  "value": "{{client_id}}"
+                },
+                {
+                  "key": "audience",
+                  "value": "{{oidc_provider}}"
+                },
+                {
+                  "key": "scope",
+                  "value": "idporten:dcr.read idporten:dcr.write idporten:dcr.modify"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "416da3b2-30f6-432e-947c-5c2090f62993",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "    pm.globals.set(\"access_token_sp\",jsonData.access_token);",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c5d17cd0-b6ee-4ced-afb9-66238f1c10c1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                  "type": "text"
+                },
+                {
+                  "key": "assertion",
+                  "value": "{{oidc_maskinporten_assertion}}",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{oidc_provider_url}}/idporten-oidc-provider/token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "6e4ebe69-5fe1-4c6c-82ec-e56fe28c1938"
+    },
+    {
       "name": "/token invalid grant test (grant has used)",
       "event": [
         {
