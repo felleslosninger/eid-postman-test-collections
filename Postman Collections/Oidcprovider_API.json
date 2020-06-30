@@ -132,51 +132,6 @@
       "_postman_id": "6e4ebe69-5fe1-4c6c-82ec-e56fe28c1938"
     },
     {
-      "name": "getTokensElements",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "02b4c223-cb45-4310-b064-d60510887571",
-            "exec": [
-              "pm.test(\"tokens\", function () {",
-              " var jsonData = pm.response.json();",
-              " console.log('tokens test jsonData',jsonData);",
-              " var tokens=jsonData.value;",
-              "  console.log('tokens test tokens',tokens);",
-              " var temptoken=tokens.split('access_token:').pop();",
-              "   console.log('tokens test temptoken',temptoken);",
-              " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
-              "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
-              " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-              " pm.environment.set(\"oidctoken\", token);",
-              "     console.log('oidctoken test token',token);",
-              "console.log('oidctoken',pm.environment.get(\"oidctoken\"));",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "effb2838-de91-4e50-b13b-1f254f1f47bb",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "http://localhost:9515/session/{{session}}/source"
-      },
-      "response": []
-    },
-    {
       "name": "/tokeninfo",
       "event": [
         {
