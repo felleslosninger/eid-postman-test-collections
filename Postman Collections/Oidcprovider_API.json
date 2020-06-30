@@ -337,7 +337,10 @@
       },
       "request": {
         "auth": {
-          "type": "noauth"
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token_sp}}"
+          }
         },
         "method": "POST",
         "header": [
