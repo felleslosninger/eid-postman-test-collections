@@ -781,51 +781,6 @@
             "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
           },
           "response": []
-        },
-        {
-          "name": "getTokensElements",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
-                "exec": [
-                  "pm.test(\"tokens\", function () {",
-                  " var jsonData = pm.response.json();",
-                  " console.log('tokens test jsonData',jsonData);",
-                  " var tokens=jsonData.value;",
-                  "  console.log('tokens test tokens',tokens);",
-                  " var temptoken=tokens.split('access_token:').pop();",
-                  "   console.log('tokens test temptoken',temptoken);",
-                  " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
-                  "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
-                  " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"oidctoken\", token);",
-                  "     console.log('oidctoken test token',token);",
-                  "console.log('oidctoken',pm.environment.get(\"oidctoken\"));",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "effb2838-de91-4e50-b13b-1f254f1f47bb",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://localhost:9515/session/{{session}}/source"
-          },
-          "response": []
         }
       ],
       "_postman_id": "c6fb8742-c62d-4f28-94bf-783147018689",
@@ -918,6 +873,78 @@
           }
         },
         "url": "{{oidc_provider}}/token"
+      },
+      "response": []
+    },
+    {
+      "name": "/tokeninfo",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9e64abfc-00a1-49d4-99b5-3a34a0641dd5",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "    ",
+              "        var jsonData=pm.response.json();",
+              "pm.environment.set(\"auth_id\",jsonData.active);",
+              "    pm.expect(jsonData.active).to.eql(true);",
+              "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
+              "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
+              "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
+              "",
+              "",
+              "});",
+              "",
+              "pm.test(\"expires_in should be above 0\", function () {",
+              "    var jsonData=pm.response.json();",
+              "        var exp= jsonData.exp;",
+              "    var iat= jsonData.iat;",
+              "    var expires_in=exp-iat;",
+              "        console.log('oidctoken test iat',iat);",
+              "     console.log('oidctoken test expires_in',expires_in);",
+              "    pm.expect(expires_in).to.be.above(0);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "52ce75ec-30e0-47f6-ac30-144f7330c09d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "token",
+              "value": "{{oidctoken}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{oidc_provider}}/tokeninfo"
       },
       "response": []
     },
@@ -1037,42 +1064,33 @@
       "response": []
     },
     {
-      "name": "/tokeninfo",
+      "name": "getTokensElements",
       "event": [
         {
           "listen": "test",
           "script": {
-            "id": "9e64abfc-00a1-49d4-99b5-3a34a0641dd5",
+            "id": "02b4c223-cb45-4310-b064-d60510887571",
             "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "    ",
-              "        var jsonData=pm.response.json();",
-              "pm.environment.set(\"auth_id\",jsonData.active);",
-              "    pm.expect(jsonData.active).to.eql(true);",
-              "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
-              "    pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
-              "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
-              "",
-              "",
-              "});",
-              "",
-              "pm.test(\"expires_in should be above 0\", function () {",
-              "    var jsonData=pm.response.json();",
-              "        var exp= jsonData.exp;",
-              "    var iat= jsonData.iat;",
-              "    var expires_in=exp-iat;",
-              "        console.log('oidctoken test iat',iat);",
-              "     console.log('oidctoken test expires_in',expires_in);",
-              "    pm.expect(expires_in).to.be.above(0);",
-              "});",
-              ""
+              "pm.test(\"tokens\", function () {",
+              " var jsonData = pm.response.json();",
+              " console.log('tokens test jsonData',jsonData);",
+              " var tokens=jsonData.value;",
+              "  console.log('tokens test tokens',tokens);",
+              " var temptoken=tokens.split('access_token:').pop();",
+              "   console.log('tokens test temptoken',temptoken);",
+              " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
+              "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
+              " var token = temptoken.substring(1,refreshtokenpos-1);    ",
+              " pm.environment.set(\"oidctoken\", token);",
+              "     console.log('oidctoken test token',token);",
+              "console.log('oidctoken',pm.environment.get(\"oidctoken\"));",
+              "});"
             ],
             "type": "text/javascript"
           }
         }
       ],
-      "_postman_id": "52ce75ec-30e0-47f6-ac30-144f7330c09d",
+      "_postman_id": "effb2838-de91-4e50-b13b-1f254f1f47bb",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -1080,31 +1098,13 @@
         "auth": {
           "type": "noauth"
         },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "type": "text"
-          },
-          {
-            "key": "Accept",
-            "value": "application/json",
-            "type": "text"
-          }
-        ],
+        "method": "GET",
+        "header": [],
         "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "token",
-              "value": "{{oidctoken}}",
-              "type": "text"
-            }
-          ]
+          "mode": "raw",
+          "raw": ""
         },
-        "url": "{{oidc_provider}}/tokeninfo"
+        "url": "http://localhost:9515/session/{{session}}/source"
       },
       "response": []
     }
