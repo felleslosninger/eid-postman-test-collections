@@ -218,7 +218,10 @@
       },
       "request": {
         "auth": {
-          "type": "noauth"
+          "type": "bearer",
+          "bearer": {
+            "token": "{{oidctoken}}"
+          }
         },
         "method": "POST",
         "header": [
@@ -242,7 +245,10 @@
               "value": "{{oidctoken}}",
               "type": "text"
             }
-          ]
+          ],
+          "options": {
+            "urlencoded": {}
+          }
         },
         "url": "{{oidc_provider}}/tokeninfo"
       },
