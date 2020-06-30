@@ -6,50 +6,6 @@
   },
   "item": [
     {
-      "name": "integrations-controller (no auth)",
-      "item": [
-        {
-          "name": "/integrations",
-          "_postman_id": "12196ea0-5395-4d34-8c5d-15413d4fd871",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "url": "{{serviceprovider_api}}/integrations"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "986813b7-90f0-45e2-8ab5-7d0f08f4b4df",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "e5c4aaac-98ef-430f-9739-cc676b6105fa",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "4ae90363-1db7-4d54-94e6-5a66b53199f7",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "name": "saml2-entity-meta-data (no auth)",
       "item": [
         {
