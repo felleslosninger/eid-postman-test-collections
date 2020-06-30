@@ -246,9 +246,12 @@
         ],
         "body": {
           "mode": "urlencoded",
-          "urlencoded": []
+          "urlencoded": [],
+          "options": {
+            "urlencoded": {}
+          }
         },
-        "url": "{{oidc_provider}}/userinfo"
+        "url": "{{oidc_provider}}userinfo"
       },
       "response": []
     },
