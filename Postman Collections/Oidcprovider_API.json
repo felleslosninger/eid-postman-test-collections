@@ -9,44 +9,6 @@
       "name": "Hente gyldig accesstoken med riktig scope med code grant",
       "item": [
         {
-          "name": "seleniumsession",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d8b2c24d-e0ff-4735-a53e-d1fd6c1e91b7",
-                "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a37a8c83-7cef-49f7-b96c-d1ecdc0ffb0f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
-            },
-            "url": "http://localhost:9515/session",
-            "description": "\n"
-          },
-          "response": []
-        },
-        {
           "name": "redirecturl",
           "event": [
             {
