@@ -1186,12 +1186,15 @@
               }
             },
             "url": {
-              "raw": "{{eventlogapiurl}}:10000/logg/idporten?maxhits=1",
+              "raw": "https://eid-systest-web01.dmz.local/eventlog-api/logg/idporten?maxhits=1",
+              "protocol": "https",
               "host": [
-                "{{eventlogapiurl}}"
+                "eid-systest-web01",
+                "dmz",
+                "local"
               ],
-              "port": "10000",
               "path": [
+                "eventlog-api",
                 "logg",
                 "idporten"
               ],
