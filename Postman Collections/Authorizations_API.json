@@ -1358,6 +1358,39 @@
           "response": []
         },
         {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e4564408-3258-41ac-8e04-103d87accdfb",
+                "exec": [
+                  "pm.test(\"submit_elementid\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  " pm.globals.set(\"link\", jsonData.value.ELEMENT);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e83e727e-6bae-4241-a9a4-400e57cd2003",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"using\":\"id\",\"value\":\"proceed-link\"}",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element"
+          },
+          "response": []
+        },
+        {
           "name": "findclientelementid",
           "event": [
             {
@@ -2140,39 +2173,6 @@
               "raw": ""
             },
             "url": "http://localhost:9515/session/{{session}}/source"
-          },
-          "response": []
-        },
-        {
-          "name": "finalsubmit",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e4564408-3258-41ac-8e04-103d87accdfb",
-                "exec": [
-                  "pm.test(\"submit_elementid\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  " pm.globals.set(\"link\", jsonData.value.ELEMENT);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e83e727e-6bae-4241-a9a4-400e57cd2003",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"using\":\"id\",\"value\":\"proceed-link\"}",
-              "options": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element"
           },
           "response": []
         }
