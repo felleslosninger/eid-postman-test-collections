@@ -1198,6 +1198,50 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "/rest/v1/person Copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "a2bd752e-5df3-4597-be7e-072b152288db",
+                "exec": [
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "531424e9-de01-40f4-b775-5924f928d037",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{accesstoken_eventlogapi}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "https://eid-systest-web01.dmz.local/kontaktinfo-oauth2-server/rest/v1/person"
+          },
+          "response": []
         }
       ],
       "_postman_id": "78aa6570-a65a-44d0-bea7-e0a34c2e0516"
