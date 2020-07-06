@@ -351,7 +351,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"value\":[\"   krr:user.log.all.read idporten:user.log.read user/varslingsstatus.read global/digitalpost.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read user/sikkerdigitalpost.read dsf-adresse global/sertifikat.read global/varslingsstatus.read idporten:dcr.modify idporten:authorizations.revoke dsf-navn tokeninfo user/spraak.read idporten:tokenexchange idporten:scopes.read user/sertifikat.read user/digitalpost.read idporten:scopes.write user/spraak.write samarbeid:sp-web idporten:authorizationstest.read user/kontaktinformasjon.read\"]}"
+              "raw": "{\"value\":[\"   idporten:user.log.read user/varslingsstatus.read idporten:user.log.all.read user/sikkerdigitalpost.read tokeninfo user/spraak.read user/spraak.write user/kontaktinformasjon.read\"]}",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
           },
