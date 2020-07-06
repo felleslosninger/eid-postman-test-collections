@@ -9,139 +9,20 @@
       "name": "Hente gyldig accesstoken med riktig scope",
       "item": [
         {
-          "name": "postreq",
+          "name": "getJWTGrant",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "713e1a24-6a6c-4137-b6ec-ec8c924b3c95",
+                "id": "b3fd663a-19c6-4c40-add4-50bcad945153",
                 "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.globals.set(\"session\",jsonData.sessionId);",
-                  ""
+                  "pm.globals.set(\"oidc_maskinporten_assertion\",pm.response.text());"
                 ],
                 "type": "text/javascript"
               }
             }
           ],
-          "_postman_id": "fbbd0395-c76c-4778-b9b0-76c87018d6a2",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n        }\r\n    }\r\n}"
-            },
-            "url": "http://localhost:9515/session"
-          },
-          "response": [
-            {
-              "id": "dfd8c0ee-4f73-4ac0-8461-0dcfa54beeeb",
-              "name": "postreq",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
-                },
-                "url": "http://localhost:9515/session"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "Text",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
-          "name": "navigatetojwturl",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "227958f2-7dc9-4d24-a52e-9381fe8f9734",
-                "exec": [
-                  "tests[\"sessionId\"]=responseBody.has(\"sessionId\");",
-                  "tests[\"client_id is status\"]=responseBody.has(\"status\");",
-                  "tests[\"value\"]=responseBody.has(\"value\");",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "1ed6c867-539f-42e6-a7b5-6c30a491c713",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"url\":\"{{jwt_bearer_url_authlevel-api}}\"}\n"
-            },
-            "url": "http://localhost:9515/session/{{session}}/url"
-          },
-          "response": []
-        },
-        {
-          "name": "assertionrequest",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "227958f2-7dc9-4d24-a52e-9381fe8f9734",
-                "exec": [
-                  "var jsonData = pm.response.json();\r",
-                  "var jwtgrantString=jsonData.value;\r",
-                  "var jwtgranttrim = jwtgrantString.substring(\r",
-                  "    jwtgrantString.lastIndexOf(\"<body>\") +1, \r",
-                  "    jwtgrantString.lastIndexOf(\"</body>\")\r",
-                  ");\r",
-                  "var assertiontmp=jwtgranttrim.substring(5);\r",
-                  "console.log(assertiontmp);\r",
-                  "pm.environment.set(\"assertion\", assertiontmp);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "0acf91f7-d7e4-4a1b-8df7-920c39c062a7",
+          "_postman_id": "2bbae6f3-e57b-400e-97d3-06557cd654d4",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -154,40 +35,67 @@
               {
                 "key": "Content-Type",
                 "name": "Content-Type",
+                "value": "application/json",
                 "type": "text",
-                "value": "application/json"
+                "disabled": true
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"{{jwt_bearer_url_authlevel-api}}\"}\n"
+              "raw": "pid=30051699919",
+              "options": {
+                "raw": {}
+              }
             },
-            "url": "http://localhost:9515/session/{{session}}/source"
+            "url": {
+              "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=openid profile global/kontaktinformasjon.read idporten:authorizations.revoke global/idporten.authlevel.read&pid=24079496649",
+              "host": [
+                "{{jwt_grant_url}}"
+              ],
+              "query": [
+                {
+                  "key": "issuer",
+                  "value": "{{client_id}}"
+                },
+                {
+                  "key": "audience",
+                  "value": "{{oidc_provider}}"
+                },
+                {
+                  "key": "scope",
+                  "value": "openid profile global/kontaktinformasjon.read idporten:authorizations.revoke global/idporten.authlevel.read"
+                },
+                {
+                  "key": "pid",
+                  "value": "24079496649"
+                }
+              ]
+            }
           },
           "response": []
         },
         {
-          "name": "tokenendepunkt",
+          "name": "get Token",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "4bf7af09-414c-4b1b-8c0d-8fa6422b7038",
+                "id": "8cdaa046-176e-4734-b69d-0183e7dec05f",
                 "exec": [
-                  "var jsonData=pm.response.json();",
-                  "pm.environment.set(\"gen_accesstoken\",jsonData.access_token);",
                   "",
-                  "console.log('access_token test ',pm.environment.get(\"gen_accesstoken\"));",
-                  "",
-                  "",
-                  "     ",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "    pm.environment.set(\"gen_accesstoken\",jsonData.access_token);",
+                  "    console.log('access_token test ',pm.environment.get(\"gen_accesstoken\"));",
+                  "});",
                   ""
                 ],
                 "type": "text/javascript"
               }
             }
           ],
-          "_postman_id": "44923c53-87dc-4993-a1a9-95cd20a849fe",
+          "_postman_id": "7601c35f-c5b8-4631-9a26-75b47f0d2ac7",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -219,7 +127,7 @@
                 },
                 {
                   "key": "assertion",
-                  "value": "{{assertion}}",
+                  "value": "{{oidc_maskinporten_assertion}}",
                   "type": "text"
                 }
               ],
@@ -227,7 +135,7 @@
                 "urlencoded": {}
               }
             },
-            "url": "{{oidc_provider}}/token"
+            "url": "{{oidc_provider_url}}/idporten-oidc-provider/token"
           },
           "response": []
         }
