@@ -943,7 +943,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "02b4c223-cb45-4310-b064-d60510887571",
+                "id": "51d756f9-c18e-4924-a034-5c4393aed08d",
                 "exec": [
                   "pm.test(\"tokens\", function () {",
                   " var jsonData = pm.response.json();",
@@ -957,7 +957,7 @@
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
                   " pm.environment.set(\"accesstoken_eventlogapi\", token);",
                   "     console.log('accesstoken_eventlogapi test token',token);",
-                  "console.log('accesstoken_eventlogapi',pm.environment.get(\"accesstoken_eventlogapi\"));",
+                  "",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -976,7 +976,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/source"
           },
