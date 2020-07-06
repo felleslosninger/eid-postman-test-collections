@@ -2175,6 +2175,36 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "finalsubmit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93ff0de6-9523-4f45-b804-1afd4fcc36cb",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "5af48965-0bf1-48c6-be0e-39b5c3b36dd7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{link}}/click"
+          },
+          "response": []
         }
       ],
       "_postman_id": "4ca6db38-8517-4f96-a0a7-951c8a41d84e"
