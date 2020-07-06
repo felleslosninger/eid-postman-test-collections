@@ -2124,6 +2124,24 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
+        },
+        {
+          "name": "finalsubmit",
+          "_postman_id": "50ac3bf9-b8ee-4e22-9c66-79e9ff55cc04",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{crtlink}}/click"
+          },
+          "response": []
         }
       ],
       "_postman_id": "4ca6db38-8517-4f96-a0a7-951c8a41d84e"
