@@ -1029,9 +1029,9 @@
                   " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"accesstoken_eventlogapi\", token);",
-                  "     console.log('accesstoken_eventlogapi test token',token);",
-                  "console.log('accesstoken_eventlogapi',pm.environment.get(\"accesstoken_eventlogapi\"));",
+                  " pm.environment.set(\"krrtoken\", token);",
+                  "     console.log('krrtoken test token',token);",
+                  "console.log('krrtoken',pm.environment.get(\"krrtoken\"));",
                   "});"
                 ],
                 "type": "text/javascript"
