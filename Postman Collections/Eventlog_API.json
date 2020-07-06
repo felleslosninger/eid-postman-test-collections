@@ -1002,7 +1002,7 @@
                   "});",
                   "pm.test(\"Test will check integrasjon_id\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].integrasjon_id).to.eql(\"oidc_test_api-postman\");",
+                  "    pm.expect(jsonData[0].integrasjon_id).to.eql(\"test_rp_systest\");",
                   "",
                   "});",
                   "",
