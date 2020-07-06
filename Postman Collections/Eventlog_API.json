@@ -1054,7 +1054,7 @@
               }
             },
             "url": {
-              "raw": "http://eid-systest-api-web01.dmz.local:10000/logg/logg/idporten?maxhits=1",
+              "raw": "http://eid-systest-api-web01.dmz.local:10000/logg/idporten?maxhits=1",
               "protocol": "http",
               "host": [
                 "eid-systest-api-web01",
@@ -1063,7 +1063,6 @@
               ],
               "port": "10000",
               "path": [
-                "logg",
                 "logg",
                 "idporten"
               ],
