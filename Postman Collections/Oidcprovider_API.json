@@ -1021,8 +1021,8 @@
                   " var refreshtokenpos=temptoken.lastIndexOf(\"refresh_token:\");",
                   "    console.log('tokens test refreshtokenpos',refreshtokenpos);",
                   " var token = temptoken.substring(1,refreshtokenpos-1);    ",
-                  " pm.environment.set(\"accesstoken_eventlogapi\", token);",
-                  "     console.log('accesstoken_eventlogapi test token',token);",
+                  " pm.environment.set(\"oidctoken\", token);",
+                  "     console.log('oidctoken test token',token);",
                   "",
                   "});"
                 ],
