@@ -1121,7 +1121,7 @@
           "response": []
         },
         {
-          "name": "/logg/idporten Copy",
+          "name": "/logg/idporten evenlog",
           "event": [
             {
               "listen": "test",
