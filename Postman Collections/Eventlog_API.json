@@ -1311,9 +1311,12 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}",
+              "options": {
+                "raw": {}
+              }
             },
-            "url": "{{eventlogapiurl}}/eventlog-api/logg/kontaktregisteret/all"
+            "url": "https://eid-systest-web01.dmz.local/eventlog-api/logg/kontaktregisteret/all"
           },
           "response": []
         }
