@@ -1239,7 +1239,7 @@
                 "raw": {}
               }
             },
-            "url": "https://eid-systest-web01.dmz.local/kontaktinfo-oauth2-server/rest/v1/person"
+            "url": "{{eventlogapiurl}}:10000/kontaktinfo-oauth2-server/rest/v1/person"
           },
           "response": []
         }
