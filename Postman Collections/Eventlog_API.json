@@ -1185,12 +1185,12 @@
               }
             },
             "url": {
-              "raw": "{{eventlogapiurl}}/eventlog-api/logg/idporten?maxhits=1",
+              "raw": "{{eventlogapiurl}}:10000/logg/idporten?maxhits=1",
               "host": [
                 "{{eventlogapiurl}}"
               ],
+              "port": "10000",
               "path": [
-                "eventlog-api",
                 "logg",
                 "idporten"
               ],
