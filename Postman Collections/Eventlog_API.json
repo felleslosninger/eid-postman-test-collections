@@ -1048,15 +1048,20 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}"
+              "raw": "{\r\n  \"ssn\": 23079403164\r\n\r\n}",
+              "options": {
+                "raw": {}
+              }
             },
             "url": {
-              "raw": "{{eventlogapiurl}}/eventlog-api/logg/idporten?maxhits=1",
+              "raw": "https://eid-systest-web01.dmz.local/logg/idporten?maxhits=1",
+              "protocol": "https",
               "host": [
-                "{{eventlogapiurl}}"
+                "eid-systest-web01",
+                "dmz",
+                "local"
               ],
               "path": [
-                "eventlog-api",
                 "logg",
                 "idporten"
               ],
