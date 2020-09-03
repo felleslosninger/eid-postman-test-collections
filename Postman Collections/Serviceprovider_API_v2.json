@@ -1930,7 +1930,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\n   \"name\": \"lra:nyttscope2{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope2{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":false   \n\n}",
+                  "raw": "{\n\t\n   \"name\": \"lra:nyttscope2{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope2{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":true   \n\n}",
                   "options": {
                     "raw": {}
                   }
@@ -1993,7 +1993,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\n   \"name\": \"lra:nyttscope3{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope3{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":false   \n\n}",
+                  "raw": "{\n\t\n   \"name\": \"lra:nyttscope3{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope3{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":true   \n\n}",
                   "options": {
                     "raw": {}
                   }
