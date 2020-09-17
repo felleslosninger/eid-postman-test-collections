@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "Hente gyldig accesstoken med riktig scopen",
+      "name": "Hente gyldig accesstoken med riktig scope",
       "item": [
         {
           "name": "seleniumsession",
@@ -1052,7 +1052,29 @@
           "response": []
         }
       ],
-      "_postman_id": "2c9ca18e-c0fb-4039-a767-268e2afe850b"
+      "_postman_id": "2c9ca18e-c0fb-4039-a767-268e2afe850b",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f5b2a21b-8872-44f3-a196-f30e0975de1c",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "e4120b4e-8fe2-415f-b305-f66bf6f2ac5b",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "/tokeninfo",
@@ -1174,7 +1196,7 @@
             "urlencoded": {}
           }
         },
-        "url": "{{oidc_provider}}userinfo"
+        "url": "{{oidc_provider}}/userinfo"
       },
       "response": []
     },
