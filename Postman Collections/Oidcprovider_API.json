@@ -1141,7 +1141,7 @@
             "urlencoded": {}
           }
         },
-        "url": "{{oidc_provider}}tokeninfo"
+        "url": "{{oidc_provider}}/tokeninfo"
       },
       "response": []
     },
