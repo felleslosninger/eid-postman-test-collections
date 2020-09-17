@@ -53,6 +53,26 @@
           "response": []
         },
         {
+          "name": "henttoken",
+          "_postman_id": "3b0c7f65-2d0e-4abe-b021-c856d77f6c5d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
+          },
+          "response": []
+        },
+        {
           "name": "redirecturl",
           "event": [
             {
@@ -980,26 +1000,6 @@
               }
             },
             "url": "http://localhost:9515/session/{{session}}/element"
-          },
-          "response": []
-        },
-        {
-          "name": "henttoken",
-          "_postman_id": "3b0c7f65-2d0e-4abe-b021-c856d77f6c5d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "file",
-              "file": {}
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{token_elementid}}/click"
           },
           "response": []
         },
