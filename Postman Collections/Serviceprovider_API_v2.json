@@ -979,14 +979,14 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=idporten:scopes.read idporten:scopes.write",
+                  "raw": "{{jwt_grant_url}}?issuer=oidc_postman_jwt&audience={{oidc_provider}}&scope=idporten:scopes.read idporten:scopes.write",
                   "host": [
                     "{{jwt_grant_url}}"
                   ],
                   "query": [
                     {
                       "key": "issuer",
-                      "value": "{{client_id}}"
+                      "value": "oidc_postman_jwt"
                     },
                     {
                       "key": "audience",
