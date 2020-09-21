@@ -274,7 +274,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"value\":{{client_drop_down}}\n}\n\n"
+              "raw": "{\n\t\"value\":{{client_drop_down_test_rp_systest}}\n}\n\n",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
           },
