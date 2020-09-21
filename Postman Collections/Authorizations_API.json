@@ -355,7 +355,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read global/kontaktinformasjon.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke tokeninfo openid idporten:scopes.read idporten:scopes.write user/spraak.write user/kontaktinformasjon.read idporten:authorizationstest.read\"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke idporten:scopes.read idporten:scopes.write \"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
