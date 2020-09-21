@@ -1246,7 +1246,7 @@
               }
             },
             "url": {
-              "raw": "{{serviceprovider_api}}/scopes/access/991825827?scope=idporten:scopes.read",
+              "raw": "{{serviceprovider_api}}/scopes/access/991825827?scope={{new_scope}}",
               "host": [
                 "{{serviceprovider_api}}"
               ],
@@ -1258,7 +1258,7 @@
               "query": [
                 {
                   "key": "scope",
-                  "value": "idporten:scopes.read"
+                  "value": "{{new_scope}}"
                 }
               ]
             }
