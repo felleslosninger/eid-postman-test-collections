@@ -1090,7 +1090,7 @@
               "        var jsonData=pm.response.json();",
               "pm.environment.set(\"auth_id\",jsonData.active);",
               "   pm.expect(jsonData.active).to.eql(true);",
-              "    pm.expect(jsonData.client_id).to.eql(\"oidc_test_api-postman\");",
+              "    pm.expect(jsonData.client_id).to.eql(\"test_rp_systest\");",
               "   pm.expect(jsonData.client_orgno).to.eql(\"991825827\");",
               "    pm.expect(jsonData.delegation_source).to.eql(\"https://eid-systest-web01.dmz.local/idporten-oidc-provider/\");",
               "",
