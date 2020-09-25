@@ -270,12 +270,12 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"value\":{{client_drop_down_test_rp_systest}}\r\n}",
+              "raw": "{\r\n\t\"value\":\"test_rp_systest\"\r\n}",
               "options": {
                 "raw": {}
               }
             },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
+            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/click"
           },
           "response": []
         },
