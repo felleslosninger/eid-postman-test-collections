@@ -354,7 +354,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"value\":[\"   idporten:user.log.read  idporten:user.log.all.read \"]}",
+              "raw": "{\"value\":[\"   idporten:user.log.read\"]}",
               "options": {
                 "raw": {}
               }
