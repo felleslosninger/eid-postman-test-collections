@@ -987,48 +987,6 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
-        },
-        {
-          "name": "selectdropdown Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "688f14c3-ed6a-49f2-bd56-ed7a050e5e5d",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "166eac50-794f-4d94-aeb7-ff714ead2b20",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"value\":\"test_rp_systest\"\r\n}",
-              "options": {
-                "raw": {}
-              }
-            },
-            "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/click"
-          },
-          "response": []
         }
       ],
       "_postman_id": "390fecc1-ca0d-4b04-92c1-28153247a800"
