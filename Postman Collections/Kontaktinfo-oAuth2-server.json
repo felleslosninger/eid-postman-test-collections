@@ -374,7 +374,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"value\":[\"    idporten:user.log.read user/varslingsstatus.read idporten:user.log.all.read user/sikkerdigitalpost.read tokeninfo user/spraak.read user/spraak.write user/kontaktinformasjon.read krr:user.log.all.read krr:global/kontaktinformasjon.read\"]}",
+              "raw": "{\"value\":[\"    idporten:user.log.read idporten:user.log.all.read user/spraak.read user/spraak.write user/kontaktinformasjon.read krr:user.log.all.read \"]}",
               "options": {
                 "raw": {}
               }
