@@ -1050,78 +1050,6 @@
             "url": "http://localhost:9515/session/{{session}}/source"
           },
           "response": []
-        },
-        {
-          "name": "/token invalid grant test (grant has used)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b40075a3-bbcd-4aa8-8965-81d5e1587158",
-                "exec": [
-                  "",
-                  "pm.test(\"invalid_grant should return 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "    var jsonData=pm.response.json();",
-                  "    console.log(\"values\"+jsonData.error);",
-                  "    var error=jsonData.error;",
-                  "    pm.expect(jsonData.error).to.include(\"invalid_request\");",
-                  "    pm.expect(jsonData.error_description).to.be.that.include(\"Invalid assertion. Invalid parameter value. \");",
-                  "    ",
-                  "  ",
-                  "console.log(\"values\"+jsonData.error_description);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a4fc4aea-9125-406d-b2ad-2a33b6444c15",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token_sp}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "type": "text"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "grant_type",
-                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                  "type": "text"
-                },
-                {
-                  "key": "assertion",
-                  "value": "{{assertion}}",
-                  "type": "text"
-                }
-              ],
-              "options": {
-                "urlencoded": {}
-              }
-            },
-            "url": "{{oidc_provider}}/token"
-          },
-          "response": []
         }
       ],
       "_postman_id": "2c9ca18e-c0fb-4039-a767-268e2afe850b",
@@ -1402,6 +1330,78 @@
             {
               "key": "assertion",
               "value": "eyJ4NWMiOlsiTUlJRkVUQ0NBXC9tZ0F3SUJBZ0lMQVVrblRnempPNTM2MHk4d0RRWUpLb1pJaHZjTkFRRUxCUUF3VVRFTE1Ba0dBMVVFQmhNQ1RrOHhIVEFiQmdOVkJBb01GRUoxZVhCaGMzTWdRVk10T1Rnek1UWXpNekkzTVNNd0lRWURWUVFEREJwQ2RYbHdZWE56SUVOc1lYTnpJRE1nVkdWemREUWdRMEVnTXpBZUZ3MHhOekEyTVRJd09EVTJNVEZhRncweU1EQTJNVEl5TVRVNU1EQmFNSGN4Q3pBSkJnTlZCQVlUQWs1UE1Td3dLZ1lEVlFRS0RDTkVTVkpGUzFSUFVrRlVSVlFnUms5U0lFWlBVbFpCVEZST1NVNUhJRTlISUVsTFZERVNNQkFHQTFVRUN3d0pUMGxFUXlCMFpYTjBNUkl3RUFZRFZRUUREQWxFU1VaSklGUkZVMVF4RWpBUUJnTlZCQVVUQ1RrNU1UZ3lOVGd5TnpDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTmduVWJpWFBtZ0E4T0J4blBhNFpsUkhLTlNpUjFPUUlqMXdZS0hyejRVMUhvV21HNStWVFpQWGJobVJ4MjBsR3FRV3JDMG1xVjJsXC9CclNUVHBNdW1vdFBNV01RTW1sVXdXcTBBWGRRRHgzSDVCR1lhNjZzVjU2eEl2QzRsektJMkVBR2pzeGRkZThYdzdheXBFNXVKXC9PVk15Y2JcL3c2bHFvRGlzOHRIeGlOMEs0WitJbFVMdnBmQ1k1NlA3QytjdVN6RlU3VVlramJ6OStYdVdabGdKRmZ3MmpBQVhnNnN6elorbHZsZUFJKzZvVXUzSGZwbnVKZUJST1wveGZEdmtjXC8wY0lQRlJIQUVlWjhuUXdic0VpK09WU0VGeVludFNXM1MwUGI5WW1KazBDSWl1Y0xuVlhKNVZCd3lsNldzYkRyY2tZZDZKT21iWEpHRVRcL050ZWhNQ0F3RUFBYU9DQWNJd2dnRytNQWtHQTFVZEV3UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVVA2NzFlQXVTbzNBZ05WOWErdmNrb0ZJQjhFRXdIUVlEVlIwT0JCWUVGRWV5ZGR0S2tjZGl5RnR5dmIxblp3d0ViblRBTUE0R0ExVWREd0VCXC93UUVBd0lHUURBV0JnTlZIU0FFRHpBTk1Bc0dDV0NFUWdFYUFRQURBakNCdXdZRFZSMGZCSUd6TUlHd01EZWdOYUF6aGpGb2RIUndPaTh2WTNKc0xuUmxjM1EwTG1KMWVYQmhjM011Ym04dlkzSnNMMEpRUTJ4aGMzTXpWRFJEUVRNdVkzSnNNSFdnYzZCeGhtOXNaR0Z3T2k4dmJHUmhjQzUwWlhOME5DNWlkWGx3WVhOekxtNXZMMlJqUFVKMWVYQmhjM01zWkdNOVRrOHNRMDQ5UW5WNWNHRnpjeVV5TUVOc1lYTnpKVEl3TXlVeU1GUmxjM1EwSlRJd1EwRWxNakF6UDJObGNuUnBabWxqWVhSbFVtVjJiMk5oZEdsdmJreHBjM1F3Z1lvR0NDc0dBUVVGQndFQkJINHdmREE3QmdnckJnRUZCUWN3QVlZdmFIUjBjRG92TDI5amMzQXVkR1Z6ZERRdVluVjVjR0Z6Y3k1dWJ5OXZZM053TDBKUVEyeGhjM016VkRSRFFUTXdQUVlJS3dZQkJRVUhNQUtHTVdoMGRIQTZMeTlqY25RdWRHVnpkRFF1WW5WNWNHRnpjeTV1Ynk5amNuUXZRbEJEYkdGemN6TlVORU5CTXk1alpYSXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRWNqS3FKdTNOb2FPRUNZVGVrNjZ3TmZqVzlpUnowVllMbHBiYzVBRkVjMmN1RWlld05SNlNoME1vNFRmeFpEVkFsaTJaaUVXYytybHZGYVMyaGJlYlIrYktVcnlQY1ZGU0NBdEM3MkQ0amE2ek1qdStOcHZFZXRUbjZrODFXZ2ZzZ2p4NlhOakpZY1wvNlFOanZUNE4yMmFkRXd5TXZoRThsamtTZzRkXC91ZFF5aTJEUWRIdDBTaHFcL1dLMDY4TitoS1JnK1JJSWRDdTZJbDlGU25keVlPMGF6V1pwY2p1akhWSDdwOHFLVlo1OEc4N0hEaUM2RmNwZVpCT216VFwvTzdYaVN5MTQxVTQzSmVGS0JYa1Z1cEMwT1lQb3NZR1BubXpFeHFXTHliZ2tiT1wvZFNsOG9EVHpJSWlmdnh5Q2QyaU1FQWMwNytPdUVlZkVUekF4anFCSE09Il0sImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczpcL1wvZWlkLXN5c3Rlc3Qtd2ViMDEuZG16LmxvY2FsXC9pZHBvcnRlbi1vaWRjLXByb3ZpZGVyXC8iLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGlkcG9ydGVuOnNjb3Blcy53cml0ZSBpZHBvcnRlbjpzY29wZXMucmVhZCB0b2tlbmluZm8gaWRwb3J0ZW46YXV0aG9yaXphdGlvbnMucmV2b2tlIiwiaXNzIjoib2lkY190ZXN0X2FwaS1wb3N0bWFuIiwiZXhwIjoxNTY4MTk2NjE2LCJpYXQiOjE1NjgxOTY0OTYsImp0aSI6ImU1ZTU4ZDIzLWJjMjYtNDU0Mi1iMDkyLTgzNmE4OGMzYzg2NiJ9.bQpiG8MGSafrmpLAu948MQnW2EtZCunc4PMtYGeuW3FGxQtZVvRtN5_OWgRQWIubCOH4rzQARtEz52uuO4vo1kbMtUSr6H5ZHUGq1OPYW_9evj98uFeUbWlB-Xt4CS7bG0LhuFjlF7guG23jLG4yvhxwZW_PCR8ettbhbzAm-GqFExfXvXk6M2hJUzKWGt0VPAGvS3wf1gOlc9-D8lV0yk2abJGHDEofYdsltlguNX5he6xA5QQyF-Qy8kEgJnLHQl6tsnq-EOMgT3FVKJ0rg_kwpnnz_Q61h_Hn7SZBmD_CSuSEyDwm20yMIzyb1uca9SRkfk8vXchdL83V2gCwhA",
+              "type": "text"
+            }
+          ],
+          "options": {
+            "urlencoded": {}
+          }
+        },
+        "url": "{{oidc_provider}}/token"
+      },
+      "response": []
+    },
+    {
+      "name": "/token invalid grant test (grant has used)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b40075a3-bbcd-4aa8-8965-81d5e1587158",
+            "exec": [
+              "",
+              "pm.test(\"invalid_grant should return 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "    var jsonData=pm.response.json();",
+              "    console.log(\"values\"+jsonData.error);",
+              "    var error=jsonData.error;",
+              "    pm.expect(jsonData.error).to.include(\"invalid_request\");",
+              "    pm.expect(jsonData.error_description).to.be.that.include(\"Invalid assertion. Invalid parameter value. \");",
+              "    ",
+              "  ",
+              "console.log(\"values\"+jsonData.error_description);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "a4fc4aea-9125-406d-b2ad-2a33b6444c15",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token_sp}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "assertion",
+              "value": "{{assertion}}",
               "type": "text"
             }
           ],
