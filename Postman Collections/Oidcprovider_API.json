@@ -76,7 +76,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}\n",
+              "raw": "{\"url\":\"{{idporten_oidc_client_url}}\"}",
               "options": {
                 "raw": {}
               }
