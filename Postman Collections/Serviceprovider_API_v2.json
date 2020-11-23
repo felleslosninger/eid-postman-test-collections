@@ -2849,7 +2849,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                      "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": true,\r\n    \"accessible_for_all\": true\r\n}",
                       "options": {
                         "raw": {}
                       }
@@ -3309,17 +3309,12 @@
                         "id": "eca6ca9a-6fc4-49ba-8ca9-76d706ee060c",
                         "exec": [
                           "",
-                          "pm.test(\"Status code is 400\", function () {",
-                          "    pm.response.to.have.status(400);",
-                          "    var jsonData=pm.response.json();",
-                          "    pm.expect(jsonData.error).to.equal(\"invalid_scope\");",
-                          "    var txt=\"Token contains scopes that require an end user authentication: \"+pm.globals.get(\"new_scope2\");",
-                          "    console.log(\"error description  \"+txt);",
-                          "    pm.expect(jsonData.error_description).to.be.include(txt);",
-                          "    console.log(\"response \",jsonData);",
-                          "})",
                           "",
-                          ""
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "        var jsonData=pm.response.json();",
+                          "            console.log(\"response \",jsonData);",
+                          "});"
                         ],
                         "type": "text/javascript"
                       }
@@ -3445,9 +3440,6 @@
                         "exec": [
                           "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
-                          "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
-                          "console.log(\"body : \" + request.data);",
-                          "console.log(\"url : \" + request.url);",
                           "});"
                         ],
                         "type": "text/javascript"
@@ -3476,7 +3468,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"nyttscope11324\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}\r\n\r\n",
+                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"nyttscope11324\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}\r\n\r\n",
                       "options": {
                         "raw": {}
                       }
@@ -3590,18 +3582,9 @@
                       "script": {
                         "id": "7cb617ee-6684-42e6-b326-3e9caf73ccd9",
                         "exec": [
-                          "",
-                          "pm.test(\"Status code is 400\", function () {",
-                          "    pm.response.to.have.status(400);",
-                          "    var jsonData=pm.response.json();",
-                          "    pm.expect(jsonData.error).to.equal(\"invalid_scope\");",
-                          "    var txt=\"Token contains scopes that require an end user authentication: \"+pm.globals.get(\"new_scope2\");",
-                          "    console.log(\"error description  \"+txt);",
-                          "    pm.expect(jsonData.error_description).to.be.include(txt);",
-                          "    console.log(\"response \",jsonData);",
-                          "})",
-                          "",
-                          ""
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
                         ],
                         "type": "text/javascript"
                       }
@@ -3711,7 +3694,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope1}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope1_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                      "raw": "{\r\n    \"name\": \"{{new_scope1}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope1_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n        \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
                       "options": {
                         "raw": {}
                       }
@@ -3775,7 +3758,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope2_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                      "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope2_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}",
                       "options": {
                         "raw": {}
                       }
@@ -3839,7 +3822,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                      "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}",
                       "options": {
                         "raw": {}
                       }
@@ -4032,14 +4015,9 @@
                       "script": {
                         "id": "61dd459c-5c0c-4fb3-8116-5fe87c83a2e1",
                         "exec": [
-                          "",
-                          "pm.test(\"Status code is 400\", function () {",
-                          "    pm.response.to.have.status(400);",
-                          "    var jsonData = pm.response.json();",
-                          "    console.log(\"response \",jsonData);",
-                          "})",
-                          "",
-                          ""
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
                         ],
                         "type": "text/javascript"
                       }
