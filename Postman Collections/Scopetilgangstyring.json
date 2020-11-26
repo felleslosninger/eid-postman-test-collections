@@ -1,0 +1,2281 @@
+{
+  "info": {
+    "_postman_id": "86d77623-e5f1-4532-b104-cff083f86a4d",
+    "name": "Scope Tilgangstyring",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "getToken",
+      "item": [
+        {
+          "name": "getJWTGrant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7d89d06a-373f-4a98-8876-6b24297f59da",
+                "exec": [
+                  "pm.globals.set(\"oidc_maskinporten_assertion\",pm.response.text());"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "dab3a49d-6c1f-4e89-a88e-c6d2bdd5882c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{jwt_grant_url}}?issuer={{client_id}}&audience={{oidc_provider}}&scope=idporten:scopes.read idporten:scopes.write idporten:dcr.read idporten:dcr.write idporten:dcr.modify",
+              "host": [
+                "{{jwt_grant_url}}"
+              ],
+              "query": [
+                {
+                  "key": "issuer",
+                  "value": "{{client_id}}"
+                },
+                {
+                  "key": "audience",
+                  "value": "{{oidc_provider}}"
+                },
+                {
+                  "key": "scope",
+                  "value": "idporten:scopes.read idporten:scopes.write idporten:dcr.read idporten:dcr.write idporten:dcr.modify"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7cd4d055-804a-4f33-83dd-c5810ca2b3b3",
+              "name": "postreq",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                },
+                "url": "http://localhost:9515/session"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "Text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b41a5089-22e8-43f4-adff-ffd4075cca99",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    var jsonData=pm.response.json();",
+                  "    pm.globals.set(\"access_token_sp\",jsonData.access_token);",
+                  "",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2bd0f167-f0db-4168-af6c-d361b94b9b3c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                  "type": "text"
+                },
+                {
+                  "key": "assertion",
+                  "value": "{{oidc_maskinporten_assertion}}",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "urlencoded": {}
+              }
+            },
+            "url": "{{oidc_provider_url}}/idporten-oidc-provider/token"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "d5d1d06e-1ecd-4eed-9714-cea9f11b5b12"
+    },
+    {
+      "name": "ny klient registrering",
+      "item": [
+        {
+          "name": "/clients",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9065391f-9064-4c90-b60e-75118704df84",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"/clients \", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(\"generated new client is  \",jsonData);",
+                  "    pm.environment.set(\"sp_client_id\", jsonData.client_id);",
+                  "    console.log(\"sp_client_id\",jsonData.client_id);",
+                  "",
+                  "}",
+                  "",
+                  ");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "66ba538b-fd22-4bd7-bc76-924c73dcbdd7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"active\": true,\n    \"logo_uri\": \"bilde.gif\",\n    \"grant_types\": [\"urn:ietf:params:oauth:grant-type:jwt-bearer\"],\n    \"last_updated\": \"2019-03-21T17:03:59.583+01:00\",\n    \"created\": \"2019-03-08T15:50:40.540+01:00\",\n    \"integration_type\":\"maskinporten\",\n    \"token_endpoint_auth_method\": \"private_key_jwt\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/clients"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "34d8ef2e-b4fd-417a-955b-b1648dd2ea06"
+    },
+    {
+      "name": "scope registrering",
+      "item": [
+        {
+          "name": "/scope - 1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b099be62-c6ab-471c-a5b9-8beadd39e35a",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"new_scope1\",jsonData.name);",
+                  "pm.globals.set(\"new_scope1_subscope\",pm.globals.get(\"new_scope1\").split(':')[1]);",
+                  "console.log(\"new scope 1\",pm.globals.get(\"new_scope1\"));",
+                  "        ",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "202854cc-bd28-429a-b166-b237312120e8",
+                "exec": [
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "fcac0469-8ef8-4d23-be10-a8029bafaa50",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\n    \"name\": \"lra:nyttscope1{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope1{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n    \"token_type\": \"SELF_CONTAINED\",\n    \"allowed_integration_types\": [\"maskinporten\"],\n    \"accessible_for_all\": true\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/scopes"
+          },
+          "response": []
+        },
+        {
+          "name": "/scope -2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ecdf3ea1-56dd-48ca-bfff-b3c48cb0a0db",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"new_scope2\",jsonData.name);",
+                  "pm.globals.set(\"new_scope2_subscope\",pm.globals.get(\"new_scope2\").split(':')[1]);",
+                  "console.log(\"new scope 2\",pm.globals.get(\"new_scope2\"));",
+                  "        ",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "1be70090-f355-4fe1-9dcc-ea8c89bd3f92",
+                "exec": [
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "3b4ee996-2322-4c89-9a6a-1216fc5fb2f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\n   \"name\": \"lra:nyttscope2{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope2{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":true   \n\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/scopes"
+          },
+          "response": []
+        },
+        {
+          "name": "/scope -3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ba8422dd-7011-442b-83a5-5409da703af5",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "var jsonData=pm.response.json();",
+                  "pm.globals.set(\"new_scope3\",jsonData.name);",
+                  "pm.globals.set(\"new_scope3_subscope\",pm.globals.get(\"new_scope3\").split(':')[1]);",
+                  "console.log(\"new scope3 \",pm.globals.get(\"new_scope3\"));",
+                  "",
+                  "        ",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "872cf47b-e182-407a-8ff8-478df863cd33",
+                "exec": [
+                  "postman.setGlobalVariable('ran', Math.floor(Math.random() * 5000));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "feb74db3-6ee6-4057-bbbb-f0853613e02d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\n   \"name\": \"lra:nyttscope3{{ran}}\",\n    \"active\": true,\n    \"prefix\": \"lra\",\n    \"subscope\": \"nyttscope3{{ran}}\",\n    \"description\": \"Dette er LRA sitt interne scope\",\n    \"visibility\": \"PUBLIC\",\n    \"owner_orgno\": \"991825827\",\n   \"token_type\": \"SELF_CONTAINED\",\n   \"accessible_for_all\":true   \n\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/scopes"
+          },
+          "response": []
+        },
+        {
+          "name": "/clients",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "783341bb-76cd-4c66-a283-947ccb7bc72a",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"/put clients \", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    console.log(\"updated client is  \",jsonData);",
+                  "    pm.environment.set(\"sp_client_scope\", jsonData.client_id);",
+                  "    console.log(\"sp_client_scope\",jsonData.client_id);",
+                  "",
+                  "}",
+                  "",
+                  ");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1ebbb079-001f-4322-ae0f-bde1fa27ee37",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "\n{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"grant_types\": [\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n    ],\n    \"integration_type\":\"maskinporten\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"active\": true,\n     \"scopes\": [\n       \"{{new_scope1}}\",\"{{new_scope2}}\",\"{{new_scope3}}\"\n        \n    ],\n    \"token_endpoint_auth_method\": \"private_key_jwt\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/clients/{{sp_client_id}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "45c78062-7fe2-4f37-8040-b682289df86b"
+    },
+    {
+      "name": "scope styring med forskjeling scope parameter",
+      "item": [
+        {
+          "name": "accessiableforall_scope_false_for_all_scope",
+          "item": [
+            {
+              "name": "getJWTGrant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8bdf8c0a-2a02-4795-9e1b-71e2913b2b1f",
+                    "exec": [
+                      "pm.globals.set(\"oidc_scopes_maskinporten_assertion\",pm.response.text());"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "5da5e4d6-3357-436f-b203-612e23883d88",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{jwt_grant_url}}?issuer={{sp_client_id}}&audience={{maskinporten_url}}&scope={{new_scope1}} {{new_scope2}} {{new_scope3}}",
+                  "host": [
+                    "{{jwt_grant_url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "{{sp_client_id}}"
+                    },
+                    {
+                      "key": "audience",
+                      "value": "{{maskinporten_url}}"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}} {{new_scope2}} {{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ac185da9-8472-4e11-bcf9-7b46c5e37b03",
+                  "name": "postreq",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                    },
+                    "url": "http://localhost:9515/session"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "Text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "tokenendepunkt",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bf33df42-9851-4785-8cd1-9df34fa746c3",
+                    "exec": [
+                      "/*\r",
+                      "\r",
+                      "pm.test(\"Status code is 403\", function () {\r",
+                      "    pm.response.to.have.status(403);\r",
+                      "    var jsonData=pm.response.json();\r",
+                      "    pm.expect(jsonData.error).to.equal(\"forbidden\");\r",
+                      "    var txt=\"Consumer has not been granted access to the scope\";\r",
+                      "    console.log(\"error description  \"+txt);\r",
+                      "    pm.expect(jsonData.error_description).to.be.include(txt);\r",
+                      "    console.log(\"response \",jsonData);\r",
+                      "})\r",
+                      "\r",
+                      "*/\r",
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "a17dc212-b97d-491a-b9e7-8ff74e3d7ca7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                      "type": "text"
+                    },
+                    {
+                      "key": "assertion",
+                      "value": "{{oidc_scopes_maskinporten_assertion}}",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{maskinporten_url}}token"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "b53e9eea-8305-477a-9534-c2b1a59b5bab",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "accessiableforall_scope_true_for_all_scope",
+          "item": [
+            {
+              "name": "oppdatere scope 1 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ce584d1b-07f4-4d07-830e-1c6739391fc3",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "8aa04b52-dba0-476c-833b-3c610cf4a2bc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope1}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope1_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope1}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "oppdatere scope 2 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "56df1d04-bda1-4ffb-a7c5-7eda3476eff1",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "ea7423a5-28e4-439b-98cd-586134927161",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope2_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "oppdatere scope 3 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0986244e-0f77-42f7-99a2-22425ddaf41a",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "3d003f06-e795-4f5d-aa61-caeb84685f3b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": true,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope3}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/clients",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bf419d20-a3ab-4e5a-8c7b-a39093108a1b",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "",
+                      "pm.test(\"/put clients \", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    console.log(\"updated client is  \",jsonData);",
+                      "    pm.environment.set(\"sp_client_scope\", jsonData.client_id);",
+                      "    console.log(\"sp_client_scope\",jsonData.client_id);",
+                      "",
+                      "}",
+                      "",
+                      ");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "32ad79a6-4571-4262-aeca-8ad76f387d08",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "560d2683-9380-4067-ad6f-b10a13a84f4a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\n{\n    \"client_name\": \"lra-oidc-test\",\n    \"description\": \"lra sin testklient oidc\",\n    \"grant_types\": [\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\n    ],\n    \"integration_type\":\"maskinporten\",\n    \"client_uri\": \"https://wwww.knut.no\",\n    \"active\": true,\n     \"scopes\": [\n       \"{{new_scope1}}\",\"{{new_scope2}}\",\"{{new_scope3}}\"\n        \n    ],\n    \"token_endpoint_auth_method\": \"private_key_jwt\"\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": "{{serviceprovider_api}}/clients/{{sp_client_id}}"
+              },
+              "response": []
+            },
+            {
+              "name": "getJWTGrant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "49ca1034-30c3-4316-a33d-a15d2f1de605",
+                    "exec": [
+                      "pm.globals.set(\"oidc_scopes_maskinporten_assertion\",pm.response.text());"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e62b4c4e-e47e-44ff-8efa-f7386625b3f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{jwt_grant_url}}?issuer={{sp_client_id}}&audience={{maskinporten_url}}&scope={{new_scope1}} {{new_scope2}} {{new_scope3}}",
+                  "host": [
+                    "{{jwt_grant_url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "{{sp_client_id}}"
+                    },
+                    {
+                      "key": "audience",
+                      "value": "{{maskinporten_url}}"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}} {{new_scope2}} {{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e979be4a-d071-4ba6-9ed4-e302928a361d",
+                  "name": "postreq",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                    },
+                    "url": "http://localhost:9515/session"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "Text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "tokenendepunkt",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "c7717889-5771-4c52-838c-97b938aec236",
+                    "exec": [
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    console.log(\"response \",jsonData);",
+                      "    pm.response.to.have.status(200);",
+                      "",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "c0d15978-b632-4ad2-a0a7-f83e52d2ef79",
+                    "exec": [
+                      "  setTimeout(function(){\r",
+                      "          console.log(\"Sleeping for 5 seconds before next request.\");\r",
+                      "  }, 5000);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "d562e423-c55c-4668-9bea-8471c118951e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                      "type": "text"
+                    },
+                    {
+                      "key": "assertion",
+                      "value": "{{oidc_scopes_maskinporten_assertion}}",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{maskinporten_url}}token"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "6cf53f4d-5335-476e-9116-d29e4a00849a",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "user_authentcation_true_for_et_scope",
+          "item": [
+            {
+              "name": "/scopes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f3a32334-958e-4bbb-95aa-c86243a5c9a8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "d35dbba3-4df1-4787-9949-a4a454ea731d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put /scopes{?scope}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "a5c007c4-63c4-45ab-b568-6aa8f77deb8d",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "    console.log(\"body : \" + request.data);",
+                      "    console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "29576cf0-00f5-47fa-be17-0e4d848bac5e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope2_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": false,\r\n    \"requires_user_authentication\": true,\r\n    \"accessible_for_all\": true\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "getJWTGrant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "243b78ab-0b12-4354-9909-b2ac84cf7617",
+                    "exec": [
+                      "pm.globals.set(\"oidc_scopes_maskinporten_assertion\",pm.response.text());"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "219ce26b-93cc-489c-a4c8-a14efbc1dfc5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{jwt_grant_url}}?issuer={{sp_client_id}}&audience={{maskinporten_url}}&scope={{new_scope1}} {{new_scope2}} {{new_scope3}}",
+                  "host": [
+                    "{{jwt_grant_url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "{{sp_client_id}}"
+                    },
+                    {
+                      "key": "audience",
+                      "value": "{{maskinporten_url}}"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}} {{new_scope2}} {{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "12b53324-6e50-42b2-b0e8-d8bf6d2fa40d",
+                  "name": "postreq",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                    },
+                    "url": "http://localhost:9515/session"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "Text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "tokenendepunkt",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "5cfb0b12-5f12-4e33-8e2e-52a8f12286d6",
+                    "exec": [
+                      "",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "        var jsonData=pm.response.json();",
+                      "            console.log(\"response \",jsonData);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "191cffba-5cb8-43f2-ae24-25cdaba581ba",
+                    "exec": [
+                      "  setTimeout(function(){\r",
+                      "          console.log(\"Sleeping for 5 seconds before next request.\");\r",
+                      "  }, 5000);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "4bb02a73-b63b-4c90-8e37-a12f75514b0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                      "type": "text"
+                    },
+                    {
+                      "key": "assertion",
+                      "value": "{{oidc_scopes_maskinporten_assertion}}",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{maskinporten_url}}token"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "dd1a50e4-66d9-4e24-b041-297aff19b898",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "user_consent_true_for_et_scope",
+          "item": [
+            {
+              "name": "/scopes",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1f34fdf2-d8b2-4e10-977b-a0bf8730612e",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "0850b005-52e8-4b33-a7a2-a8db1176174d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Put /scopes{?scope}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "75358ab6-655a-4e9d-8aa6-7bd968b9bf05",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e3e70b2a-e6bb-420a-b8c2-76072af43321",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"nyttscope11324\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "getJWTGrant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1c6a2e61-0c7c-485c-8dae-162eb34547ee",
+                    "exec": [
+                      "pm.globals.set(\"oidc_scopes_maskinporten_assertion\",pm.response.text());"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "41fea42f-62ce-43af-9506-cf8094d7d89f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{jwt_grant_url}}?issuer={{sp_client_id}}&audience={{maskinporten_url}}&scope={{new_scope1}} {{new_scope2}} {{new_scope3}}",
+                  "host": [
+                    "{{jwt_grant_url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "{{sp_client_id}}"
+                    },
+                    {
+                      "key": "audience",
+                      "value": "{{maskinporten_url}}"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}} {{new_scope2}} {{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5105e6ba-64a7-4bad-aaaf-7498bb3fb448",
+                  "name": "postreq",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                    },
+                    "url": "http://localhost:9515/session"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "Text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "tokenendepunkt",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "07575cf5-6995-448e-a959-fbff0f141bad",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e609627c-af0c-4e48-8c00-44d84f03da56",
+                    "exec": [
+                      "  setTimeout(function(){\r",
+                      "          console.log(\"Sleeping for 10 seconds before next request.\");\r",
+                      "  }, 10000);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "9d026dc1-3e83-48a3-9028-ff19fdfb703a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                      "type": "text"
+                    },
+                    {
+                      "key": "assertion",
+                      "value": "{{oidc_scopes_maskinporten_assertion}}",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{maskinporten_url}}token"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "f7edd22d-8ecc-40b6-831e-95dcbd4e33e8",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "allescope_registrert_p\u00e5_klient_og_setteopp_accessable_for_all_true_oget_scope_require_user_consent_true",
+          "item": [
+            {
+              "name": "oppdatere scope 1 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6c443480-a694-432b-93f1-92cb7c3255d0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "525d62ac-1848-4b5c-bf12-e3b96b90d4db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope1}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope1_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n        \"requires_user_authentication\": false,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope1}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "oppdatere scope 2 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e0d66503-f1e8-4dc5-af84-90ba2a671cd4",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "6b965bba-195d-4986-bdc5-86de48a8fa08",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope2}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope2_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope2}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "oppdatere scope 3 accessable_all true",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "652c2955-5046-4a2d-8aed-46a4d7ad4f6d",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "    console.log(\"header : \" + request.headers[\"Content-Type\"]);",
+                      "console.log(\"body : \" + request.data);",
+                      "console.log(\"url : \" + request.url);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "4be5f20a-8456-4562-a31e-c53c74723491",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"{{new_scope3}}\",\r\n    \"active\": true,\r\n    \"prefix\": \"lra\",\r\n    \"subscope\": \"{{new_scope3_subscope}}\",\r\n    \"description\": \"Dette er LRA sitt interne scope\",\r\n    \"visibility\": \"PUBLIC\",\r\n    \"last_updated\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"created\": \"2019-09-12T12:04:44.272+02:00\",\r\n    \"owner_orgno\": \"991825827\",\r\n    \"token_type\": \"SELF_CONTAINED\",\r\n    \"requires_user_consent\": true,\r\n    \"accessible_for_all\": true\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope3}}",
+                  "host": [
+                    "{{serviceprovider_api}}"
+                  ],
+                  "path": [
+                    "scopes"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/clients/{id}",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "33e738f6-1774-4a75-bed2-3ae11f5db1bf",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "95e9212c-2714-4185-b5c8-9b7bffffc297",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "{{serviceprovider_api}}/clients/{{sp_client_scope}}"
+              },
+              "response": []
+            },
+            {
+              "name": "/clients",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f06d9c87-f274-4b11-a339-128794f07d11",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "71f5aa6d-35d0-47b2-9848-24eda7458c4a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{access_token_sp}}"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"client_name\": \"lra-oidc-test\",\r\n    \"description\": \"lra sin testklient oidc\",\r\n    \"scopes\": [\r\n        \"{{new_scope1}}\",\r\n        \"{{new_scope2}}\",\r\n        \"{{new_scope3}}\"\r\n    ],\r\n    \"grant_types\": [\r\n        \"urn:ietf:params:oauth:grant-type:jwt-bearer\"\r\n    ],\r\n    \"active\": true,\r\n    \"client_uri\": \"https://wwww.knut.no\",\r\n    \"integration_type\":\"maskinporten\",\r\n    \"token_endpoint_auth_method\": \"private_key_jwt\"\r\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": "{{serviceprovider_api}}/clients/{{sp_client_scope}}"
+              },
+              "response": []
+            },
+            {
+              "name": "getJWTGrant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6a31fb73-b62f-4753-a159-382b5bbb9c08",
+                    "exec": [
+                      "pm.globals.set(\"oidc_scopes_maskinporten_assertion\",pm.response.text());"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "846b10b6-cc87-4fec-94a6-131280ce61fb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json",
+                    "disabled": true
+                  }
+                ],
+                "url": {
+                  "raw": "{{jwt_grant_url}}?issuer={{sp_client_id}}&audience={{maskinporten_url}}&scope={{new_scope1}} {{new_scope2}} {{new_scope3}}",
+                  "host": [
+                    "{{jwt_grant_url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "{{sp_client_id}}"
+                    },
+                    {
+                      "key": "audience",
+                      "value": "{{maskinporten_url}}"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "{{new_scope1}} {{new_scope2}} {{new_scope3}}"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "05ba9556-c846-4fec-b677-dd22c3f61c43",
+                  "name": "postreq",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"caps\": {\r\n            \"nativeEvents\": false,\r\n            \"browserName\": \"chrome\",\r\n            \"version\": \"\",\r\n            \"platform\": \"ANY\"\r\n\r\n        }\r\n    }\r\n}"
+                    },
+                    "url": "http://localhost:9515/session"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "Text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "tokenendepunkt",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cc85ed5c-a7e4-42d8-af96-ad4e25989033",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "5591f669-481a-4e89-95c7-dfe3c442a52d",
+                    "exec": [
+                      "  setTimeout(function(){\r",
+                      "          console.log(\"Sleeping for 10 seconds before next request.\");\r",
+                      "  }, 10000);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "fc1cf327-25f3-4c0a-9e65-9185d42ffc48",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                      "type": "text"
+                    },
+                    {
+                      "key": "assertion",
+                      "value": "{{oidc_scopes_maskinporten_assertion}}",
+                      "type": "text"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": "{{maskinporten_url}}token"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "125db2e3-d621-43e0-9999-6893e7117572",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "229b8fb2-9ebd-4faf-b6d4-7d39102853d0"
+    },
+    {
+      "name": "delete scope og klient",
+      "item": [
+        {
+          "name": "Delete  /scopes{?scope 1}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "78445618-3b5b-4d57-ade3-709c528de4f9",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "638c84ee-d5f0-43a6-b156-b5f154c7aa51",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope1}}",
+              "host": [
+                "{{serviceprovider_api}}"
+              ],
+              "path": [
+                "scopes"
+              ],
+              "query": [
+                {
+                  "key": "scope",
+                  "value": "{{new_scope1}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete  /scopes{?scope 2}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6c02b177-d2da-41fa-94cf-5bb5cf5a3e91",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "57cf2de7-4e89-4cfd-84ef-7713995da3cb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope2}}",
+              "host": [
+                "{{serviceprovider_api}}"
+              ],
+              "path": [
+                "scopes"
+              ],
+              "query": [
+                {
+                  "key": "scope",
+                  "value": "{{new_scope2}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete  /scopes{?scope 3}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5abc3a51-c3d8-4d64-8834-484070002d03",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "72424985-cea6-4104-98a2-65f689473d67",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{serviceprovider_api}}/scopes?scope={{new_scope3}}",
+              "host": [
+                "{{serviceprovider_api}}"
+              ],
+              "path": [
+                "scopes"
+              ],
+              "query": [
+                {
+                  "key": "scope",
+                  "value": "{{new_scope3}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/clients/{id}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8e245e10-923c-4e38-b17d-2db43e7e156d",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1e4427ab-be83-459b-bfc5-e5facc075045",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token_sp}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{serviceprovider_api}}/clients/{{sp_client_scope}}"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "dd8a67c1-436d-409f-bad1-6f1f5050adb9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "{{access_token_sp}}"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "3d08fbff-e15c-4c0d-9a7a-037a3d3fb406",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "ad6d190d-1335-4fa0-aa9a-86ac41d73618",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
