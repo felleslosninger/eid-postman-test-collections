@@ -274,7 +274,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"value\":{{client_drop_down_test_rp_systest}}\n}\n\n",
+              "raw": "{\n\t\"value\":{{client_drop_down_test_rp_oidc_postman}}\n}\n\n",
               "options": {
                 "raw": {}
               }
@@ -358,7 +358,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:user.log.read idporten:authorizations.admin idporten:dcr.read idporten:dcr.write idporten:user.log.all.read idporten:dcr.modify idporten:authorizations.revoke idporten:scopes.read idporten:scopes.write \"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations.revoke idporten:authorizations.admin idporten:authorizations.read lra:lra47952\"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
@@ -1503,7 +1503,8 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"value\":{{client_drop_down}}\r\n}"
+              "raw": "{\r\n\t\"value\":{{client_drop_down_test_rp_oidc_postman}}\r\n}",
+              "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{clientid}}/value"
           },
@@ -2226,11 +2227,10 @@
               "script": {
                 "id": "61a954e2-854d-478e-bf69-17ac9f947721",
                 "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
                   "    tests[\"error is present\"]=responseBody.has(\"error\");",
                   "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
-                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
                   "    });",
                   "",
                   "",
@@ -2263,11 +2263,10 @@
               "script": {
                 "id": "61a954e2-854d-478e-bf69-17ac9f947721",
                 "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
                   "    tests[\"error is present\"]=responseBody.has(\"error\");",
                   "    tests[\"error_description is present\"]=responseBody.has(\"error_description\");",
-                  "    tests[\"scope is present\"]=responseBody.has(\"scope\");",
                   "});",
                   ""
                 ],
@@ -2371,15 +2370,15 @@
           "response": []
         },
         {
-          "name": "405 Method not allowed",
+          "name": "401 Method not allowed",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "bf7e1a80-c92c-4225-b7fe-db69a3dcc0bd",
                 "exec": [
-                  "pm.test(\"Status code is 405\", function () {",
-                  "    pm.response.to.have.status(405);",
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
                   "});",
                   "",
                   "",
@@ -2398,7 +2397,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "{{authorizations_url}}"
           },
