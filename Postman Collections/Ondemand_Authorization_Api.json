@@ -762,6 +762,76 @@
           "response": []
         },
         {
+          "name": "getAllrequires_user_consent=false",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d8d5a72c-e96d-42fd-85ea-3209779b76e5",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Test will check client id and client name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");\r",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");\r",
+                  "    \r",
+                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);\r",
+                  "    \r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"response must be valid and have a body\", function () {\r",
+                  "     // assert that the status code is 200\r",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+                  "     // assert that the response has a valid JSON body\r",
+                  "     pm.response.to.be.withBody;\r",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"response should be okay to process\", function () { \r",
+                  "    pm.response.to.not.be.error; \r",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); \r",
+                  "});\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e3ba98e2-e09e-471b-ba8f-e99d8ceb1c7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{authorizations_url}}?requires_user_consent=false",
+              "host": [
+                "{{authorizations_url}}"
+              ],
+              "query": [
+                {
+                  "key": "requires_user_consent",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "revokeAuthorizationsForSpecificUser",
           "event": [
             {
@@ -915,76 +985,6 @@
             "method": "DELETE",
             "header": [],
             "url": "http://localhost:9515/session/{{session}}"
-          },
-          "response": []
-        },
-        {
-          "name": "getAllrequires_user_consent=false",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d8d5a72c-e96d-42fd-85ea-3209779b76e5",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "pm.test(\"Test will check client id and client name\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");\r",
-                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");\r",
-                  "    \r",
-                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);\r",
-                  "    \r",
-                  "});\r",
-                  "\r",
-                  "\r",
-                  "pm.test(\"response must be valid and have a body\", function () {\r",
-                  "     // assert that the status code is 200\r",
-                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-                  "     // assert that the response has a valid JSON body\r",
-                  "     pm.response.to.be.withBody;\r",
-                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"response should be okay to process\", function () { \r",
-                  "    pm.response.to.not.be.error; \r",
-                  "    pm.response.to.not.have.jsonBody(\"error\"); \r",
-                  "});\r",
-                  "pm.test(\"Content-Type is present\", function () {\r",
-                  "    pm.response.to.have.header(\"Content-Type\");\r",
-                  "});\r",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e3ba98e2-e09e-471b-ba8f-e99d8ceb1c7f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{access_token}}"
-              }
-            },
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{authorizations_url}}?requires_user_consent=false",
-              "host": [
-                "{{authorizations_url}}"
-              ],
-              "query": [
-                {
-                  "key": "requires_user_consent",
-                  "value": "false"
-                }
-              ]
-            }
           },
           "response": []
         }
