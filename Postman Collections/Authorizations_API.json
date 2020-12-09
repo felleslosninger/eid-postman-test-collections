@@ -1214,6 +1214,19 @@
             "url": "http://localhost:9515/session/{{session}}"
           },
           "response": []
+        },
+        {
+          "name": "getAllrequires_user_consent=false",
+          "_postman_id": "31d3cc85-d91e-4db4-8290-6c180652158d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "54ae6c60-f486-4f90-b9d1-6528085d34fe",
