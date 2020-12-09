@@ -817,9 +817,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{authorizations_url}}?requires_user_consent=false",
+              "raw": "{{apiurl}}/client/authorizations?requires_user_consent=false",
               "host": [
-                "{{authorizations_url}}"
+                "{{apiurl}}"
+              ],
+              "path": [
+                "client",
+                "authorizations"
               ],
               "query": [
                 {
