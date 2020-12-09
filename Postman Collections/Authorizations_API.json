@@ -1348,7 +1348,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations.revoke idporten:authorizations.admin idporten:authorizations.read\"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations idporten:authorizations.admin\"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
