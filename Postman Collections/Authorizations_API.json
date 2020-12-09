@@ -358,7 +358,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations.revoke idporten:authorizations.admin idporten:authorizations.read lra:lra47952\"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations idporten:authorizations.admin lra:lra47952\"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
@@ -1348,7 +1348,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations.revoke idporten:authorizations.admin idporten:authorizations.read lra:lra47952\"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations.revoke idporten:authorizations.admin idporten:authorizations.read\"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
@@ -2126,14 +2126,141 @@
         },
         {
           "name": "getAllrequires_user_consent=false",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0cfa01a6-49a0-4472-92bb-0042c2878550",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Test will check client id and client name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");\r",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");\r",
+                  "    \r",
+                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);\r",
+                  "    \r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"response must be valid and have a body\", function () {\r",
+                  "     // assert that the status code is 200\r",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+                  "     // assert that the response has a valid JSON body\r",
+                  "     pm.response.to.be.withBody;\r",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"response should be okay to process\", function () { \r",
+                  "    pm.response.to.not.be.error; \r",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); \r",
+                  "});\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "31d3cc85-d91e-4db4-8290-6c180652158d",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
             "method": "GET",
             "header": [],
-            "url": ""
+            "url": {
+              "raw": "{{authorizations_url}}?requires_user_consent=false",
+              "host": [
+                "{{authorizations_url}}"
+              ],
+              "query": [
+                {
+                  "key": "requires_user_consent",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllrequires_user_consent=true&visibility=PUBLIC",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0ce4b8b7-5630-44d8-868c-9526eb0e2e21",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Test will check client id and client name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");\r",
+                  "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");\r",
+                  "    \r",
+                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);\r",
+                  "    \r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"response must be valid and have a body\", function () {\r",
+                  "     // assert that the status code is 200\r",
+                  "     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+                  "     // assert that the response has a valid JSON body\r",
+                  "     pm.response.to.be.withBody;\r",
+                  "     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"response should be okay to process\", function () { \r",
+                  "    pm.response.to.not.be.error; \r",
+                  "    pm.response.to.not.have.jsonBody(\"error\"); \r",
+                  "});\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "019afb34-135c-44df-bec2-f9a394f8e0ac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{access_token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{authorizations_url}}?requires_user_consent=false",
+              "host": [
+                "{{authorizations_url}}"
+              ],
+              "query": [
+                {
+                  "key": "requires_user_consent",
+                  "value": "false"
+                }
+              ]
+            }
           },
           "response": []
         },
