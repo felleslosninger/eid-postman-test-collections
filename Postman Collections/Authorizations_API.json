@@ -3149,7 +3149,7 @@
                   "",
                   "pm.test(\"Has correct scope\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].scopes[3].name).to.eql(\"lra:lra47952\");",
+                  "    pm.expect(jsonData[1].scopes[3].name).to.eql(\"lra:lra47952\");",
                   "});",
                   "",
                   "",
