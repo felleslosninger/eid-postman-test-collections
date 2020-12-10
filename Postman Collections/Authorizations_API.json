@@ -3144,6 +3144,7 @@
                   "  //  pm.expect(jsonData[0].client_id).to.eql(\"oidc_zap_api_test_client\");",
                   "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
                   "    ",
+                  "console.log(jsonData[0].authorization_id); ",
                   "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);",
                   "});",
                   "",
