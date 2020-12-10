@@ -3145,7 +3145,7 @@
                   "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
                   "    ",
                   "",
-                  "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);",
+                  "pm.environment.set(\"authorization_id\", jsonData[0].authorization_id);",
                   "});",
                   "",
                   "pm.test(\"Has correct scope\", function () {",
