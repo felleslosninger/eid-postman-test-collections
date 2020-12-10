@@ -3137,7 +3137,7 @@
                 "id": "0bcfd27f-21b8-43de-82ff-f9c7c37325bc",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.have.status(401);",
                   "});",
                   "pm.test(\"Test will check client id and client name\", function () {",
                   "    var jsonData = pm.response.json();",
