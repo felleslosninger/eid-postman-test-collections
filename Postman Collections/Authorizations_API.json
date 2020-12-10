@@ -981,7 +981,10 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "http://localhost:9515/session/{{session}}/source"
           },
@@ -2414,7 +2417,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations idporten:authorizations.admin\"\n    ]\n}",
+              "raw": "{\n    \"value\": [\n        \"    idporten:authorizations idporten:authorizations.admin lra:lra47953\"\n    ]\n}",
               "options": {}
             },
             "url": "http://localhost:9515/session/{{session}}/element/{{scope}}/value"
@@ -3196,7 +3199,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "0cfa01a6-49a0-4472-92bb-0042c2878550",
+                "id": "6816fb67-ebaf-46d4-a580-ba694ad5c9cd",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {\r",
                   "    pm.response.to.have.status(200);\r",
@@ -3331,7 +3334,7 @@
           "response": []
         },
         {
-          "name": "getAllrequires_user_consent=true&visibility=PUBLIC",
+          "name": "getAllrequires_user_consent=true&visibility=PRIVATE",
           "event": [
             {
               "listen": "test",
@@ -3347,7 +3350,11 @@
                   "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");\r",
                   "    \r",
                   "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);\r",
-                  "    \r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has correct scope\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData[0].scope[0].name).to.eql(\"lra:lra47953\");\r",
                   "});\r",
                   "\r",
                   "\r",
@@ -3386,14 +3393,18 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{authorizations_url}}?requires_user_consent=false",
+              "raw": "{{authorizations_url}}?visibility=PRIVATE&requires_user_consent=true",
               "host": [
                 "{{authorizations_url}}"
               ],
               "query": [
                 {
+                  "key": "visibility",
+                  "value": "PRIVATE"
+                },
+                {
                   "key": "requires_user_consent",
-                  "value": "false"
+                  "value": "true"
                 }
               ]
             }
