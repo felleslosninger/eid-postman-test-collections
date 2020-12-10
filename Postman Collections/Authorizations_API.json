@@ -3331,7 +3331,7 @@
           "response": []
         },
         {
-          "name": "getAllrequires_user_consent=true&visibility=PUBLIC Copy",
+          "name": "getAllrequires_user_consent=true&visibility=PUBLIC",
           "event": [
             {
               "listen": "test",
