@@ -3134,7 +3134,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "61a954e2-854d-478e-bf69-17ac9f947721",
+                "id": "0bcfd27f-21b8-43de-82ff-f9c7c37325bc",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -3145,7 +3145,11 @@
                   "//    pm.expect(jsonData[0].client_name).to.eql(\"ZAP API TEST CLIENT\");",
                   "    ",
                   "pm.globals.set(\"authorization_id\", jsonData[0].authorization_id);",
-                  "    ",
+                  "});",
+                  "",
+                  "pm.test(\"Has correct scope\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].scopes[3].name).to.eql(\"lra:lra47952\");",
                   "});",
                   "",
                   "",
@@ -3354,7 +3358,7 @@
                   "\r",
                   "pm.test(\"Has correct scope\", function () {\r",
                   "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData[0].scopes[4].name).to.eql(\"lra:lra47953\");\r",
+                  "    pm.expect(jsonData[0].scopes[5].name).to.eql(\"lra:lra47953\");\r",
                   "});\r",
                   "\r",
                   "\r",
